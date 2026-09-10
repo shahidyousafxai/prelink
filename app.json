@@ -27,6 +27,10 @@
         "projectId": "7f9fe74a-b925-4ccd-9108-4425584f641a"
       }
     },
-    "owner": "shahid.bahadur"
+    "owner": "shahid.bahadur",
+    "plugins": [
+      "expo-secure-store",
+      "expo-splash-screen"
+    ]
   }
 }
