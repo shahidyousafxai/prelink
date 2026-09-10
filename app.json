@@ -21,6 +21,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "7f9fe74a-b925-4ccd-9108-4425584f641a"
+      }
+    },
+    "owner": "shahid.bahadur"
   }
 }
