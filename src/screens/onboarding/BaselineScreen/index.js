@@ -5,10 +5,11 @@ import ScreenLayout from '../../../components/ScreenLayout';
 import ScreenHeader from '../../../components/ScreenHeader';
 import ChipGroup from '../../../components/ChipGroup';
 import PrimaryButton from '../../../components/PrimaryButton';
+import BackButton from '../../../components/BackButton';
 import { useCompleteOnboardingMutation } from '../../../network/authentication/authQueries';
 import { styles } from './styles';
 
-export default function BaselineScreen() {
+export default function BaselineScreen({ navigation }) {
   const completeOnboarding = useCompleteOnboardingMutation();
   const { control } = useForm({
     defaultValues: { sleep: 'Okay', care: 'Just me for now' },
@@ -16,6 +17,7 @@ export default function BaselineScreen() {
 
   return (
     <ScreenLayout center={false}>
+      <BackButton label="Consent" onPress={() => navigation.goBack()} />
       <ScreenHeader
         eyebrow="Last onboarding step · A little about you"
         headline="Getting your starting point"

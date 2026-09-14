@@ -6,6 +6,7 @@ import ScreenHeader from '../../../components/ScreenHeader';
 import ConsentBlock from '../../../components/ConsentBlock';
 import ToggleRow from '../../../components/ToggleRow';
 import PrimaryButton from '../../../components/PrimaryButton';
+import BackButton from '../../../components/BackButton';
 import { styles } from './styles';
 
 // Stage 1 of 4 — the only consent required to use PreLink at all. The other
@@ -17,6 +18,7 @@ export default function ConsentScreen({ navigation }) {
 
   return (
     <ScreenLayout center={false}>
+      <BackButton label="Language" onPress={() => navigation.goBack()} />
       <ScreenHeader
         eyebrow="Before we begin"
         badge="Consent 1 of 4"
