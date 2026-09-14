@@ -1,3 +1,4 @@
+import { View } from 'react-native';
 import { useForm } from 'react-hook-form';
 
 import ScreenLayout from '../../../components/ScreenLayout';
@@ -5,6 +6,7 @@ import ScreenHeader from '../../../components/ScreenHeader';
 import ChipGroup from '../../../components/ChipGroup';
 import PrimaryButton from '../../../components/PrimaryButton';
 import { useCompleteOnboardingMutation } from '../../../network/authentication/authQueries';
+import { styles } from './styles';
 
 export default function BaselineScreen() {
   const completeOnboarding = useCompleteOnboardingMutation();
@@ -32,6 +34,8 @@ export default function BaselineScreen() {
         label="Anyone helping with day-to-day things?"
         options={['Just me for now', 'A family member', 'A clinician already']}
       />
+
+      <View style={styles.spacer} />
 
       {/* Completing onboarding flips auth state; RootNavigator swaps to
           Home automatically, so no manual navigation call is needed here. */}

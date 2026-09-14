@@ -1,4 +1,4 @@
-import { Text } from 'react-native';
+import { View } from 'react-native';
 import { useForm } from 'react-hook-form';
 
 import ScreenLayout from '../../../components/ScreenLayout';
@@ -20,10 +20,10 @@ export default function ConsentScreen({ navigation }) {
       <ScreenHeader
         eyebrow="Before we begin"
         badge="Consent 1 of 4"
+        note="Stages 2–4 show up later, only when relevant — not right after this."
         headline="Wellness support only"
         sub="This is the only consent needed to use PreLink at all. Nothing else is bundled in."
       />
-      <Text style={styles.note}>Stages 2–4 show up later, only when relevant — not right after this.</Text>
 
       <ConsentBlock
         badge="This stage"
@@ -35,6 +35,8 @@ export default function ConsentScreen({ navigation }) {
         description="Pattern awareness, caregiver sharing, and clinician review are separate, optional stages."
         dimmed
       />
+
+      <View style={styles.spacer} />
 
       <ToggleRow control={control} name="agree" label="I understand and agree" />
 

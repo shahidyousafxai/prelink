@@ -41,4 +41,11 @@ export const fonts = {
   bodyMedium: 'PublicSans_500Medium',
   bodySemiBold: 'PublicSans_600SemiBold',
   bodyBold: 'PublicSans_700Bold',
+  // Matches the prototype's `.screen[dir="rtl"]` font stack (Noto Naskh
+  // Arabic for headlines, Noto Sans Arabic for body) — used for Arabic/Urdu
+  // text, which the Latin fonts above have no glyph coverage for.
+  arabicHeadlineBold: 'NotoNaskhArabic_700Bold',
+  arabicBody: 'NotoSansArabic_400Regular',
+  arabicBodyMedium: 'NotoSansArabic_500Medium',
+  arabicBodySemiBold: 'NotoSansArabic_600SemiBold',
 };

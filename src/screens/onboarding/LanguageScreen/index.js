@@ -10,9 +10,9 @@ import { styles } from './styles';
 
 const LANGUAGES = [
   { code: 'en', native: 'English', label: 'English' },
-  { code: 'ar', native: 'العربية', label: 'Arabic' },
+  { code: 'ar', native: 'العربية', label: 'Arabic', rtl: true },
   { code: 'fr', native: 'Français', label: 'French' },
-  { code: 'ur', native: 'اردو', label: 'Urdu' },
+  { code: 'ur', native: 'اردو', label: 'Urdu', rtl: true },
 ];
 
 export default function LanguageScreen({ navigation }) {
@@ -32,6 +32,7 @@ export default function LanguageScreen({ navigation }) {
             key={lang.code}
             native={lang.native}
             label={lang.label}
+            rtl={lang.rtl}
             selected={selected === lang.code}
             onPress={() => setSelected(lang.code)}
           />

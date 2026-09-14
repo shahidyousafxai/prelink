@@ -12,6 +12,12 @@ import {
   PublicSans_600SemiBold,
   PublicSans_700Bold,
 } from '@expo-google-fonts/public-sans';
+import { NotoNaskhArabic_700Bold } from '@expo-google-fonts/noto-naskh-arabic';
+import {
+  NotoSansArabic_400Regular,
+  NotoSansArabic_500Medium,
+  NotoSansArabic_600SemiBold,
+} from '@expo-google-fonts/noto-sans-arabic';
 
 import { queryClient } from './src/network/query.config';
 import { useOnboardingStatusQuery, useSessionQuery } from './src/network/authentication/authQueries';
@@ -29,6 +35,10 @@ function AppContent() {
     PublicSans_500Medium,
     PublicSans_600SemiBold,
     PublicSans_700Bold,
+    NotoNaskhArabic_700Bold,
+    NotoSansArabic_400Regular,
+    NotoSansArabic_500Medium,
+    NotoSansArabic_600SemiBold,
   });
 
   const isLoading = isSessionLoading || isOnboardingLoading || !fontsLoaded;
