@@ -19,7 +19,7 @@ export default function LanguageScreen({ navigation }) {
   const [selected, setSelected] = useState('en');
 
   return (
-    <ScreenLayout>
+    <ScreenLayout center={false}>
       <AuthMark />
       <ScreenHeader
         headline="Welcome to PreLink"
@@ -37,6 +37,8 @@ export default function LanguageScreen({ navigation }) {
           />
         ))}
       </View>
+
+      <View style={styles.spacer} />
 
       <PrimaryButton label="Continue" onPress={() => navigation.navigate('OnboardingConsent')} />
     </ScreenLayout>
