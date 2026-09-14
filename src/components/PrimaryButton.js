@@ -20,7 +20,7 @@ export default function PrimaryButton({ label, onPress, disabled, loading }) {
 const styles = StyleSheet.create({
   button: {
     backgroundColor: colors.pine,
-    borderRadius: radius.xl,
+    borderRadius: radius.md,
     paddingVertical: 14,
     alignItems: 'center',
     justifyContent: 'center',

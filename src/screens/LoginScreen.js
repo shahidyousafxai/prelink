@@ -63,7 +63,6 @@ export default function LoginScreen({ navigation }) {
 
       <TextLink label="Forgot password?" onPress={() => navigation.navigate('ForgotPassword')} />
       <TextLink label="Don't have an account? Create one" onPress={() => navigation.navigate('Signup')} />
-      <TextLink label="Settings" variant="muted" onPress={() => navigation.navigate('Settings')} />
     </AuthScreenLayout>
   );
 }
