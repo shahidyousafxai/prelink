@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
@@ -7,35 +7,37 @@ import { StatusBar } from 'expo-status-bar';
 import * as SplashScreen from 'expo-splash-screen';
 
 import { queryClient } from './src/services/queryClient';
+import { useSession } from './src/hooks/useSession';
 import RootNavigator from './src/navigation/RootNavigator';
 
 SplashScreen.preventAutoHideAsync().catch(() => {});
 
-export default function App() {
-  const [isReady, setIsReady] = useState(false);
+function AppContent() {
+  const { isLoading } = useSession();
 
   useEffect(() => {
-    // Run any startup work here (auth check, font loading, etc.) before revealing the app.
-    setIsReady(true);
-  }, []);
-
-  const onLayoutRootView = useCallback(async () => {
-    if (isReady) {
-      await SplashScreen.hideAsync();
+    if (!isLoading) {
+      SplashScreen.hideAsync();
     }
-  }, [isReady]);
+  }, [isLoading]);
 
-  if (!isReady) {
+  if (isLoading) {
     return null;
   }
 
   return (
-    <GestureHandlerRootView style={{ flex: 1 }} onLayout={onLayoutRootView}>
+    <NavigationContainer>
+      <RootNavigator />
+    </NavigationContainer>
+  );
+}
+
+export default function App() {
+  return (
+    <GestureHandlerRootView style={{ flex: 1 }}>
       <SafeAreaProvider>
         <QueryClientProvider client={queryClient}>
-          <NavigationContainer>
-            <RootNavigator />
-          </NavigationContainer>
+          <AppContent />
           <StatusBar style="auto" />
         </QueryClientProvider>
       </SafeAreaProvider>

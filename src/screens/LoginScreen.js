@@ -18,8 +18,9 @@ export default function LoginScreen({ navigation }) {
 
   const onSubmit = async (values) => {
     try {
+      // Signing in flips auth state; RootNavigator swaps to the protected
+      // stack automatically, so no manual navigation call is needed here.
       await login.mutateAsync(values);
-      navigation.replace('Home');
     } catch {
       // Surfaced via login.error below.
     }
@@ -67,6 +68,10 @@ export default function LoginScreen({ navigation }) {
       <Pressable style={styles.button} onPress={handleSubmit(onSubmit)} disabled={login.isPending}>
         <Text style={styles.buttonText}>{login.isPending ? 'Logging in...' : 'Log in'}</Text>
       </Pressable>
+
+      <Pressable style={styles.link} onPress={() => navigation.navigate('Settings')}>
+        <Text style={styles.linkText}>Settings</Text>
+      </Pressable>
     </View>
   );
 }
@@ -92,4 +97,6 @@ const styles = StyleSheet.create({
     marginTop: 16,
   },
   buttonText: { color: '#fff', fontSize: 16, fontWeight: '600' },
+  link: { alignItems: 'center', marginTop: 20 },
+  linkText: { color: '#2563eb', fontSize: 14, fontWeight: '500' },
 });

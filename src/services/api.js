@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+import { queryClient } from './queryClient';
+import { queryKeys } from './queryKeys';
 import { clearAuthToken, getAuthToken } from '../utils/storage';
 
 export const api = axios.create({
@@ -20,6 +22,7 @@ api.interceptors.response.use(
   (error) => {
     if (error.response?.status === 401) {
       clearAuthToken();
+      queryClient.setQueryData(queryKeys.auth.session, null);
     }
 
     error.message = error.response?.data?.message || error.message || 'Something went wrong. Please try again.';

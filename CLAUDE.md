@@ -35,6 +35,7 @@ When I ask about code:
 - Consider edge cases.
 - Don't modify unrelated files.
 - Please cater all use-cases and edge-cases.
+- Do not over-engineered anything by yyourself.
 
 ## Debugging
 When I give you an error:

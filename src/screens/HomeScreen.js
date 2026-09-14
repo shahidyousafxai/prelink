@@ -1,21 +1,18 @@
 import { useEffect, useState } from 'react';
 import { View, Text, FlatList, Pressable, StyleSheet, ActivityIndicator } from 'react-native';
 
+import { useLogout } from '../hooks/useLogout';
 import { useTodos } from '../hooks/useTodos';
-import { clearAuthToken, incrementVisitCount } from '../utils/storage';
+import { incrementVisitCount } from '../utils/storage';
 
 export default function HomeScreen({ navigation }) {
   const [visitCount, setVisitCount] = useState(null);
   const { data: todos, isLoading, isError, refetch, isRefetching } = useTodos();
+  const logout = useLogout();
 
   useEffect(() => {
     incrementVisitCount().then(setVisitCount);
   }, []);
-
-  const handleLogout = async () => {
-    await clearAuthToken();
-    navigation.replace('Login');
-  };
 
   return (
     <View style={styles.container}>
@@ -34,8 +31,12 @@ export default function HomeScreen({ navigation }) {
         style={styles.list}
       />
 
-      <Pressable style={styles.button} onPress={handleLogout}>
-        <Text style={styles.buttonText}>Log out</Text>
+      <Pressable style={styles.button} onPress={() => logout.mutate()} disabled={logout.isPending}>
+        <Text style={styles.buttonText}>{logout.isPending ? 'Logging out...' : 'Log out'}</Text>
+      </Pressable>
+
+      <Pressable style={styles.link} onPress={() => navigation.navigate('Settings')}>
+        <Text style={styles.linkText}>Settings</Text>
       </Pressable>
     </View>
   );
@@ -56,4 +57,6 @@ const styles = StyleSheet.create({
     marginTop: 16,
   },
   buttonText: { color: '#fff', fontSize: 16, fontWeight: '600' },
+  link: { alignItems: 'center', marginTop: 20 },
+  linkText: { color: '#2563eb', fontSize: 14, fontWeight: '500' },
 });
