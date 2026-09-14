@@ -1,12 +1,12 @@
 import { Text, StyleSheet } from 'react-native';
 import { useForm } from 'react-hook-form';
 
-import ScreenLayout from '../components/ScreenLayout';
-import ScreenHeader from '../components/ScreenHeader';
-import ConsentBlock from '../components/ConsentBlock';
-import ToggleRow from '../components/ToggleRow';
-import PrimaryButton from '../components/PrimaryButton';
-import { colors, fonts } from '../theme/theme';
+import ScreenLayout from '../../components/ScreenLayout';
+import ScreenHeader from '../../components/ScreenHeader';
+import ConsentBlock from '../../components/ConsentBlock';
+import ToggleRow from '../../components/ToggleRow';
+import PrimaryButton from '../../components/PrimaryButton';
+import { colors, fonts } from '../../theme/theme';
 
 // Stage 1 of 4 — the only consent required to use PreLink at all. The other
 // three stages (pattern awareness, caregiver sharing, clinical escalation)

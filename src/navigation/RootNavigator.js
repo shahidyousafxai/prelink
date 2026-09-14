@@ -1,14 +1,14 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { useOnboardingStatusQuery, useSessionQuery } from '../network/authentication/authQueries';
-import BaselineScreen from '../screens/BaselineScreen';
-import ConsentScreen from '../screens/ConsentScreen';
-import ForgotPasswordScreen from '../screens/ForgotPasswordScreen';
-import HomeScreen from '../screens/HomeScreen';
-import LanguageScreen from '../screens/LanguageScreen';
-import LoginScreen from '../screens/LoginScreen';
-import SettingsScreen from '../screens/SettingsScreen';
-import SignupScreen from '../screens/SignupScreen';
+import ForgotPasswordScreen from '../screens/auth/ForgotPasswordScreen';
+import LoginScreen from '../screens/auth/LoginScreen';
+import SignupScreen from '../screens/auth/SignupScreen';
+import SettingsScreen from '../screens/common/SettingsScreen';
+import HomeScreen from '../screens/home/HomeScreen';
+import BaselineScreen from '../screens/onboarding/BaselineScreen';
+import ConsentScreen from '../screens/onboarding/ConsentScreen';
+import LanguageScreen from '../screens/onboarding/LanguageScreen';
 
 const Stack = createNativeStackNavigator();
 

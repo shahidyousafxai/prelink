@@ -1,6 +1,6 @@
 import { View, Text, Pressable, StyleSheet } from 'react-native';
 
-import { useSessionQuery } from '../network/authentication/authQueries';
+import { useSessionQuery } from '../../network/authentication/authQueries';
 
 // Common route: registered outside the auth check in RootNavigator, so it's
 // reachable from both the public (signed-out) and protected (signed-in) stacks.

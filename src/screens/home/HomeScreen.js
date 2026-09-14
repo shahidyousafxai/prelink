@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { View, Text, FlatList, Pressable, StyleSheet, ActivityIndicator } from 'react-native';
 
-import { useLogoutMutation } from '../network/authentication/authQueries';
-import { useTodosQuery } from '../network/todos/todosQueries';
-import { incrementVisitCount } from '../utils/storage';
+import { useLogoutMutation } from '../../network/authentication/authQueries';
+import { useTodosQuery } from '../../network/todos/todosQueries';
+import { incrementVisitCount } from '../../utils/storage';
 
 export default function HomeScreen({ navigation }) {
   const [visitCount, setVisitCount] = useState(null);
