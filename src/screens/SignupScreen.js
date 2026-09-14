@@ -7,38 +7,37 @@ import AuthMark from '../components/AuthMark';
 import TextField from '../components/TextField';
 import PrimaryButton from '../components/PrimaryButton';
 import TextLink from '../components/TextLink';
-import { loginSchema } from '../validations/login';
-import { useLoginMutation } from '../network/authentication/authQueries';
+import { signupSchema } from '../validations/signup';
+import { useSignupMutation } from '../network/authentication/authQueries';
 import { colors, fonts } from '../theme/theme';
 
-export default function LoginScreen({ navigation }) {
-  const login = useLoginMutation();
+export default function SignupScreen({ navigation }) {
+  const signup = useSignupMutation();
   const {
     control,
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: zodResolver(loginSchema),
-    defaultValues: { email: '', password: '' },
+    resolver: zodResolver(signupSchema),
+    defaultValues: { name: '', email: '', password: '', confirmPassword: '' },
   });
 
   const onSubmit = async (values) => {
     try {
-      // Signing in flips auth state; RootNavigator swaps to the protected
-      // stack automatically, so no manual navigation call is needed here.
-      await login.mutateAsync(values);
+      await signup.mutateAsync(values);
     } catch {
-      // Surfaced via login.error below.
+      // Surfaced via signup.error below.
     }
   };
 
   return (
     <AuthScreenLayout>
       <AuthMark />
-      <Text style={styles.eyebrow}>Welcome back</Text>
-      <Text style={styles.headline}>Sign in to PreLink</Text>
-      <Text style={styles.sub}>A calmer way to look after your wellbeing.</Text>
+      <Text style={styles.eyebrow}>Get started</Text>
+      <Text style={styles.headline}>Create your account</Text>
+      <Text style={styles.sub}>Takes about a minute — you can adjust everything later in Settings.</Text>
 
+      <TextField control={control} name="name" label="Name" placeholder="Your name" error={errors.name?.message} />
       <TextField
         control={control}
         name="email"
@@ -56,14 +55,20 @@ export default function LoginScreen({ navigation }) {
         secureTextEntry
         error={errors.password?.message}
       />
+      <TextField
+        control={control}
+        name="confirmPassword"
+        label="Confirm password"
+        placeholder="••••••••"
+        secureTextEntry
+        error={errors.confirmPassword?.message}
+      />
 
-      {login.isError && <Text style={styles.formError}>{login.error.message}</Text>}
+      {signup.isError && <Text style={styles.formError}>{signup.error.message}</Text>}
 
-      <PrimaryButton label="Log in" onPress={handleSubmit(onSubmit)} loading={login.isPending} />
+      <PrimaryButton label="Create account" onPress={handleSubmit(onSubmit)} loading={signup.isPending} />
 
-      <TextLink label="Forgot password?" onPress={() => navigation.navigate('ForgotPassword')} />
-      <TextLink label="Don't have an account? Create one" onPress={() => navigation.navigate('Signup')} />
-      <TextLink label="Settings" variant="muted" onPress={() => navigation.navigate('Settings')} />
+      <TextLink label="Already have an account? Log in" onPress={() => navigation.navigate('Login')} />
     </AuthScreenLayout>
   );
 }

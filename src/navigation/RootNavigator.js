@@ -1,14 +1,16 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { useSession } from '../hooks/useSession';
+import { useSessionQuery } from '../network/authentication/authQueries';
+import ForgotPasswordScreen from '../screens/ForgotPasswordScreen';
 import HomeScreen from '../screens/HomeScreen';
 import LoginScreen from '../screens/LoginScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import SignupScreen from '../screens/SignupScreen';
 
 const Stack = createNativeStackNavigator();
 
 export default function RootNavigator() {
-  const { isAuthenticated } = useSession();
+  const { isAuthenticated } = useSessionQuery();
 
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
@@ -16,8 +18,12 @@ export default function RootNavigator() {
         // Protected route: only mounted while signed in.
         <Stack.Screen name="Home" component={HomeScreen} />
       ) : (
-        // Public route: only mounted while signed out.
-        <Stack.Screen name="Login" component={LoginScreen} />
+        // Public routes: only mounted while signed out.
+        <>
+          <Stack.Screen name="Login" component={LoginScreen} />
+          <Stack.Screen name="Signup" component={SignupScreen} />
+          <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
+        </>
       )}
 
       {/* Common route: registered unconditionally, reachable from either stack above. */}

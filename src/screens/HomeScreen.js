@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 import { View, Text, FlatList, Pressable, StyleSheet, ActivityIndicator } from 'react-native';
 
-import { useLogout } from '../hooks/useLogout';
-import { useTodos } from '../hooks/useTodos';
+import { useLogoutMutation } from '../network/authentication/authQueries';
+import { useTodosQuery } from '../network/todos/todosQueries';
 import { incrementVisitCount } from '../utils/storage';
 
 export default function HomeScreen({ navigation }) {
   const [visitCount, setVisitCount] = useState(null);
-  const { data: todos, isLoading, isError, refetch, isRefetching } = useTodos();
-  const logout = useLogout();
+  const { data: todos, isLoading, isError, refetch, isRefetching } = useTodosQuery();
+  const logout = useLogoutMutation();
 
   useEffect(() => {
     incrementVisitCount().then(setVisitCount);
