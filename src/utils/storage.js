@@ -3,6 +3,7 @@ import * as SecureStore from 'expo-secure-store';
 
 const AUTH_TOKEN_KEY = 'auth_token';
 const VISIT_COUNT_KEY = 'visit_count';
+const NEEDS_ONBOARDING_KEY = 'needs_onboarding';
 
 export function saveAuthToken(token) {
   return SecureStore.setItemAsync(AUTH_TOKEN_KEY, token);
@@ -25,4 +26,13 @@ export async function incrementVisitCount() {
   const count = (await getVisitCount()) + 1;
   await AsyncStorage.setItem(VISIT_COUNT_KEY, String(count));
   return count;
+}
+
+export async function getNeedsOnboarding() {
+  const value = await AsyncStorage.getItem(NEEDS_ONBOARDING_KEY);
+  return value === 'true';
+}
+
+export function setNeedsOnboarding(value) {
+  return AsyncStorage.setItem(NEEDS_ONBOARDING_KEY, value ? 'true' : 'false');
 }

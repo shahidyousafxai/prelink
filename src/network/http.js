@@ -10,6 +10,7 @@ export const queryKeys = {
   auth: {
     all: ['auth'],
     session: () => [...queryKeys.auth.all, 'session'],
+    onboarding: () => [...queryKeys.auth.all, 'onboarding'],
   },
 };
 

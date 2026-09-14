@@ -1,15 +1,15 @@
-import { Text, StyleSheet } from 'react-native';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import AuthScreenLayout from '../components/AuthScreenLayout';
+import ScreenLayout from '../components/ScreenLayout';
+import ScreenHeader from '../components/ScreenHeader';
 import AuthMark from '../components/AuthMark';
 import TextField from '../components/TextField';
 import PrimaryButton from '../components/PrimaryButton';
 import TextLink from '../components/TextLink';
+import FormError from '../components/FormError';
 import { signupSchema } from '../validations/signup';
 import { useSignupMutation } from '../network/authentication/authQueries';
-import { colors, fonts } from '../theme/theme';
 
 export default function SignupScreen({ navigation }) {
   const signup = useSignupMutation();
@@ -24,6 +24,8 @@ export default function SignupScreen({ navigation }) {
 
   const onSubmit = async (values) => {
     try {
+      // Signing up flips auth state and flags onboarding as needed;
+      // RootNavigator swaps to the onboarding stack automatically.
       await signup.mutateAsync(values);
     } catch {
       // Surfaced via signup.error below.
@@ -31,11 +33,13 @@ export default function SignupScreen({ navigation }) {
   };
 
   return (
-    <AuthScreenLayout>
+    <ScreenLayout>
       <AuthMark />
-      <Text style={styles.eyebrow}>Get started</Text>
-      <Text style={styles.headline}>Create your account</Text>
-      <Text style={styles.sub}>Takes about a minute — you can adjust everything later in Settings.</Text>
+      <ScreenHeader
+        eyebrow="Get started"
+        headline="Create your account"
+        sub="Takes about a minute — you can adjust everything later in Settings."
+      />
 
       <TextField control={control} name="name" label="Name" placeholder="Your name" error={errors.name?.message} />
       <TextField
@@ -64,18 +68,11 @@ export default function SignupScreen({ navigation }) {
         error={errors.confirmPassword?.message}
       />
 
-      {signup.isError && <Text style={styles.formError}>{signup.error.message}</Text>}
+      <FormError message={signup.isError ? signup.error.message : null} />
 
       <PrimaryButton label="Create account" onPress={handleSubmit(onSubmit)} loading={signup.isPending} />
 
       <TextLink label="Already have an account? Log in" onPress={() => navigation.navigate('Login')} />
-    </AuthScreenLayout>
+    </ScreenLayout>
   );
 }
-
-const styles = StyleSheet.create({
-  eyebrow: { fontSize: 11, fontFamily: fonts.bodySemiBold, color: colors.inkSoft, marginBottom: 6 },
-  headline: { fontSize: 21, fontFamily: fonts.headline, color: colors.ink, marginBottom: 6 },
-  sub: { fontSize: 13, fontFamily: fonts.body, color: colors.inkSoft, lineHeight: 19.5, marginBottom: 20 },
-  formError: { fontSize: 12, fontFamily: fonts.bodySemiBold, color: colors.clay, textAlign: 'center', marginBottom: 8 },
-});

@@ -14,13 +14,14 @@ import {
 } from '@expo-google-fonts/public-sans';
 
 import { queryClient } from './src/network/query.config';
-import { useSessionQuery } from './src/network/authentication/authQueries';
+import { useOnboardingStatusQuery, useSessionQuery } from './src/network/authentication/authQueries';
 import RootNavigator from './src/navigation/RootNavigator';
 
 SplashScreen.preventAutoHideAsync().catch(() => {});
 
 function AppContent() {
   const { isLoading: isSessionLoading } = useSessionQuery();
+  const { isLoading: isOnboardingLoading } = useOnboardingStatusQuery();
   const [fontsLoaded] = useFonts({
     Literata_600SemiBold,
     Literata_700Bold,
@@ -30,7 +31,7 @@ function AppContent() {
     PublicSans_700Bold,
   });
 
-  const isLoading = isSessionLoading || !fontsLoaded;
+  const isLoading = isSessionLoading || isOnboardingLoading || !fontsLoaded;
 
   useEffect(() => {
     if (!isLoading) {
