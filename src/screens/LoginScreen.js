@@ -3,7 +3,7 @@ import { View, Text, TextInput, Pressable, StyleSheet } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
 import { z } from 'zod';
 
-import { saveAuthToken } from '../lib/storage';
+import { saveAuthToken } from '../utils/storage';
 
 const loginSchema = z.object({
   email: z.string().email('Enter a valid email'),
@@ -30,7 +30,7 @@ export default function LoginScreen({ navigation }) {
 
     setSubmitting(true);
     try {
-      // Replace with a real request through `src/lib/api.js` once a backend exists.
+      // Replace with a real request through `src/services/api.js` once a backend exists.
       await saveAuthToken('demo-token');
       navigation.replace('Home');
     } finally {

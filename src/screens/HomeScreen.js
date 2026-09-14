@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { View, Text, FlatList, Pressable, StyleSheet, ActivityIndicator } from 'react-native';
 import { useQuery } from '@tanstack/react-query';
 
-import { api } from '../lib/api';
-import { clearAuthToken, incrementVisitCount } from '../lib/storage';
+import { api } from '../services/api';
+import { clearAuthToken, incrementVisitCount } from '../utils/storage';
 
 async function fetchTodos() {
   const { data } = await api.get('/todos', { params: { _limit: 5 } });
