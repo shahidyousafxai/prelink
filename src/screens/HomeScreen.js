@@ -1,24 +1,12 @@
 import { useEffect, useState } from 'react';
 import { View, Text, FlatList, Pressable, StyleSheet, ActivityIndicator } from 'react-native';
-import { useQuery } from '@tanstack/react-query';
 
-import { api } from '../services/api';
+import { useTodos } from '../hooks/useTodos';
 import { clearAuthToken, incrementVisitCount } from '../utils/storage';
-
-async function fetchTodos() {
-  const { data } = await api.get('/todos', { params: { _limit: 5 } });
-  return data;
-}
 
 export default function HomeScreen({ navigation }) {
   const [visitCount, setVisitCount] = useState(null);
-  const {
-    data: todos,
-    isLoading,
-    isError,
-    refetch,
-    isRefetching,
-  } = useQuery({ queryKey: ['todos'], queryFn: fetchTodos });
+  const { data: todos, isLoading, isError, refetch, isRefetching } = useTodos();
 
   useEffect(() => {
     incrementVisitCount().then(setVisitCount);

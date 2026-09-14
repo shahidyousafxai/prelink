@@ -1,40 +1,27 @@
-import { useState } from 'react';
 import { View, Text, TextInput, Pressable, StyleSheet } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
-import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 
-import { saveAuthToken } from '../utils/storage';
-
-const loginSchema = z.object({
-  email: z.string().email('Enter a valid email'),
-  password: z.string().min(6, 'Password must be at least 6 characters'),
-});
+import { loginSchema } from '../services/authService';
+import { useLogin } from '../hooks/useLogin';
 
 export default function LoginScreen({ navigation }) {
-  const [submitting, setSubmitting] = useState(false);
+  const login = useLogin();
   const {
     control,
     handleSubmit,
-    setError,
     formState: { errors },
-  } = useForm({ defaultValues: { email: '', password: '' } });
+  } = useForm({
+    resolver: zodResolver(loginSchema),
+    defaultValues: { email: '', password: '' },
+  });
 
   const onSubmit = async (values) => {
-    const result = loginSchema.safeParse(values);
-    if (!result.success) {
-      result.error.issues.forEach((issue) => {
-        setError(issue.path[0], { message: issue.message });
-      });
-      return;
-    }
-
-    setSubmitting(true);
     try {
-      // Replace with a real request through `src/services/api.js` once a backend exists.
-      await saveAuthToken('demo-token');
+      await login.mutateAsync(values);
       navigation.replace('Home');
-    } finally {
-      setSubmitting(false);
+    } catch {
+      // Surfaced via login.error below.
     }
   };
 
@@ -75,8 +62,10 @@ export default function LoginScreen({ navigation }) {
       />
       {errors.password && <Text style={styles.error}>{errors.password.message}</Text>}
 
-      <Pressable style={styles.button} onPress={handleSubmit(onSubmit)} disabled={submitting}>
-        <Text style={styles.buttonText}>{submitting ? 'Logging in...' : 'Log in'}</Text>
+      {login.isError && <Text style={styles.error}>{login.error.message}</Text>}
+
+      <Pressable style={styles.button} onPress={handleSubmit(onSubmit)} disabled={login.isPending}>
+        <Text style={styles.buttonText}>{login.isPending ? 'Logging in...' : 'Log in'}</Text>
       </Pressable>
     </View>
   );
