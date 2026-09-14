@@ -1,17 +1,17 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text } from 'react-native';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import ScreenLayout from '../../components/ScreenLayout';
-import ScreenHeader from '../../components/ScreenHeader';
-import AuthMark from '../../components/AuthMark';
-import TextField from '../../components/TextField';
-import PrimaryButton from '../../components/PrimaryButton';
-import TextLink from '../../components/TextLink';
-import FormError from '../../components/FormError';
-import { forgotPasswordSchema } from '../../validations/forgotPassword';
-import { useForgotPasswordMutation } from '../../network/authentication/authQueries';
-import { colors, fonts } from '../../theme/theme';
+import ScreenLayout from '../../../components/ScreenLayout';
+import ScreenHeader from '../../../components/ScreenHeader';
+import AuthMark from '../../../components/AuthMark';
+import TextField from '../../../components/TextField';
+import PrimaryButton from '../../../components/PrimaryButton';
+import TextLink from '../../../components/TextLink';
+import FormError from '../../../components/FormError';
+import { forgotPasswordSchema } from '../../../validations/forgotPassword';
+import { useForgotPasswordMutation } from '../../../network/authentication/authQueries';
+import { styles } from './styles';
 
 export default function ForgotPasswordScreen({ navigation }) {
   const forgotPassword = useForgotPasswordMutation();
@@ -61,8 +61,3 @@ export default function ForgotPasswordScreen({ navigation }) {
     </ScreenLayout>
   );
 }
-
-const styles = StyleSheet.create({
-  confirm: { backgroundColor: colors.pineSoft, borderRadius: 14, padding: 14 },
-  confirmText: { fontSize: 13, fontFamily: fonts.bodySemiBold, color: '#1c3b32', textAlign: 'center' },
-});

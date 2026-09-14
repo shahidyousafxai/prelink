@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View } from 'react-native';
 
-import ScreenLayout from '../../components/ScreenLayout';
-import ScreenHeader from '../../components/ScreenHeader';
-import AuthMark from '../../components/AuthMark';
-import LanguageOption from '../../components/LanguageOption';
-import PrimaryButton from '../../components/PrimaryButton';
+import ScreenLayout from '../../../components/ScreenLayout';
+import ScreenHeader from '../../../components/ScreenHeader';
+import AuthMark from '../../../components/AuthMark';
+import LanguageOption from '../../../components/LanguageOption';
+import PrimaryButton from '../../../components/PrimaryButton';
+import { styles } from './styles';
 
 const LANGUAGES = [
   { code: 'en', native: 'English', label: 'English' },
@@ -41,7 +42,3 @@ export default function LanguageScreen({ navigation }) {
     </ScreenLayout>
   );
 }
-
-const styles = StyleSheet.create({
-  grid: { flexDirection: 'row', flexWrap: 'wrap', gap: 10, marginBottom: 20 },
-});

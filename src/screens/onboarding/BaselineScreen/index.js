@@ -1,10 +1,10 @@
 import { useForm } from 'react-hook-form';
 
-import ScreenLayout from '../../components/ScreenLayout';
-import ScreenHeader from '../../components/ScreenHeader';
-import ChipGroup from '../../components/ChipGroup';
-import PrimaryButton from '../../components/PrimaryButton';
-import { useCompleteOnboardingMutation } from '../../network/authentication/authQueries';
+import ScreenLayout from '../../../components/ScreenLayout';
+import ScreenHeader from '../../../components/ScreenHeader';
+import ChipGroup from '../../../components/ChipGroup';
+import PrimaryButton from '../../../components/PrimaryButton';
+import { useCompleteOnboardingMutation } from '../../../network/authentication/authQueries';
 
 export default function BaselineScreen() {
   const completeOnboarding = useCompleteOnboardingMutation();
