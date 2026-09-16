@@ -76,10 +76,27 @@ export default function HomeScreen({ navigation }) {
       </LinearGradient>
 
       <View style={styles.pillars}>
-        <PillarChip name="Heart" state="Holding steady" dim />
-        <PillarChip name="Weight" state="Holding steady" dim />
-        <PillarChip name="Calm" state="Worth a look" watch dim />
-        <PillarChip name="Mind" state="Holding steady" onPress={() => navigation.navigate('MyHealth')} />
+        <PillarChip
+          name="Heart"
+          state="Holding steady"
+          onPress={() => navigation.navigate('MyHealth', { pillar: 'heart' })}
+        />
+        <PillarChip
+          name="Weight"
+          state="Holding steady"
+          onPress={() => navigation.navigate('MyHealth', { pillar: 'weight' })}
+        />
+        <PillarChip
+          name="Calm"
+          state="Worth a look"
+          watch
+          onPress={() => navigation.navigate('MyHealth', { pillar: 'calm' })}
+        />
+        <PillarChip
+          name="Mind"
+          state="Holding steady"
+          onPress={() => navigation.navigate('MyHealth', { pillar: 'mind' })}
+        />
       </View>
 
       <TextLink

@@ -3,7 +3,7 @@ import { View, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 import HomeScreen from '../screens/home/HomeScreen';
-import PillarMindScreen from '../screens/home/PillarMindScreen';
+import PillarScreen from '../screens/home/PillarScreen';
 import CarePlanScreen from '../screens/home/CarePlanScreen';
 import SettingsScreen from '../screens/home/SettingsScreen';
 import { colors, fonts, radius } from '../theme/theme';
@@ -47,7 +47,7 @@ export default function MainTabs() {
       />
       <Tab.Screen
         name="MyHealth"
-        component={PillarMindScreen}
+        component={PillarScreen}
         options={{
           tabBarLabel: 'My Health',
           tabBarIcon: ({ focused }) => <TabIcon focused={focused} name="MyHealth" />,
