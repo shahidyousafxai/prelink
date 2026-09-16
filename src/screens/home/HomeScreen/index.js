@@ -1,7 +1,6 @@
 import { useMemo, useState } from 'react';
 import { View, Text, Pressable } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { Ionicons } from '@expo/vector-icons';
 
 import ScreenLayout from '../../../components/ScreenLayout';
 import Chip from '../../../components/Chip';
@@ -50,15 +49,10 @@ export default function HomeScreen({ navigation }) {
   return (
     <ScreenLayout center={false}>
       <View style={styles.headerRow}>
-        <View>
-          <Text style={styles.greet}>{reentryPreview ? 'Welcome back' : getGreeting()}</Text>
-          <Text style={styles.greetSub}>
-            {reentryPreview ? 'Life happens. We saved your place.' : `${weekday} · your place is saved`}
-          </Text>
-        </View>
-        <Pressable onPress={() => navigation.navigate('Settings')} hitSlop={8}>
-          <Ionicons name="settings-outline" size={22} color={colors.inkSoft} />
-        </Pressable>
+        <Text style={styles.greet}>{reentryPreview ? 'Welcome back' : getGreeting()}</Text>
+        <Text style={styles.greetSub}>
+          {reentryPreview ? 'Life happens. We saved your place.' : `${weekday} · your place is saved`}
+        </Text>
       </View>
 
       <View style={styles.moodRow}>
@@ -85,7 +79,7 @@ export default function HomeScreen({ navigation }) {
         <PillarChip name="Heart" state="Holding steady" dim />
         <PillarChip name="Weight" state="Holding steady" dim />
         <PillarChip name="Calm" state="Worth a look" watch dim />
-        <PillarChip name="Mind" state="Holding steady" onPress={() => navigation.navigate('PillarMind')} />
+        <PillarChip name="Mind" state="Holding steady" onPress={() => navigation.navigate('MyHealth')} />
       </View>
 
       <TextLink

@@ -17,7 +17,7 @@ const TREND_PATH = 'M0,40 C40,35 60,20 100,25 C140,30 160,15 200,18 C230,20 250,
 export default function PillarMindScreen({ navigation }) {
   return (
     <ScreenLayout center={false}>
-      <BackButton label="Today" onPress={() => navigation.goBack()} />
+      <BackButton label="Today" onPress={() => navigation.navigate('Today')} />
       <ScreenHeader
         eyebrow="My Health · Mind"
         headline="Mind"

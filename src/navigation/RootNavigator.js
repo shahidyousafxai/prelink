@@ -4,12 +4,10 @@ import { useOnboardingStatusQuery, useSessionQuery } from '../network/authentica
 import ForgotPasswordScreen from '../screens/auth/ForgotPasswordScreen';
 import LoginScreen from '../screens/auth/LoginScreen';
 import SignupScreen from '../screens/auth/SignupScreen';
-import SettingsScreen from '../screens/common/SettingsScreen';
-import HomeScreen from '../screens/home/HomeScreen';
-import PillarMindScreen from '../screens/home/PillarMindScreen';
 import BaselineScreen from '../screens/onboarding/BaselineScreen';
 import ConsentScreen from '../screens/onboarding/ConsentScreen';
 import LanguageScreen from '../screens/onboarding/LanguageScreen';
+import MainTabs from './MainTabs';
 
 const Stack = createNativeStackNavigator();
 
@@ -27,11 +25,11 @@ export default function RootNavigator() {
           <Stack.Screen name="OnboardingBaseline" component={BaselineScreen} />
         </>
       ) : isAuthenticated ? (
-        // Protected routes: only mounted while signed in and onboarded.
-        <>
-          <Stack.Screen name="Home" component={HomeScreen} />
-          <Stack.Screen name="PillarMind" component={PillarMindScreen} />
-        </>
+        // Protected: the bottom-tab app shell (Today / My Health / Care Plan / You).
+        // Settings now lives inside it as the "You" tab, so it's no longer a
+        // separately-registered common route — nothing outside the tab bar
+        // links to it anymore.
+        <Stack.Screen name="Main" component={MainTabs} />
       ) : (
         // Public routes: only mounted while signed out.
         <>
@@ -40,9 +38,6 @@ export default function RootNavigator() {
           <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
         </>
       )}
-
-      {/* Common route: registered unconditionally, reachable from any stack above. */}
-      <Stack.Screen name="Settings" component={SettingsScreen} />
     </Stack.Navigator>
   );
 }

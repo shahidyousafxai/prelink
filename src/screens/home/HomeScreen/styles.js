@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 import { colors, fonts } from '../../../theme/theme';
 
 export const styles = StyleSheet.create({
-  headerRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 14 },
+  headerRow: { marginBottom: 14 },
   greet: { fontSize: 20, fontFamily: fonts.headline, color: colors.ink, marginBottom: 2 },
   greetSub: { fontSize: 12.5, fontFamily: fonts.body, color: colors.inkSoft },
   moodRow: { flexDirection: 'row', gap: 7, marginBottom: 16 },
