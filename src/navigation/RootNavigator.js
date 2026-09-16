@@ -6,6 +6,7 @@ import LoginScreen from '../screens/auth/LoginScreen';
 import SignupScreen from '../screens/auth/SignupScreen';
 import SettingsScreen from '../screens/common/SettingsScreen';
 import HomeScreen from '../screens/home/HomeScreen';
+import PillarMindScreen from '../screens/home/PillarMindScreen';
 import BaselineScreen from '../screens/onboarding/BaselineScreen';
 import ConsentScreen from '../screens/onboarding/ConsentScreen';
 import LanguageScreen from '../screens/onboarding/LanguageScreen';
@@ -26,8 +27,11 @@ export default function RootNavigator() {
           <Stack.Screen name="OnboardingBaseline" component={BaselineScreen} />
         </>
       ) : isAuthenticated ? (
-        // Protected route: only mounted while signed in and onboarded.
-        <Stack.Screen name="Home" component={HomeScreen} />
+        // Protected routes: only mounted while signed in and onboarded.
+        <>
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="PillarMind" component={PillarMindScreen} />
+        </>
       ) : (
         // Public routes: only mounted while signed out.
         <>

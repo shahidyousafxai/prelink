@@ -1,44 +1,98 @@
-import { useEffect, useState } from 'react';
-import { View, Text, FlatList, Pressable, ActivityIndicator } from 'react-native';
+import { useMemo, useState } from 'react';
+import { View, Text, Pressable } from 'react-native';
+import { LinearGradient } from 'expo-linear-gradient';
+import { Ionicons } from '@expo/vector-icons';
 
-import { useLogoutMutation } from '../../../network/authentication/authQueries';
-import { useTodosQuery } from '../../../network/todos/todosQueries';
-import { incrementVisitCount } from '../../../utils/storage';
+import ScreenLayout from '../../../components/ScreenLayout';
+import Chip from '../../../components/Chip';
+import PillarChip from '../../../components/PillarChip';
+import TextLink from '../../../components/TextLink';
+import { colors } from '../../../theme/theme';
+import { getGreeting } from '../../../utils/greeting';
 import { styles } from './styles';
 
-export default function HomeScreen({ navigation }) {
-  const [visitCount, setVisitCount] = useState(null);
-  const { data: todos, isLoading, isError, refetch, isRefetching } = useTodosQuery();
-  const logout = useLogoutMutation();
+const MOODS = ['Foggy', 'Okay', 'Good', 'Light'];
 
-  useEffect(() => {
-    incrementVisitCount().then(setVisitCount);
-  }, []);
+const MOOD_HERO_COPY = {
+  Foggy: {
+    title: "One tap, that's it today",
+    body: "Low-key day noted. Here's the smallest possible win — no pressure for more.",
+  },
+  Okay: {
+    title: 'A steady, easy step',
+    body: 'A simple daily option, take it at whatever pace suits you.',
+  },
+  Good: {
+    title: 'Feeling up for a bit more?',
+    body: "Good energy today. Here's a slightly fuller option, still optional.",
+  },
+  Light: {
+    title: 'Feeling up for a bit more?',
+    body: "Good energy today. Here's a slightly fuller option, still optional.",
+  },
+};
+
+const REENTRY_HERO_COPY = {
+  title: "Today's step takes 20 seconds",
+  body: 'No missed days, no catching up needed. Just today.',
+};
+
+// Matches the prototype's Home (Today) screen. The mood row and the
+// "returning after time away" preview both live-update the hero card, per
+// Capacity-Adaptive Design and Failure-Resilient Re-Entry.
+export default function HomeScreen({ navigation }) {
+  const [mood, setMood] = useState('Okay');
+  const [reentryPreview, setReentryPreview] = useState(false);
+
+  const weekday = useMemo(() => new Date().toLocaleDateString('en-US', { weekday: 'long' }), []);
+  const hero = reentryPreview ? REENTRY_HERO_COPY : MOOD_HERO_COPY[mood];
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Home</Text>
-      <Text style={styles.subtitle}>Visits this session: {visitCount ?? '...'}</Text>
+    <ScreenLayout center={false}>
+      <View style={styles.headerRow}>
+        <View>
+          <Text style={styles.greet}>{reentryPreview ? 'Welcome back' : getGreeting()}</Text>
+          <Text style={styles.greetSub}>
+            {reentryPreview ? 'Life happens. We saved your place.' : `${weekday} · your place is saved`}
+          </Text>
+        </View>
+        <Pressable onPress={() => navigation.navigate('Settings')} hitSlop={8}>
+          <Ionicons name="settings-outline" size={22} color={colors.inkSoft} />
+        </Pressable>
+      </View>
 
-      {isLoading && <ActivityIndicator />}
-      {isError && <Text style={styles.error}>Failed to load todos</Text>}
+      <View style={styles.moodRow}>
+        {MOODS.map((m) => (
+          <Chip key={m} label={m} variant="tile" selected={mood === m} onPress={() => setMood(m)} />
+        ))}
+      </View>
 
-      <FlatList
-        data={todos}
-        keyExtractor={(item) => String(item.id)}
-        renderItem={({ item }) => <Text style={styles.item}>• {item.title}</Text>}
-        onRefresh={refetch}
-        refreshing={isRefetching}
-        style={styles.list}
+      <LinearGradient
+        colors={[colors.pine, '#183931']}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 0.6, y: 1 }}
+        style={styles.heroCard}
+      >
+        <Text style={styles.heroEyebrow}>Today's easiest step</Text>
+        <Text style={styles.heroTitle}>{hero.title}</Text>
+        <Text style={styles.heroBody}>{hero.body}</Text>
+        <Pressable style={styles.heroButton}>
+          <Text style={styles.heroButtonText}>Do the 20-second version</Text>
+        </Pressable>
+      </LinearGradient>
+
+      <View style={styles.pillars}>
+        <PillarChip name="Heart" state="Holding steady" dim />
+        <PillarChip name="Weight" state="Holding steady" dim />
+        <PillarChip name="Calm" state="Worth a look" watch dim />
+        <PillarChip name="Mind" state="Holding steady" onPress={() => navigation.navigate('PillarMind')} />
+      </View>
+
+      <TextLink
+        label="Preview: returning after 3 weeks away"
+        variant="muted"
+        onPress={() => setReentryPreview((value) => !value)}
       />
-
-      <Pressable style={styles.button} onPress={() => logout.mutate()} disabled={logout.isPending}>
-        <Text style={styles.buttonText}>{logout.isPending ? 'Logging out...' : 'Log out'}</Text>
-      </Pressable>
-
-      <Pressable style={styles.link} onPress={() => navigation.navigate('Settings')}>
-        <Text style={styles.linkText}>Settings</Text>
-      </Pressable>
-    </View>
+    </ScreenLayout>
   );
 }
