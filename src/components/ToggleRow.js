@@ -3,26 +3,36 @@ import { Controller } from 'react-hook-form';
 
 import { colors, fonts, radius } from '../theme/theme';
 
-// Matches the prototype's `.toggle-row` / `.switch` — used for the consent
-// "I understand and agree" acknowledgment.
-export default function ToggleRow({ control, name, label }) {
+function Row({ label, value, onValueChange }) {
   return (
-    <Controller
-      control={control}
-      name={name}
-      render={({ field: { onChange, value } }) => (
-        <View style={styles.row}>
-          <Text style={styles.label}>{label}</Text>
-          <Switch
-            value={!!value}
-            onValueChange={onChange}
-            trackColor={{ false: colors.line, true: colors.pine }}
-            thumbColor={colors.white}
-          />
-        </View>
-      )}
-    />
+    <View style={styles.row}>
+      <Text style={styles.label}>{label}</Text>
+      <Switch
+        value={!!value}
+        onValueChange={onValueChange}
+        trackColor={{ false: colors.line, true: colors.pine }}
+        thumbColor={colors.white}
+      />
+    </View>
   );
+}
+
+// Matches the prototype's `.toggle-row` / `.switch`. Pass `control`+`name`
+// to wire it into a react-hook-form field (e.g. the consent "I understand
+// and agree" acknowledgment), or `value`+`onValueChange` for a standalone
+// live toggle with no form/submit concept (e.g. Manage Consent's stages).
+export default function ToggleRow({ control, name, label, value, onValueChange }) {
+  if (control) {
+    return (
+      <Controller
+        control={control}
+        name={name}
+        render={({ field }) => <Row label={label} value={field.value} onValueChange={field.onChange} />}
+      />
+    );
+  }
+
+  return <Row label={label} value={value} onValueChange={onValueChange} />;
 }
 
 const styles = StyleSheet.create({
