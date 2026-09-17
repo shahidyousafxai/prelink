@@ -70,7 +70,7 @@ export default function HomeScreen({ navigation }) {
         <Text style={styles.heroEyebrow}>Today's easiest step</Text>
         <Text style={styles.heroTitle}>{hero.title}</Text>
         <Text style={styles.heroBody}>{hero.body}</Text>
-        <Pressable style={styles.heroButton}>
+        <Pressable style={styles.heroButton} onPress={() => navigation.navigate('CheckIn')}>
           <Text style={styles.heroButtonText}>Do the 20-second version</Text>
         </Pressable>
       </LinearGradient>

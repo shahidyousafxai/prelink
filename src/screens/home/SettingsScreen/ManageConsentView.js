@@ -1,23 +1,23 @@
-import { useState } from 'react';
-
 import ScreenHeader from '../../../components/ScreenHeader';
 import BackButton from '../../../components/BackButton';
 import ToggleRow from '../../../components/ToggleRow';
+import { useConsentQuery, useSetConsentStage } from '../../../network/consent/consentQueries';
 
 const STAGES = [
-  { key: 'wellness', label: 'Wellness support' },
-  { key: 'pattern', label: 'Pattern awareness' },
-  { key: 'caregiver', label: 'Caregiver sharing' },
-  { key: 'clinical', label: 'Clinical escalation' },
+  { key: 's1', label: 'Wellness support' },
+  { key: 's2', label: 'Pattern awareness' },
+  { key: 's3', label: 'Caregiver sharing' },
+  { key: 's4', label: 'Clinical escalation' },
 ];
 
-// Every stage is independent and revocable — turning one off never affects
-// the others. Session-only state here, matching the prototype's own
-// in-memory (not persisted) consent object.
+// Every stage you've granted anywhere in the app (e.g. Stage 2 from the
+// Assessment Task flow) shows up here live, and can be turned off
+// independently — this is the actual proof that consent isn't a one-time
+// checkbox. Reads the same shared consent state as the rest of the app,
+// not a private copy.
 export default function ManageConsentView({ onBack }) {
-  const [stages, setStages] = useState({ wellness: true, pattern: false, caregiver: false, clinical: false });
-
-  const toggleStage = (key) => setStages((prev) => ({ ...prev, [key]: !prev[key] }));
+  const { data: consent } = useConsentQuery();
+  const setConsentStage = useSetConsentStage();
 
   return (
     <>
@@ -30,8 +30,8 @@ export default function ManageConsentView({ onBack }) {
         <ToggleRow
           key={stage.key}
           label={stage.label}
-          value={stages[stage.key]}
-          onValueChange={() => toggleStage(stage.key)}
+          value={consent?.[stage.key]}
+          onValueChange={(value) => setConsentStage(stage.key, value)}
         />
       ))}
     </>

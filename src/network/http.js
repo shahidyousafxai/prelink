@@ -12,6 +12,9 @@ export const queryKeys = {
     session: () => [...queryKeys.auth.all, 'session'],
     onboarding: () => [...queryKeys.auth.all, 'onboarding'],
   },
+  consent: {
+    all: () => ['consent'],
+  },
 };
 
 export function getErrorMessage(error) {

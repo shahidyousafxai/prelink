@@ -64,7 +64,9 @@ const PILLAR_DATA = {
 };
 
 export default function PillarScreen({ navigation, route }) {
-  const pillar = PILLAR_DATA[route.params?.pillar ?? 'mind'];
+  const pillarKey = route.params?.pillar ?? 'mind';
+  const pillar = PILLAR_DATA[pillarKey];
+  const isMind = pillarKey === 'mind';
 
   return (
     <ScreenLayout center={false}>
@@ -77,7 +79,10 @@ export default function PillarScreen({ navigation, route }) {
       </Card>
 
       <SectionLabel>{pillar.future ? "Today's option (placeholder)" : "Today's option"}</SectionLabel>
-      <Card style={pillar.activities ? styles.card : null}>
+      <Card
+        style={pillar.activities ? styles.card : null}
+        onPress={isMind ? () => navigation.navigate('AssessmentTask') : undefined}
+      >
         <Text style={styles.taskTitle}>{pillar.taskTitle}</Text>
         <Text style={styles.taskBody}>{pillar.taskBody}</Text>
       </Card>

@@ -4,6 +4,10 @@ import { useOnboardingStatusQuery, useSessionQuery } from '../network/authentica
 import ForgotPasswordScreen from '../screens/auth/ForgotPasswordScreen';
 import LoginScreen from '../screens/auth/LoginScreen';
 import SignupScreen from '../screens/auth/SignupScreen';
+import AssessmentTaskScreen from '../screens/home/AssessmentTaskScreen';
+import CheckInScreen from '../screens/home/CheckInScreen';
+import Consent2Screen from '../screens/home/Consent2Screen';
+import InsightScreen from '../screens/home/InsightScreen';
 import BaselineScreen from '../screens/onboarding/BaselineScreen';
 import ConsentScreen from '../screens/onboarding/ConsentScreen';
 import LanguageScreen from '../screens/onboarding/LanguageScreen';
@@ -25,11 +29,18 @@ export default function RootNavigator() {
           <Stack.Screen name="OnboardingBaseline" component={BaselineScreen} />
         </>
       ) : isAuthenticated ? (
-        // Protected: the bottom-tab app shell (Today / My Health / Care Plan / You).
-        // Settings now lives inside it as the "You" tab, so it's no longer a
-        // separately-registered common route — nothing outside the tab bar
-        // links to it anymore.
-        <Stack.Screen name="Main" component={MainTabs} />
+        // Protected: the bottom-tab app shell, plus a few focused flows that
+        // are registered as siblings (not nested inside MainTabs) so they
+        // take over the full screen and hide the tab bar — matching the
+        // prototype, where Check-in/Assessment Task/Consent 2/Insight all
+        // lack the `with-tabs` class.
+        <>
+          <Stack.Screen name="Main" component={MainTabs} />
+          <Stack.Screen name="CheckIn" component={CheckInScreen} />
+          <Stack.Screen name="AssessmentTask" component={AssessmentTaskScreen} />
+          <Stack.Screen name="Consent2" component={Consent2Screen} />
+          <Stack.Screen name="Insight" component={InsightScreen} />
+        </>
       ) : (
         // Public routes: only mounted while signed out.
         <>

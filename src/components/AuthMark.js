@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.pine,
     alignItems: 'center',
     justifyContent: 'center',
+    alignSelf: 'center',
     marginBottom: 16,
   },
 });
