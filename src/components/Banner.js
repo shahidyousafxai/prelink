@@ -2,9 +2,11 @@ import { Text, StyleSheet } from 'react-native';
 
 import { colors, radius } from '../theme/theme';
 
-// Matches the prototype's `.disclaimer-banner`.
-export default function Banner({ children }) {
-  return <Text style={styles.banner}>{children}</Text>;
+// `variant="disclaimer"` (default) matches `.disclaimer-banner`.
+// `variant="governance"` matches `.gov-banner` — a neutral, dashed-border
+// note used on clinician screens ("every access is logged...").
+export default function Banner({ children, variant = 'disclaimer' }) {
+  return <Text style={[styles.banner, variant === 'governance' && styles.governance]}>{children}</Text>;
 }
 
 const styles = StyleSheet.create({
@@ -18,5 +20,15 @@ const styles = StyleSheet.create({
     color: '#5a2c1c',
     marginBottom: 14,
     lineHeight: 17,
+  },
+  governance: {
+    backgroundColor: '#EFEAE0',
+    borderWidth: 1,
+    borderStyle: 'dashed',
+    borderColor: colors.line,
+    color: colors.inkSoft,
+    fontSize: 11,
+    fontWeight: '400',
+    paddingVertical: 10,
   },
 });

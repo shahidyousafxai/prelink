@@ -1,4 +1,3 @@
-import { View, Text } from 'react-native';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
@@ -9,9 +8,9 @@ import TextField from '../../../components/TextField';
 import PrimaryButton from '../../../components/PrimaryButton';
 import TextLink from '../../../components/TextLink';
 import FormError from '../../../components/FormError';
+import ConfirmBanner from '../../../components/ConfirmBanner';
 import { forgotPasswordSchema } from '../../../validations/forgotPassword';
 import { useForgotPasswordMutation } from '../../../network/authentication/authQueries';
-import { styles } from './styles';
 
 export default function ForgotPasswordScreen({ navigation }) {
   const forgotPassword = useForgotPasswordMutation();
@@ -36,11 +35,7 @@ export default function ForgotPasswordScreen({ navigation }) {
       />
 
       {forgotPassword.isSuccess ? (
-        <View style={styles.confirm}>
-          <Text style={styles.confirmText}>
-            If an account exists for that email, a reset link is on its way.
-          </Text>
-        </View>
+        <ConfirmBanner>If an account exists for that email, a reset link is on its way.</ConfirmBanner>
       ) : (
         <>
           <TextField

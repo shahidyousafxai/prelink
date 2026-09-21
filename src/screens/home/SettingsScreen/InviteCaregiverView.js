@@ -1,4 +1,3 @@
-import { View, Text } from 'react-native';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
@@ -8,15 +7,18 @@ import TextField from '../../../components/TextField';
 import ToggleRow from '../../../components/ToggleRow';
 import PrimaryButton from '../../../components/PrimaryButton';
 import FormError from '../../../components/FormError';
+import ConfirmBanner from '../../../components/ConfirmBanner';
 import { inviteCaregiverSchema } from '../../../validations/inviteCaregiver';
 import { useInviteCaregiverMutation } from '../../../network/caregiver/caregiverQueries';
-import { styles } from './styles';
+import { useSetConsentStage } from '../../../network/consent/consentQueries';
 
 // This screen is simultaneously the invite flow and the Stage 3 consent
 // screen — sharing only becomes possible once both the invite and the
-// toggle happen together.
+// toggle happen together. Sending the invite is what unlocks the Caregiver
+// Home preview (Settings → Preview: Caregiver view).
 export default function InviteCaregiverView({ onBack }) {
   const invite = useInviteCaregiverMutation();
+  const setConsentStage = useSetConsentStage();
   const {
     control,
     handleSubmit,
@@ -28,17 +30,18 @@ export default function InviteCaregiverView({ onBack }) {
   });
   const share = watch('share');
 
-  const onSubmit = (values) => invite.mutate(values);
+  const onSubmit = (values) =>
+    invite.mutate(values, {
+      onSuccess: () => setConsentStage('s3', true),
+    });
 
   if (invite.isSuccess) {
     return (
       <>
         <BackButton label="Settings" onPress={onBack} />
-        <View style={styles.confirm}>
-          <Text style={styles.confirmText}>
-            Invite sent to {invite.data.name}. They'll see a stability summary only, once accepted.
-          </Text>
-        </View>
+        <ConfirmBanner>
+          Invite sent to {invite.data.name}. They'll see a stability summary only, once accepted.
+        </ConfirmBanner>
         <PrimaryButton label="Done" onPress={onBack} />
       </>
     );

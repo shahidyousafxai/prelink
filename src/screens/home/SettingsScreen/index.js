@@ -29,7 +29,7 @@ const VIEWS = {
 // (Manage Consent / Invite a Caregiver / About / Language) are switched via
 // local view-state rather than real navigation routes — the same
 // single-page approach the prototype itself uses for these.
-export default function SettingsScreen() {
+export default function SettingsScreen({ navigation }) {
   const [view, setView] = useState(VIEWS.LIST);
   const [language, setLanguage] = useState('en');
   const [showDeleteWarning, setShowDeleteWarning] = useState(false);
@@ -87,6 +87,18 @@ export default function SettingsScreen() {
 
       <SectionTitle>Account</SectionTitle>
       <SettingsRow label="Language" value={LANGUAGE_LABELS[language]} onPress={() => setView(VIEWS.LANGUAGE)} last />
+
+      {/* These roles have no real separate login in this app — mirrors the
+          prototype's own "Preview controls" role switcher rather than
+          pretending Caregiver/Clinician are signed-in accounts. */}
+      <SectionTitle>Preview controls</SectionTitle>
+      <SettingsRow label="Preview: Caregiver view" onPress={() => navigation.navigate('CaregiverHome')} />
+      <SettingsRow label="Preview: Clinician portal" onPress={() => navigation.navigate('ClinicianGate')} />
+      <SettingsRow
+        label="Preview: Contextual prompts"
+        onPress={() => navigation.navigate('Notifications')}
+        last
+      />
 
       <View style={styles.logoutWrap}>
         {/* Logging out flips auth state; RootNavigator swaps back to the

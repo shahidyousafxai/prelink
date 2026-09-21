@@ -5,12 +5,19 @@ import ScreenLayout from '../../../components/ScreenLayout';
 import SectionLabel from '../../../components/SectionLabel';
 import SecondaryButton from '../../../components/SecondaryButton';
 import TextLink from '../../../components/TextLink';
+import { useConsentQuery } from '../../../network/consent/consentQueries';
 import { styles } from './styles';
 
 // The highest-regulatory-risk screen in the app: no score, no chart, no
 // disease name, ever. Escalation is user-initiated and optional — the app
 // never pushes it.
 export default function InsightScreen({ navigation }) {
+  const { data: consent } = useConsentQuery();
+
+  const handleEscalate = () => {
+    navigation.navigate(consent?.s4 ? 'EscalationSent' : 'Consent4');
+  };
+
   return (
     <ScreenLayout center={false}>
       <View style={styles.icon}>
@@ -33,9 +40,7 @@ export default function InsightScreen({ navigation }) {
         </Text>
       </View>
 
-      {/* Talking to the care team leads into Stage 4 consent + escalation —
-          not built yet, so this is visually present but inert for now. */}
-      <SecondaryButton label="Talk to your care team, if you'd like" />
+      <SecondaryButton label="Talk to your care team, if you'd like" onPress={handleEscalate} />
       <TextLink
         label="Not now"
         variant="muted"
