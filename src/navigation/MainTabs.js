@@ -5,7 +5,7 @@ import { Ionicons } from '@expo/vector-icons';
 import HomeScreen from '../screens/home/HomeScreen';
 import PillarScreen from '../screens/home/PillarScreen';
 import CarePlanScreen from '../screens/home/CarePlanScreen';
-import SettingsScreen from '../screens/home/SettingsScreen';
+import SettingsScreen from '../screens/settings/SettingsScreen';
 import { colors, fonts, radius } from '../theme/theme';
 
 const Tab = createBottomTabNavigator();
