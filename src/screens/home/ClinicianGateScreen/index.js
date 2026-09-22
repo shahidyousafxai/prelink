@@ -1,8 +1,8 @@
 import { View, Text } from 'react-native';
 
-import ScreenLayout from '../../../components/ScreenLayout';
-import BackButton from '../../../components/BackButton';
-import PrimaryButton from '../../../components/PrimaryButton';
+import ScreenLayout from '../../../components/shared/ScreenLayout';
+import BackButton from '../../../components/shared/BackButton';
+import PrimaryButton from '../../../components/shared/PrimaryButton';
 import { styles } from './styles';
 
 // A deliberately unglamorous gate — clinicians don't casually browse into

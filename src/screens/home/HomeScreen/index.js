@@ -2,10 +2,10 @@ import { useMemo, useState } from 'react';
 import { View, Text, Pressable } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 
-import ScreenLayout from '../../../components/ScreenLayout';
-import Chip from '../../../components/Chip';
+import ScreenLayout from '../../../components/shared/ScreenLayout';
+import Chip from '../../../components/shared/Chip';
 import PillarChip from '../../../components/PillarChip';
-import TextLink from '../../../components/TextLink';
+import TextLink from '../../../components/shared/TextLink';
 import { colors } from '../../../theme/theme';
 import { getGreeting } from '../../../utils/greeting';
 import { styles } from './styles';

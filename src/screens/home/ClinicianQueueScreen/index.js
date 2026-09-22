@@ -1,9 +1,9 @@
 import { Text } from 'react-native';
 
-import ScreenLayout from '../../../components/ScreenLayout';
-import ScreenHeader from '../../../components/ScreenHeader';
-import BackButton from '../../../components/BackButton';
-import Banner from '../../../components/Banner';
+import ScreenLayout from '../../../components/shared/ScreenLayout';
+import ScreenHeader from '../../../components/shared/ScreenHeader';
+import BackButton from '../../../components/shared/BackButton';
+import Banner from '../../../components/shared/Banner';
 import FlagRow from '../../../components/FlagRow';
 import { useConsentQuery } from '../../../network/consent/consentQueries';
 import { styles } from './styles';

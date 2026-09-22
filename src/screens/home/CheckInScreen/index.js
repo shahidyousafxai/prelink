@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { View, Text } from 'react-native';
 
-import ScreenLayout from '../../../components/ScreenLayout';
+import ScreenLayout from '../../../components/shared/ScreenLayout';
 import OptionButton from '../../../components/OptionButton';
-import ConfirmCheck from '../../../components/ConfirmCheck';
+import ConfirmCheck from '../../../components/shared/ConfirmCheck';
 import { styles } from './styles';
 
 const OPTIONS = ['Clear', 'A little foggy', 'Very foggy'];

@@ -1,13 +1,13 @@
 import { useState } from 'react';
 
-import ScreenLayout from '../../../components/ScreenLayout';
-import ScreenHeader from '../../../components/ScreenHeader';
-import BackButton from '../../../components/BackButton';
-import Banner from '../../../components/Banner';
-import Card from '../../../components/Card';
+import ScreenLayout from '../../../components/shared/ScreenLayout';
+import ScreenHeader from '../../../components/shared/ScreenHeader';
+import BackButton from '../../../components/shared/BackButton';
+import Banner from '../../../components/shared/Banner';
+import Card from '../../../components/shared/Card';
 import TrendLine from '../../../components/TrendLine';
-import PrimaryButton from '../../../components/PrimaryButton';
-import ConfirmBanner from '../../../components/ConfirmBanner';
+import PrimaryButton from '../../../components/shared/PrimaryButton';
+import ConfirmBanner from '../../../components/shared/ConfirmBanner';
 import { colors } from '../../../theme/theme';
 import { styles } from './styles';
 

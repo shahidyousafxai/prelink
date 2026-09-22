@@ -1,14 +1,14 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import ScreenLayout from '../../../components/ScreenLayout';
-import ScreenHeader from '../../../components/ScreenHeader';
+import ScreenLayout from '../../../components/shared/ScreenLayout';
+import ScreenHeader from '../../../components/shared/ScreenHeader';
 import AuthMark from '../../../components/AuthMark';
-import TextField from '../../../components/TextField';
-import PrimaryButton from '../../../components/PrimaryButton';
-import TextLink from '../../../components/TextLink';
-import FormError from '../../../components/FormError';
-import ConfirmBanner from '../../../components/ConfirmBanner';
+import TextField from '../../../components/shared/TextField';
+import PrimaryButton from '../../../components/shared/PrimaryButton';
+import TextLink from '../../../components/shared/TextLink';
+import FormError from '../../../components/shared/FormError';
+import ConfirmBanner from '../../../components/shared/ConfirmBanner';
 import { forgotPasswordSchema } from '../../../validations/forgotPassword';
 import { useForgotPasswordMutation } from '../../../network/authentication/authQueries';
 

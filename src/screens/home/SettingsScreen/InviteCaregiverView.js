@@ -1,13 +1,13 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import ScreenHeader from '../../../components/ScreenHeader';
-import BackButton from '../../../components/BackButton';
-import TextField from '../../../components/TextField';
-import ToggleRow from '../../../components/ToggleRow';
-import PrimaryButton from '../../../components/PrimaryButton';
-import FormError from '../../../components/FormError';
-import ConfirmBanner from '../../../components/ConfirmBanner';
+import ScreenHeader from '../../../components/shared/ScreenHeader';
+import BackButton from '../../../components/shared/BackButton';
+import TextField from '../../../components/shared/TextField';
+import ToggleRow from '../../../components/shared/ToggleRow';
+import PrimaryButton from '../../../components/shared/PrimaryButton';
+import FormError from '../../../components/shared/FormError';
+import ConfirmBanner from '../../../components/shared/ConfirmBanner';
 import { inviteCaregiverSchema } from '../../../validations/inviteCaregiver';
 import { useInviteCaregiverMutation } from '../../../network/caregiver/caregiverQueries';
 import { useSetConsentStage } from '../../../network/consent/consentQueries';

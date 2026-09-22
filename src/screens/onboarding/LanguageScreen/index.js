@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { View } from 'react-native';
 
-import ScreenLayout from '../../../components/ScreenLayout';
-import ScreenHeader from '../../../components/ScreenHeader';
+import ScreenLayout from '../../../components/shared/ScreenLayout';
+import ScreenHeader from '../../../components/shared/ScreenHeader';
 import AuthMark from '../../../components/AuthMark';
 import LanguageOption from '../../../components/LanguageOption';
-import PrimaryButton from '../../../components/PrimaryButton';
+import PrimaryButton from '../../../components/shared/PrimaryButton';
 import { styles } from './styles';
 
 const LANGUAGES = [

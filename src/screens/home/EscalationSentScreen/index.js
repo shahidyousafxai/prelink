@@ -1,8 +1,8 @@
 import { Text } from 'react-native';
 
-import ScreenLayout from '../../../components/ScreenLayout';
-import ConfirmCheck from '../../../components/ConfirmCheck';
-import PrimaryButton from '../../../components/PrimaryButton';
+import ScreenLayout from '../../../components/shared/ScreenLayout';
+import ConfirmCheck from '../../../components/shared/ConfirmCheck';
+import PrimaryButton from '../../../components/shared/PrimaryButton';
 import { styles } from './styles';
 
 // Confirms the handoff without implying urgency or a verdict. From here the

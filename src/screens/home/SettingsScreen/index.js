@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { View } from 'react-native';
 
-import ScreenLayout from '../../../components/ScreenLayout';
-import ScreenHeader from '../../../components/ScreenHeader';
-import SectionTitle from '../../../components/SectionTitle';
+import ScreenLayout from '../../../components/shared/ScreenLayout';
+import ScreenHeader from '../../../components/shared/ScreenHeader';
+import SectionTitle from '../../../components/shared/SectionTitle';
 import SettingsRow from '../../../components/SettingsRow';
-import PrimaryButton from '../../../components/PrimaryButton';
-import TextLink from '../../../components/TextLink';
-import FormError from '../../../components/FormError';
+import PrimaryButton from '../../../components/shared/PrimaryButton';
+import TextLink from '../../../components/shared/TextLink';
+import FormError from '../../../components/shared/FormError';
 import { useLogoutMutation } from '../../../network/authentication/authQueries';
 import ManageConsentView from './ManageConsentView';
 import InviteCaregiverView from './InviteCaregiverView';

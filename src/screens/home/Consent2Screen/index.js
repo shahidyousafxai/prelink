@@ -1,11 +1,11 @@
 import { useForm } from 'react-hook-form';
 
-import ScreenLayout from '../../../components/ScreenLayout';
-import ScreenHeader from '../../../components/ScreenHeader';
+import ScreenLayout from '../../../components/shared/ScreenLayout';
+import ScreenHeader from '../../../components/shared/ScreenHeader';
 import ConsentBlock from '../../../components/ConsentBlock';
-import ToggleRow from '../../../components/ToggleRow';
-import PrimaryButton from '../../../components/PrimaryButton';
-import TextLink from '../../../components/TextLink';
+import ToggleRow from '../../../components/shared/ToggleRow';
+import PrimaryButton from '../../../components/shared/PrimaryButton';
+import TextLink from '../../../components/shared/TextLink';
 import { useSetConsentStage } from '../../../network/consent/consentQueries';
 
 // Stage 2 of 4 — appears the first time the app would show a trend or

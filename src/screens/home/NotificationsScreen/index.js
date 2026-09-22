@@ -1,9 +1,9 @@
 import { Text } from 'react-native';
 
-import ScreenLayout from '../../../components/ScreenLayout';
-import ScreenHeader from '../../../components/ScreenHeader';
-import BackButton from '../../../components/BackButton';
-import Card from '../../../components/Card';
+import ScreenLayout from '../../../components/shared/ScreenLayout';
+import ScreenHeader from '../../../components/shared/ScreenHeader';
+import BackButton from '../../../components/shared/BackButton';
+import Card from '../../../components/shared/Card';
 import FutureRibbon from '../../../components/FutureRibbon';
 import { styles } from './styles';
 

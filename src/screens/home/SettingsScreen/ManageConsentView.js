@@ -1,6 +1,6 @@
-import ScreenHeader from '../../../components/ScreenHeader';
-import BackButton from '../../../components/BackButton';
-import ToggleRow from '../../../components/ToggleRow';
+import ScreenHeader from '../../../components/shared/ScreenHeader';
+import BackButton from '../../../components/shared/BackButton';
+import ToggleRow from '../../../components/shared/ToggleRow';
 import { useConsentQuery, useSetConsentStage } from '../../../network/consent/consentQueries';
 
 const STAGES = [

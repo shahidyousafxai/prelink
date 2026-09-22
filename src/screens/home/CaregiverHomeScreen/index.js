@@ -2,12 +2,12 @@ import { useState } from 'react';
 import { View, Text } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-import ScreenLayout from '../../../components/ScreenLayout';
-import BackButton from '../../../components/BackButton';
-import Avatar from '../../../components/Avatar';
-import Card from '../../../components/Card';
-import PrimaryButton from '../../../components/PrimaryButton';
-import ConfirmBanner from '../../../components/ConfirmBanner';
+import ScreenLayout from '../../../components/shared/ScreenLayout';
+import BackButton from '../../../components/shared/BackButton';
+import Avatar from '../../../components/shared/Avatar';
+import Card from '../../../components/shared/Card';
+import PrimaryButton from '../../../components/shared/PrimaryButton';
+import ConfirmBanner from '../../../components/shared/ConfirmBanner';
 import { useConsentQuery } from '../../../network/consent/consentQueries';
 import { colors } from '../../../theme/theme';
 import { styles } from './styles';

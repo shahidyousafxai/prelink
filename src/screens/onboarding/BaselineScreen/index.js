@@ -1,11 +1,11 @@
 import { View } from 'react-native';
 import { useForm } from 'react-hook-form';
 
-import ScreenLayout from '../../../components/ScreenLayout';
-import ScreenHeader from '../../../components/ScreenHeader';
+import ScreenLayout from '../../../components/shared/ScreenLayout';
+import ScreenHeader from '../../../components/shared/ScreenHeader';
 import ChipGroup from '../../../components/ChipGroup';
-import PrimaryButton from '../../../components/PrimaryButton';
-import BackButton from '../../../components/BackButton';
+import PrimaryButton from '../../../components/shared/PrimaryButton';
+import BackButton from '../../../components/shared/BackButton';
 import { useCompleteOnboardingMutation } from '../../../network/authentication/authQueries';
 import { styles } from './styles';
 

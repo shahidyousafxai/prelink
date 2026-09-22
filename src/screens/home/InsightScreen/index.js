@@ -1,10 +1,10 @@
 import { View, Text } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-import ScreenLayout from '../../../components/ScreenLayout';
-import SectionLabel from '../../../components/SectionLabel';
-import SecondaryButton from '../../../components/SecondaryButton';
-import TextLink from '../../../components/TextLink';
+import ScreenLayout from '../../../components/shared/ScreenLayout';
+import SectionLabel from '../../../components/shared/SectionLabel';
+import SecondaryButton from '../../../components/shared/SecondaryButton';
+import TextLink from '../../../components/shared/TextLink';
 import { useConsentQuery } from '../../../network/consent/consentQueries';
 import { styles } from './styles';
 

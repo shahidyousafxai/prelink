@@ -1,9 +1,9 @@
 import { Text } from 'react-native';
 
-import ScreenLayout from '../../../components/ScreenLayout';
-import ScreenHeader from '../../../components/ScreenHeader';
-import Card from '../../../components/Card';
-import SecondaryButton from '../../../components/SecondaryButton';
+import ScreenLayout from '../../../components/shared/ScreenLayout';
+import ScreenHeader from '../../../components/shared/ScreenHeader';
+import Card from '../../../components/shared/Card';
+import SecondaryButton from '../../../components/shared/SecondaryButton';
 import { styles } from './styles';
 
 // Every suggestion follows the same three-step structure: normalize, offer

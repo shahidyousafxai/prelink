@@ -1,7 +1,7 @@
 import { View } from 'react-native';
 
-import ScreenHeader from '../../../components/ScreenHeader';
-import BackButton from '../../../components/BackButton';
+import ScreenHeader from '../../../components/shared/ScreenHeader';
+import BackButton from '../../../components/shared/BackButton';
 import LanguageOption from '../../../components/LanguageOption';
 import { styles } from './styles';
 

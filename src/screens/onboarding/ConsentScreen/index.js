@@ -1,12 +1,12 @@
 import { View } from 'react-native';
 import { useForm } from 'react-hook-form';
 
-import ScreenLayout from '../../../components/ScreenLayout';
-import ScreenHeader from '../../../components/ScreenHeader';
+import ScreenLayout from '../../../components/shared/ScreenLayout';
+import ScreenHeader from '../../../components/shared/ScreenHeader';
 import ConsentBlock from '../../../components/ConsentBlock';
-import ToggleRow from '../../../components/ToggleRow';
-import PrimaryButton from '../../../components/PrimaryButton';
-import BackButton from '../../../components/BackButton';
+import ToggleRow from '../../../components/shared/ToggleRow';
+import PrimaryButton from '../../../components/shared/PrimaryButton';
+import BackButton from '../../../components/shared/BackButton';
 import { styles } from './styles';
 
 // Stage 1 of 4 — the only consent required to use PreLink at all. The other

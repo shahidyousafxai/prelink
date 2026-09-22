@@ -1,10 +1,10 @@
 import { Text } from 'react-native';
 
-import ScreenHeader from '../../../components/ScreenHeader';
-import BackButton from '../../../components/BackButton';
-import Banner from '../../../components/Banner';
-import SectionTitle from '../../../components/SectionTitle';
-import DataTable from '../../../components/DataTable';
+import ScreenHeader from '../../../components/shared/ScreenHeader';
+import BackButton from '../../../components/shared/BackButton';
+import Banner from '../../../components/shared/Banner';
+import SectionTitle from '../../../components/shared/SectionTitle';
+import DataTable from '../../../components/shared/DataTable';
 import { styles } from './styles';
 
 const ROWS = [

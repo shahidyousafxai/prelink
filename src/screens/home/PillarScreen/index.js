@@ -1,12 +1,12 @@
 import { Text } from 'react-native';
 
-import ScreenLayout from '../../../components/ScreenLayout';
-import ScreenHeader from '../../../components/ScreenHeader';
-import BackButton from '../../../components/BackButton';
-import Card from '../../../components/Card';
+import ScreenLayout from '../../../components/shared/ScreenLayout';
+import ScreenHeader from '../../../components/shared/ScreenHeader';
+import BackButton from '../../../components/shared/BackButton';
+import Card from '../../../components/shared/Card';
 import TrendLine from '../../../components/TrendLine';
-import SectionLabel from '../../../components/SectionLabel';
-import ListRow from '../../../components/ListRow';
+import SectionLabel from '../../../components/shared/SectionLabel';
+import ListRow from '../../../components/shared/ListRow';
 import FutureRibbon from '../../../components/FutureRibbon';
 import { colors } from '../../../theme/theme';
 import { styles } from './styles';

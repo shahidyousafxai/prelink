@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { View, Text } from 'react-native';
 
-import ScreenLayout from '../../../components/ScreenLayout';
-import BackButton from '../../../components/BackButton';
-import Chip from '../../../components/Chip';
-import ConfirmCheck from '../../../components/ConfirmCheck';
-import PrimaryButton from '../../../components/PrimaryButton';
+import ScreenLayout from '../../../components/shared/ScreenLayout';
+import BackButton from '../../../components/shared/BackButton';
+import Chip from '../../../components/shared/Chip';
+import ConfirmCheck from '../../../components/shared/ConfirmCheck';
+import PrimaryButton from '../../../components/shared/PrimaryButton';
 import { useConsentQuery } from '../../../network/consent/consentQueries';
 import { styles } from './styles';
 
