@@ -1,5 +1,6 @@
 import { View } from 'react-native';
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 
 import ScreenLayout from '../../../components/shared/ScreenLayout';
 import ScreenHeader from '../../../components/shared/ScreenHeader';
@@ -13,37 +14,38 @@ import { styles } from './styles';
 // three stages (pattern awareness, caregiver sharing, clinical escalation)
 // are shown later, contextually, not as part of onboarding.
 export default function ConsentScreen({ navigation }) {
+  const { t } = useTranslation();
   const { control, watch } = useForm({ defaultValues: { agree: false } });
   const agreed = watch('agree');
 
   return (
     <ScreenLayout center={false}>
-      <BackButton label="Language" onPress={() => navigation.goBack()} />
+      <BackButton label={t('common.back.language')} onPress={() => navigation.goBack()} />
       <ScreenHeader
-        eyebrow="Before we begin"
-        badge="Consent 1 of 4"
-        note="Stages 2–4 show up later, only when relevant — not right after this."
-        headline="Wellness support only"
-        sub="This is the only consent needed to use PreLink at all. Nothing else is bundled in."
+        eyebrow={t('onboarding.consent.eyebrow')}
+        badge={t('onboarding.consent.badge')}
+        note={t('onboarding.consent.note')}
+        headline={t('onboarding.consent.headline')}
+        sub={t('onboarding.consent.sub')}
       />
 
       <ConsentBlock
-        badge="This stage"
-        title="Daily check-ins"
-        description="PreLink notices everyday patterns in mood, movement, and habits. It does not diagnose or predict any condition."
+        badge={t('onboarding.consent.stage1Badge')}
+        title={t('onboarding.consent.stage1Title')}
+        description={t('onboarding.consent.stage1Description')}
       />
       <ConsentBlock
-        title="Later, if you choose"
-        description="Pattern awareness, caregiver sharing, and clinician review are separate, optional stages."
+        title={t('onboarding.consent.laterTitle')}
+        description={t('onboarding.consent.laterDescription')}
         dimmed
       />
 
       <View style={styles.spacer} />
 
-      <ToggleRow control={control} name="agree" label="I understand and agree" />
+      <ToggleRow control={control} name="agree" label={t('onboarding.consent.agree')} />
 
       <PrimaryButton
-        label="Continue"
+        label={t('onboarding.consent.continue')}
         onPress={() => navigation.navigate('OnboardingBaseline')}
         disabled={!agreed}
       />

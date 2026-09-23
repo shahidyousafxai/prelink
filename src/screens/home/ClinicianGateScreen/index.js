@@ -1,4 +1,5 @@
 import { View, Text } from 'react-native';
+import { useTranslation } from 'react-i18next';
 
 import ScreenLayout from '../../../components/shared/ScreenLayout';
 import BackButton from '../../../components/shared/BackButton';
@@ -10,16 +11,16 @@ import { styles } from './styles';
 // Settings → Preview: Clinician portal (this app doesn't implement a real
 // separate clinician login).
 export default function ClinicianGateScreen({ navigation }) {
+  const { t } = useTranslation();
+
   return (
     <ScreenLayout center={false}>
-      <BackButton label="Settings" onPress={() => navigation.navigate('Main', { screen: 'You' })} />
+      <BackButton label={t('common.back.settings')} onPress={() => navigation.navigate('Main', { screen: 'You' })} />
       <View style={styles.centerFlow}>
-        <Text style={styles.eyebrow}>Clinician portal</Text>
-        <Text style={styles.headline}>Organizational sign-in required</Text>
-        <Text style={styles.sub}>
-          Access is credentialed and consent-gated. Every entry is logged with timestamp and reason.
-        </Text>
-        <PrimaryButton label="Enter portal (demo)" onPress={() => navigation.navigate('ClinicianQueue')} />
+        <Text style={styles.eyebrow}>{t('home.clinicianGate.eyebrow')}</Text>
+        <Text style={styles.headline}>{t('home.clinicianGate.headline')}</Text>
+        <Text style={styles.sub}>{t('home.clinicianGate.sub')}</Text>
+        <PrimaryButton label={t('home.clinicianGate.enter')} onPress={() => navigation.navigate('ClinicianQueue')} />
       </View>
     </ScreenLayout>
   );

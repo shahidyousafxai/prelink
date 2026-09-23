@@ -19,8 +19,10 @@ import {
   NotoSansArabic_600SemiBold,
 } from '@expo-google-fonts/noto-sans-arabic';
 
+import i18n from './src/i18n';
 import { queryClient } from './src/network/query.config';
 import { useOnboardingStatusQuery, useSessionQuery } from './src/network/authentication/authQueries';
+import { useLanguageQuery } from './src/network/language/languageQueries';
 import RootNavigator from './src/navigation/RootNavigator';
 
 SplashScreen.preventAutoHideAsync().catch(() => {});
@@ -28,6 +30,7 @@ SplashScreen.preventAutoHideAsync().catch(() => {});
 function AppContent() {
   const { isLoading: isSessionLoading } = useSessionQuery();
   const { isLoading: isOnboardingLoading } = useOnboardingStatusQuery();
+  const { isLoading: isLanguageLoading, language } = useLanguageQuery();
   const [fontsLoaded] = useFonts({
     Literata_600SemiBold,
     Literata_700Bold,
@@ -41,7 +44,16 @@ function AppContent() {
     NotoSansArabic_600SemiBold,
   });
 
-  const isLoading = isSessionLoading || isOnboardingLoading || !fontsLoaded;
+  const isLoading = isSessionLoading || isOnboardingLoading || isLanguageLoading || !fontsLoaded;
+
+  useEffect(() => {
+    // Only a mismatch on first launch (persisted language differs from the
+    // device-detected default i18n booted with) — an actual language change
+    // goes through useSetLanguageMutation, which already calls this.
+    if (!isLanguageLoading && language !== i18n.language) {
+      i18n.changeLanguage(language);
+    }
+  }, [isLanguageLoading, language]);
 
   useEffect(() => {
     if (!isLoading) {

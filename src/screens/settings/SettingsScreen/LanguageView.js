@@ -1,22 +1,21 @@
 import { View } from 'react-native';
+import { useTranslation } from 'react-i18next';
 
 import ScreenHeader from '../../../components/shared/ScreenHeader';
 import BackButton from '../../../components/shared/BackButton';
 import LanguageOption from '../../../components/LanguageOption';
+import { LANGUAGES } from '../../../i18n/languages';
+import { useSetLanguageMutation } from '../../../network/language/languageQueries';
 import { styles } from './styles';
 
-const LANGUAGES = [
-  { code: 'en', native: 'English', label: 'English' },
-  { code: 'ar', native: 'العربية', label: 'Arabic', rtl: true },
-  { code: 'fr', native: 'Français', label: 'French' },
-  { code: 'ur', native: 'اردو', label: 'Urdu', rtl: true },
-];
-
 export default function LanguageView({ selected, onSelect, onBack }) {
+  const { t } = useTranslation();
+  const setLanguage = useSetLanguageMutation();
+
   return (
     <>
-      <BackButton label="Settings" onPress={onBack} />
-      <ScreenHeader headline="Language" sub="Choose the language you're most comfortable with." />
+      <BackButton label={t('common.back.settings')} onPress={onBack} />
+      <ScreenHeader headline={t('settings.language.headline')} sub={t('settings.language.sub')} />
       <View style={styles.languageGrid}>
         {LANGUAGES.map((lang) => (
           <LanguageOption
@@ -25,7 +24,8 @@ export default function LanguageView({ selected, onSelect, onBack }) {
             label={lang.label}
             rtl={lang.rtl}
             selected={selected === lang.code}
-            onPress={() => onSelect(lang.code)}
+            selectedText={t('common.selected')}
+            onPress={() => setLanguage.mutate(lang.code, { onSuccess: () => onSelect(lang.code) })}
           />
         ))}
       </View>

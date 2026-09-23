@@ -1,5 +1,6 @@
 import { View, Text } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useTranslation } from 'react-i18next';
 
 import ScreenLayout from '../../../components/shared/ScreenLayout';
 import SectionLabel from '../../../components/shared/SectionLabel';
@@ -12,6 +13,7 @@ import { styles } from './styles';
 // disease name, ever. Escalation is user-initiated and optional — the app
 // never pushes it.
 export default function InsightScreen({ navigation }) {
+  const { t } = useTranslation();
   const { data: consent } = useConsentQuery();
 
   const handleEscalate = () => {
@@ -23,26 +25,20 @@ export default function InsightScreen({ navigation }) {
       <View style={styles.icon}>
         <Ionicons name="contrast-outline" size={20} color="#7A5A1E" />
       </View>
-      <Text style={styles.headline}>A gentle note</Text>
+      <Text style={styles.headline}>{t('home.insight.headline')}</Text>
       <View style={styles.body}>
-        <Text style={styles.bodyText}>
-          We noticed a small change in how your days have been feeling lately. This is common, and often
-          modifiable.
-        </Text>
+        <Text style={styles.bodyText}>{t('home.insight.body')}</Text>
       </View>
 
-      <SectionLabel>Here's what helps people most at this stage</SectionLabel>
+      <SectionLabel>{t('home.insight.helpsLabel')}</SectionLabel>
       <View style={styles.helpsCard}>
-        <Text style={styles.helpsTitle}>Small, steady routines</Text>
-        <Text style={styles.helpsBody}>
-          A short daily check-in and staying connected with family tend to help the most — no major changes
-          needed.
-        </Text>
+        <Text style={styles.helpsTitle}>{t('home.insight.helpsTitle')}</Text>
+        <Text style={styles.helpsBody}>{t('home.insight.helpsBody')}</Text>
       </View>
 
-      <SecondaryButton label="Talk to your care team, if you'd like" onPress={handleEscalate} />
+      <SecondaryButton label={t('home.insight.escalate')} onPress={handleEscalate} />
       <TextLink
-        label="Not now"
+        label={t('common.notNow')}
         variant="muted"
         onPress={() => navigation.navigate('Main', { screen: 'Today' })}
       />

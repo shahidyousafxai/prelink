@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { View, TextInput, Pressable, StyleSheet } from 'react-native';
+import { View, TextInput, Pressable, StyleSheet, I18nManager } from 'react-native';
 import { Controller } from 'react-hook-form';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     color: colors.ink,
     backgroundColor: colors.white,
   },
-  inputWithIcon: { paddingRight: 40 },
+  inputWithIcon: I18nManager.isRTL ? { paddingLeft: 40 } : { paddingRight: 40 },
   inputError: { borderColor: colors.clay },
-  icon: { position: 'absolute', right: 12 },
+  icon: I18nManager.isRTL ? { position: 'absolute', left: 12 } : { position: 'absolute', right: 12 },
 });

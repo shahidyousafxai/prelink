@@ -5,11 +5,11 @@ import { colors, fonts, radius } from '../../theme/theme';
 // Matches the prototype's `.lang-btn` / `.lang-btn.sel`. `rtl` picks the
 // Noto Naskh Arabic / Noto Sans Arabic font stack the prototype specifies
 // for Arabic and Urdu, instead of the Latin-only PublicSans/Literata fonts.
-export default function LanguageOption({ native, label, selected, rtl, onPress }) {
+export default function LanguageOption({ native, label, selected, selectedText, rtl, onPress }) {
   return (
     <Pressable style={[styles.option, selected && styles.selected]} onPress={onPress}>
       <Text style={[styles.native, rtl && styles.nativeRtl]}>{native}</Text>
-      <Text style={[styles.label, selected && styles.selectedLabel]}>{selected ? 'Selected' : label}</Text>
+      <Text style={[styles.label, selected && styles.selectedLabel]}>{selected ? selectedText : label}</Text>
     </Pressable>
   );
 }

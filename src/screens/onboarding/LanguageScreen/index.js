@@ -1,30 +1,24 @@
-import { useState } from 'react';
 import { View } from 'react-native';
+import { useTranslation } from 'react-i18next';
 
 import ScreenLayout from '../../../components/shared/ScreenLayout';
 import ScreenHeader from '../../../components/shared/ScreenHeader';
 import AuthMark from '../../../components/AuthMark';
 import LanguageOption from '../../../components/LanguageOption';
 import PrimaryButton from '../../../components/shared/PrimaryButton';
+import { LANGUAGES } from '../../../i18n/languages';
+import { useLanguageQuery, useSetLanguageMutation } from '../../../network/language/languageQueries';
 import { styles } from './styles';
 
-const LANGUAGES = [
-  { code: 'en', native: 'English', label: 'English' },
-  { code: 'ar', native: 'العربية', label: 'Arabic', rtl: true },
-  { code: 'fr', native: 'Français', label: 'French' },
-  { code: 'ur', native: 'اردو', label: 'Urdu', rtl: true },
-];
-
 export default function LanguageScreen({ navigation }) {
-  const [selected, setSelected] = useState('en');
+  const { t } = useTranslation();
+  const { language } = useLanguageQuery();
+  const setLanguage = useSetLanguageMutation();
 
   return (
     <ScreenLayout center={false}>
       <AuthMark />
-      <ScreenHeader
-        headline="Welcome to PreLink"
-        sub="A calmer way to look after your wellbeing. Choose the language you're most comfortable with."
-      />
+      <ScreenHeader headline={t('onboarding.language.headline')} sub={t('onboarding.language.sub')} />
 
       <View style={styles.grid}>
         {LANGUAGES.map((lang) => (
@@ -33,15 +27,16 @@ export default function LanguageScreen({ navigation }) {
             native={lang.native}
             label={lang.label}
             rtl={lang.rtl}
-            selected={selected === lang.code}
-            onPress={() => setSelected(lang.code)}
+            selected={language === lang.code}
+            selectedText={t('common.selected')}
+            onPress={() => setLanguage.mutate(lang.code)}
           />
         ))}
       </View>
 
       <View style={styles.spacer} />
 
-      <PrimaryButton label="Continue" onPress={() => navigation.navigate('OnboardingConsent')} />
+      <PrimaryButton label={t('onboarding.language.continue')} onPress={() => navigation.navigate('OnboardingConsent')} />
     </ScreenLayout>
   );
 }

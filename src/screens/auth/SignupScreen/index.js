@@ -1,5 +1,7 @@
+import { useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useTranslation } from 'react-i18next';
 
 import ScreenLayout from '../../../components/shared/ScreenLayout';
 import ScreenHeader from '../../../components/shared/ScreenHeader';
@@ -8,17 +10,18 @@ import TextField from '../../../components/shared/TextField';
 import PrimaryButton from '../../../components/shared/PrimaryButton';
 import TextLink from '../../../components/shared/TextLink';
 import FormError from '../../../components/shared/FormError';
-import { signupSchema } from '../../../validations/signup';
+import { getSignupSchema } from '../../../validations/signup';
 import { useSignupMutation } from '../../../network/authentication/authQueries';
 
 export default function SignupScreen({ navigation }) {
+  const { t } = useTranslation();
   const signup = useSignupMutation();
   const {
     control,
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: zodResolver(signupSchema),
+    resolver: zodResolver(useMemo(() => getSignupSchema(t), [t])),
     defaultValues: { name: '', email: '', password: '', confirmPassword: '' },
   });
 
@@ -36,17 +39,23 @@ export default function SignupScreen({ navigation }) {
     <ScreenLayout>
       <AuthMark />
       <ScreenHeader
-        eyebrow="Get started"
-        headline="Create your account"
-        sub="Takes about a minute — you can adjust everything later in Settings."
+        eyebrow={t('auth.signup.eyebrow')}
+        headline={t('auth.signup.headline')}
+        sub={t('auth.signup.sub')}
       />
 
-      <TextField control={control} name="name" label="Name" placeholder="Your name" error={errors.name?.message} />
+      <TextField
+        control={control}
+        name="name"
+        label={t('auth.signup.nameLabel')}
+        placeholder={t('auth.signup.namePlaceholder')}
+        error={errors.name?.message}
+      />
       <TextField
         control={control}
         name="email"
-        label="Email"
-        placeholder="you@example.com"
+        label={t('auth.signup.emailLabel')}
+        placeholder={t('auth.signup.emailPlaceholder')}
         autoCapitalize="none"
         keyboardType="email-address"
         error={errors.email?.message}
@@ -54,25 +63,25 @@ export default function SignupScreen({ navigation }) {
       <TextField
         control={control}
         name="password"
-        label="Password"
-        placeholder="••••••••"
+        label={t('auth.signup.passwordLabel')}
+        placeholder={t('auth.signup.passwordPlaceholder')}
         secureTextEntry
         error={errors.password?.message}
       />
       <TextField
         control={control}
         name="confirmPassword"
-        label="Confirm password"
-        placeholder="••••••••"
+        label={t('auth.signup.confirmPasswordLabel')}
+        placeholder={t('auth.signup.passwordPlaceholder')}
         secureTextEntry
         error={errors.confirmPassword?.message}
       />
 
       <FormError message={signup.isError ? signup.error.message : null} />
 
-      <PrimaryButton label="Create account" onPress={handleSubmit(onSubmit)} loading={signup.isPending} />
+      <PrimaryButton label={t('auth.signup.submit')} onPress={handleSubmit(onSubmit)} loading={signup.isPending} />
 
-      <TextLink label="Already have an account? Log in" onPress={() => navigation.navigate('Login')} />
+      <TextLink label={t('auth.signup.haveAccount')} onPress={() => navigation.navigate('Login')} />
     </ScreenLayout>
   );
 }

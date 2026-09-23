@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 
 import ScreenLayout from '../../../components/shared/ScreenLayout';
 import ScreenHeader from '../../../components/shared/ScreenHeader';
@@ -13,6 +14,7 @@ import { useSetConsentStage } from '../../../network/consent/consentQueries';
 // moment it actually matters. Declining returns to Mind quietly — the task
 // result is still logged, just not interpreted for the user.
 export default function Consent2Screen({ navigation }) {
+  const { t } = useTranslation();
   const { control, watch } = useForm({ defaultValues: { agree: false } });
   const agreed = watch('agree');
   const setConsentStage = useSetConsentStage();
@@ -25,24 +27,24 @@ export default function Consent2Screen({ navigation }) {
   return (
     <ScreenLayout center={false}>
       <ScreenHeader
-        eyebrow="Before we show a pattern"
-        badge="Consent 2 of 4"
-        note="Appearing now because it's actually relevant, not on a fixed schedule."
-        headline="Pattern awareness"
-        sub="This stage lets PreLink show you non-diagnostic trends from what you've logged. You can turn this off anytime in Settings."
+        eyebrow={t('home.consent2.eyebrow')}
+        badge={t('home.consent2.badge')}
+        note={t('home.consent2.note')}
+        headline={t('home.consent2.headline')}
+        sub={t('home.consent2.sub')}
       />
 
       <ConsentBlock
-        badge="This stage"
-        title="Directional trends only"
-        description="No scores, no risk language, no thresholds. Just gentle, plain-language observations."
+        badge={t('home.consent2.stageBadge')}
+        title={t('home.consent2.stageTitle')}
+        description={t('home.consent2.stageDescription')}
       />
 
-      <ToggleRow control={control} name="agree" label="I understand and agree" />
+      <ToggleRow control={control} name="agree" label={t('home.consent2.agree')} />
 
-      <PrimaryButton label="Agree & continue" onPress={handleAgree} disabled={!agreed} />
+      <PrimaryButton label={t('home.consent2.submit')} onPress={handleAgree} disabled={!agreed} />
       <TextLink
-        label="Not now"
+        label={t('common.notNow')}
         variant="muted"
         onPress={() => navigation.navigate('Main', { screen: 'MyHealth' })}
       />

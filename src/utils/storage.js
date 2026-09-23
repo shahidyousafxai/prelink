@@ -4,6 +4,7 @@ import * as SecureStore from 'expo-secure-store';
 const AUTH_TOKEN_KEY = 'auth_token';
 const VISIT_COUNT_KEY = 'visit_count';
 const NEEDS_ONBOARDING_KEY = 'needs_onboarding';
+const LANGUAGE_KEY = 'language';
 
 export function saveAuthToken(token) {
   return SecureStore.setItemAsync(AUTH_TOKEN_KEY, token);
@@ -35,4 +36,12 @@ export async function getNeedsOnboarding() {
 
 export function setNeedsOnboarding(value) {
   return AsyncStorage.setItem(NEEDS_ONBOARDING_KEY, value ? 'true' : 'false');
+}
+
+export function getLanguage() {
+  return AsyncStorage.getItem(LANGUAGE_KEY);
+}
+
+export function setLanguage(code) {
+  return AsyncStorage.setItem(LANGUAGE_KEY, code);
 }

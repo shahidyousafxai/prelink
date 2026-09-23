@@ -1,0 +1,358 @@
+{
+  "common": {
+    "back": {
+      "settings": "Settings",
+      "today": "Today",
+      "consent": "Consent",
+      "language": "Language",
+      "queue": "Queue",
+      "backToMind": "Back to Mind"
+    },
+    "continue": "Continue",
+    "notNow": "Not now",
+    "done": "Done",
+    "selected": "Selected"
+  },
+  "tabs": {
+    "today": "Today",
+    "myHealth": "My Health",
+    "carePlan": "Care Plan",
+    "you": "You"
+  },
+  "greeting": {
+    "morning": "Good morning",
+    "afternoon": "Good afternoon",
+    "evening": "Good evening"
+  },
+  "auth": {
+    "login": {
+      "eyebrow": "Welcome back",
+      "headline": "Sign in to PreLink",
+      "sub": "A calmer way to look after your wellbeing.",
+      "emailLabel": "Email",
+      "emailPlaceholder": "you@example.com",
+      "passwordLabel": "Password",
+      "passwordPlaceholder": "••••••••",
+      "submit": "Log in",
+      "forgotPassword": "Forgot password?",
+      "noAccount": "Don't have an account? Create one"
+    },
+    "signup": {
+      "eyebrow": "Get started",
+      "headline": "Create your account",
+      "sub": "Takes about a minute — you can adjust everything later in Settings.",
+      "nameLabel": "Name",
+      "namePlaceholder": "Your name",
+      "emailLabel": "Email",
+      "emailPlaceholder": "you@example.com",
+      "passwordLabel": "Password",
+      "passwordPlaceholder": "••••••••",
+      "confirmPasswordLabel": "Confirm password",
+      "submit": "Create account",
+      "haveAccount": "Already have an account? Log in"
+    },
+    "forgotPassword": {
+      "eyebrow": "Password help",
+      "headline": "Reset your password",
+      "sub": "We'll send a reset link to your email.",
+      "success": "If an account exists for that email, a reset link is on its way.",
+      "emailLabel": "Email",
+      "emailPlaceholder": "you@example.com",
+      "submit": "Send reset link",
+      "backToLogin": "Back to log in"
+    }
+  },
+  "onboarding": {
+    "language": {
+      "headline": "Welcome to PreLink",
+      "sub": "A calmer way to look after your wellbeing. Choose the language you're most comfortable with.",
+      "continue": "Continue"
+    },
+    "consent": {
+      "eyebrow": "Before we begin",
+      "badge": "Consent 1 of 4",
+      "note": "Stages 2–4 show up later, only when relevant — not right after this.",
+      "headline": "Wellness support only",
+      "sub": "This is the only consent needed to use PreLink at all. Nothing else is bundled in.",
+      "stage1Badge": "This stage",
+      "stage1Title": "Daily check-ins",
+      "stage1Description": "PreLink notices everyday patterns in mood, movement, and habits. It does not diagnose or predict any condition.",
+      "laterTitle": "Later, if you choose",
+      "laterDescription": "Pattern awareness, caregiver sharing, and clinician review are separate, optional stages.",
+      "agree": "I understand and agree",
+      "continue": "Continue"
+    },
+    "baseline": {
+      "eyebrow": "Last onboarding step · A little about you",
+      "headline": "Getting your starting point",
+      "sub": "This helps PreLink meet you where you are from day one — nothing here is medical information.",
+      "sleepLabel": "How's sleep been lately?",
+      "sleepOptions": ["Good", "Okay", "Rough"],
+      "careLabel": "Anyone helping with day-to-day things?",
+      "careOptions": ["Just me for now", "A family member", "A clinician already"],
+      "continue": "Continue"
+    }
+  },
+  "home": {
+    "home": {
+      "welcomeBack": "Welcome back",
+      "reentrySub": "Life happens. We saved your place.",
+      "weekdaySub": "{{weekday}} · your place is saved",
+      "moods": {
+        "Foggy": "Foggy",
+        "Okay": "Okay",
+        "Good": "Good",
+        "Light": "Light"
+      },
+      "moodHero": {
+        "Foggy": {
+          "title": "One tap, that's it today",
+          "body": "Low-key day noted. Here's the smallest possible win — no pressure for more."
+        },
+        "Okay": {
+          "title": "A steady, easy step",
+          "body": "A simple daily option, take it at whatever pace suits you."
+        },
+        "Good": {
+          "title": "Feeling up for a bit more?",
+          "body": "Good energy today. Here's a slightly fuller option, still optional."
+        },
+        "Light": {
+          "title": "Feeling up for a bit more?",
+          "body": "Good energy today. Here's a slightly fuller option, still optional."
+        }
+      },
+      "reentryHero": {
+        "title": "Today's step takes 20 seconds",
+        "body": "No missed days, no catching up needed. Just today."
+      },
+      "heroEyebrow": "Today's easiest step",
+      "heroButton": "Do the 20-second version",
+      "pillars": {
+        "heart": "Heart",
+        "weight": "Weight",
+        "calm": "Calm",
+        "mind": "Mind"
+      },
+      "pillarStates": {
+        "holdingSteady": "Holding steady",
+        "worthLook": "Worth a look"
+      },
+      "reentryPreviewLink": "Preview: returning after 3 weeks away"
+    },
+    "pillar": {
+      "placeholderSub": "Directional patterns only — no scores, no numbers to interpret. Content below is a placeholder shape, not final copy.",
+      "eyebrow": "My Health · {{name}}",
+      "ribbon": "NOT YET BUILT — SAME TEMPLATE AS MIND",
+      "todayOption": "Today's option",
+      "todayOptionPlaceholder": "Today's option (placeholder)",
+      "workingForYou": "What's been working for you",
+      "trendLabelSteady": "Holding steady over the last 6 weeks",
+      "trendLabelWatch": "Worth a look this month",
+      "mind": {
+        "name": "Mind",
+        "sub": "Directional patterns only — no scores, no numbers to interpret.",
+        "taskTitle": "5-minute word recall",
+        "taskBody": "Some people find this a nice way to start the afternoon. Entirely optional — tap to try it.",
+        "activities": [
+          { "label": "Morning tea + puzzle", "tag": "3 days" },
+          { "label": "Calling a family member", "tag": "this week" }
+        ]
+      },
+      "heart": {
+        "name": "Heart",
+        "taskTitle": "Blood pressure check-in",
+        "taskBody": "Same optional, non-directive pattern as Mind's word-recall task — content TBD."
+      },
+      "weight": {
+        "name": "Weight",
+        "taskTitle": "Culturally-adapted meal log",
+        "taskBody": "Same optional, non-directive pattern as Mind's task — content TBD."
+      },
+      "calm": {
+        "name": "Calm",
+        "taskTitle": "Guided breathing, 3 minutes",
+        "taskBody": "Same optional, non-directive pattern as Mind's task — content TBD."
+      }
+    },
+    "carePlan": {
+      "eyebrow": "Care Plan",
+      "headline": "A few optional ideas",
+      "sub": "Normalize, then offer a choice, then the lowest-effort option — nothing here is an instruction.",
+      "walkTitle": "Some people find a short walk helps midday.",
+      "walkBody": "If you'd like, here's a 20-second option instead.",
+      "walkButton": "Try the 20-second option",
+      "connectTitle": "Staying connected tends to help too.",
+      "connectBody": "A quick call with family, whenever feels right — no reminder will chase you about it."
+    },
+    "checkIn": {
+      "headline": "How foggy does today feel?",
+      "sub": "Takes about 15 seconds. Skip anytime.",
+      "options": ["Clear", "A little foggy", "Very foggy"],
+      "doneTitle": "Logged — thank you",
+      "doneSub": "Taking you back to Today…"
+    },
+    "assessmentTask": {
+      "progress": "STEP 2 OF 4",
+      "headline": "Which word did you see a moment ago?",
+      "sub": "No right or wrong pace — take your time.",
+      "words": ["Garden", "Lantern", "River", "Basket"],
+      "doneTitle": "Nicely done",
+      "doneSub": "Results are reviewed gently — never shown as a raw score.",
+      "continue": "Continue"
+    },
+    "consent2": {
+      "eyebrow": "Before we show a pattern",
+      "badge": "Consent 2 of 4",
+      "note": "Appearing now because it's actually relevant, not on a fixed schedule.",
+      "headline": "Pattern awareness",
+      "sub": "This stage lets PreLink show you non-diagnostic trends from what you've logged. You can turn this off anytime in Settings.",
+      "stageBadge": "This stage",
+      "stageTitle": "Directional trends only",
+      "stageDescription": "No scores, no risk language, no thresholds. Just gentle, plain-language observations.",
+      "agree": "I understand and agree",
+      "submit": "Agree & continue"
+    },
+    "insight": {
+      "headline": "A gentle note",
+      "body": "We noticed a small change in how your days have been feeling lately. This is common, and often modifiable.",
+      "helpsLabel": "Here's what helps people most at this stage",
+      "helpsTitle": "Small, steady routines",
+      "helpsBody": "A short daily check-in and staying connected with family tend to help the most — no major changes needed.",
+      "escalate": "Talk to your care team, if you'd like"
+    },
+    "consent4": {
+      "eyebrow": "Before we reach out",
+      "badge": "Consent 4 of 4",
+      "note": "The last of the 4 — only asked because you tapped \"talk to your care team.\"",
+      "headline": "Clinical escalation",
+      "sub": "This shares your recent pattern (never raw scores) with a licensed clinician on your care team, only after you say so.",
+      "stageBadge": "This stage",
+      "stageTitle": "Explicit medical handoff",
+      "stageDescription": "A clinician — not PreLink — takes it from here. No automated \"you may have X\" outputs, ever.",
+      "agree": "I understand and agree",
+      "submit": "Agree & send"
+    },
+    "escalationSent": {
+      "headline": "Your care team has been notified",
+      "sub": "A licensed clinician will review your recent patterns. You'll hear back through PreLink — nothing urgent is implied."
+    },
+    "caregiverHome": {
+      "lockedTitle": "Waiting on invite acceptance",
+      "lockedSub": "This view unlocks once an invite is sent and accepted from Settings → Invite a caregiver.",
+      "eyebrow": "Viewing as caregiver",
+      "circleName": "Mona's care circle",
+      "summaryOnly": "Summary view only",
+      "thisWeekLabel": "This week",
+      "thisWeekBody": "Mona is holding steady across all areas.",
+      "engagementLabel": "Engagement",
+      "engagementBody": "Checked in most days — nothing needed from you right now.",
+      "sendEncouragement": "Send encouragement",
+      "encouragementSent": "Sent — Mona will see this next time she opens PreLink.",
+      "trustNote": "Caregivers see stability summaries only — never raw scores, individual answers, or data exports."
+    },
+    "clinicianGate": {
+      "eyebrow": "Clinician portal",
+      "headline": "Organizational sign-in required",
+      "sub": "Access is credentialed and consent-gated. Every entry is logged with timestamp and reason.",
+      "enter": "Enter portal (demo)"
+    },
+    "clinicianQueue": {
+      "eyebrow": "Clinician portal · gated access",
+      "headline": "Your review queue",
+      "banner": "Consent-gated view. Every access is logged with timestamp and reason.",
+      "monaSub": "Just flagged",
+      "monaFlag": "Review",
+      "samirSub": "Checked in daily",
+      "laylaSub": "New — awaiting first sync",
+      "stableFlag": "Stable",
+      "noEscalations": "No new escalations right now."
+    },
+    "clinicianCase": {
+      "headline": "Mona K.",
+      "banner": "Severity flags and trend only — never a diagnosis. Only your own note may introduce medical terminology or trigger referral.",
+      "trendLabel": "Trending toward more foggy days over 2 weeks",
+      "sendReferral": "Send referral note",
+      "referralSent": "Referral logged. Mona will be notified through her care team channel."
+    },
+    "notifications": {
+      "ribbon": "NOT YET BUILT — SHOWN HERE FOR SHAPE ONLY",
+      "headline": "Contextual prompts (examples)",
+      "sub": "Not a real screen — a preview of the notification copy the Behavior-change RULES doc describes. These trigger on state, not a fixed schedule, and shrink if ignored rather than escalate.",
+      "example1Time": "Today, 2:14 PM",
+      "example1Copy": "\"This is a low-energy moment. Here's the easiest possible win.\"",
+      "example2Time": "3 days later (ignored once)",
+      "example2Copy": "\"No pressure — here whenever you'd like.\"",
+      "example2Note": "(quieter, not repeated louder)",
+      "example3Time": "After 3 weeks away",
+      "example3Copy": "\"We saved your place. Today's step takes 20 seconds.\""
+    }
+  },
+  "settings": {
+    "settings": {
+      "headline": "Settings",
+      "sectionConsent": "Consent & sharing",
+      "manageConsent": "Manage consent & sharing",
+      "inviteCaregiver": "Invite a caregiver",
+      "about": "About PreLink & your data",
+      "sectionAccount": "Account",
+      "language": "Language",
+      "sectionPreview": "Preview controls",
+      "previewCaregiver": "Preview: Caregiver view",
+      "previewClinician": "Preview: Clinician portal",
+      "previewNotifications": "Preview: Contextual prompts",
+      "logout": "Log out",
+      "loggingOut": "Logging out...",
+      "deleteData": "Delete my data",
+      "deleteWarning": "This can't be undone. (Preview only — no data is actually deleted here.)"
+    },
+    "manageConsent": {
+      "headline": "Manage consent",
+      "sub": "Each stage is independent and revocable — turning one off never affects the others.",
+      "stages": {
+        "s1": "Wellness support",
+        "s2": "Pattern awareness",
+        "s3": "Caregiver sharing",
+        "s4": "Clinical escalation"
+      }
+    },
+    "inviteCaregiver": {
+      "eyebrow": "Stage 3 of 4 · Caregiver support",
+      "headline": "Invite a caregiver",
+      "sub": "They'll only ever see stability summaries — never raw scores, individual answers, or exports.",
+      "nameLabel": "Their name",
+      "namePlaceholder": "Their name",
+      "shareLabel": "Share summary-level updates with them",
+      "submit": "Send invite",
+      "success": "Invite sent to {{name}}. They'll see a stability summary only, once accepted.",
+      "done": "Done"
+    },
+    "about": {
+      "headline": "About PreLink & your data",
+      "banner": "PreLink is a wellness and early-support tool. It is not a diagnostic tool and not a substitute for medical advice.",
+      "sectionTitle": "What we show, and to whom",
+      "rows": {
+        "cognitiveSignals": "Cognitive signals",
+        "cognitiveSignalsValue": "Abstracted, qualitative only",
+        "longitudinalTrends": "Longitudinal trends",
+        "longitudinalTrendsValue": "Directional, not numeric",
+        "caregiverViews": "Caregiver views",
+        "caregiverViewsValue": "Summary states only",
+        "clinicianViews": "Clinician views",
+        "clinicianViewsValue": "Consent-gated"
+      },
+      "footnote": "You control what is collected, shared, and deleted. Your data is protected, and you can delete it at any time."
+    },
+    "language": {
+      "headline": "Language",
+      "sub": "Choose the language you're most comfortable with."
+    }
+  },
+  "validations": {
+    "invalidEmail": "Enter a valid email",
+    "passwordMin": "Password must be at least 6 characters",
+    "nameMin": "Enter your name",
+    "passwordsDontMatch": "Passwords don't match",
+    "caregiverNameRequired": "Enter their name"
+  }
+}

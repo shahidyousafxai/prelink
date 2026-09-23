@@ -1,5 +1,7 @@
+import { useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useTranslation } from 'react-i18next';
 
 import ScreenLayout from '../../../components/shared/ScreenLayout';
 import ScreenHeader from '../../../components/shared/ScreenHeader';
@@ -8,17 +10,18 @@ import TextField from '../../../components/shared/TextField';
 import PrimaryButton from '../../../components/shared/PrimaryButton';
 import TextLink from '../../../components/shared/TextLink';
 import FormError from '../../../components/shared/FormError';
-import { loginSchema } from '../../../validations/login';
+import { getLoginSchema } from '../../../validations/login';
 import { useLoginMutation } from '../../../network/authentication/authQueries';
 
 export default function LoginScreen({ navigation }) {
+  const { t } = useTranslation();
   const login = useLoginMutation();
   const {
     control,
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: zodResolver(loginSchema),
+    resolver: zodResolver(useMemo(() => getLoginSchema(t), [t])),
     defaultValues: { email: '', password: '' },
   });
 
@@ -35,17 +38,13 @@ export default function LoginScreen({ navigation }) {
   return (
     <ScreenLayout>
       <AuthMark />
-      <ScreenHeader
-        eyebrow="Welcome back"
-        headline="Sign in to PreLink"
-        sub="A calmer way to look after your wellbeing."
-      />
+      <ScreenHeader eyebrow={t('auth.login.eyebrow')} headline={t('auth.login.headline')} sub={t('auth.login.sub')} />
 
       <TextField
         control={control}
         name="email"
-        label="Email"
-        placeholder="you@example.com"
+        label={t('auth.login.emailLabel')}
+        placeholder={t('auth.login.emailPlaceholder')}
         autoCapitalize="none"
         keyboardType="email-address"
         error={errors.email?.message}
@@ -53,18 +52,18 @@ export default function LoginScreen({ navigation }) {
       <TextField
         control={control}
         name="password"
-        label="Password"
-        placeholder="••••••••"
+        label={t('auth.login.passwordLabel')}
+        placeholder={t('auth.login.passwordPlaceholder')}
         secureTextEntry
         error={errors.password?.message}
       />
 
       <FormError message={login.isError ? login.error.message : null} />
 
-      <PrimaryButton label="Log in" onPress={handleSubmit(onSubmit)} loading={login.isPending} />
+      <PrimaryButton label={t('auth.login.submit')} onPress={handleSubmit(onSubmit)} loading={login.isPending} />
 
-      <TextLink label="Forgot password?" onPress={() => navigation.navigate('ForgotPassword')} />
-      <TextLink label="Don't have an account? Create one" onPress={() => navigation.navigate('Signup')} />
+      <TextLink label={t('auth.login.forgotPassword')} onPress={() => navigation.navigate('ForgotPassword')} />
+      <TextLink label={t('auth.login.noAccount')} onPress={() => navigation.navigate('Signup')} />
     </ScreenLayout>
   );
 }

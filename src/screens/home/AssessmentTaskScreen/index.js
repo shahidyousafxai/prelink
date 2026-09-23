@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { View, Text } from 'react-native';
+import { useTranslation } from 'react-i18next';
 
 import ScreenLayout from '../../../components/shared/ScreenLayout';
 import BackButton from '../../../components/shared/BackButton';
@@ -9,14 +10,14 @@ import PrimaryButton from '../../../components/shared/PrimaryButton';
 import { useConsentQuery } from '../../../network/consent/consentQueries';
 import { styles } from './styles';
 
-const WORDS = ['Garden', 'Lantern', 'River', 'Basket'];
-
 // A placeholder for the actual sandbox task — the real content is
 // proprietary vendor IP. Completion is outcome-agnostic and never reveals
 // whether an answer was "correct".
 export default function AssessmentTaskScreen({ navigation }) {
+  const { t } = useTranslation();
   const { data: consent } = useConsentQuery();
   const [selected, setSelected] = useState(null);
+  const words = t('home.assessmentTask.words', { returnObjects: true });
 
   const handleContinue = () => {
     navigation.navigate(consent?.s2 ? 'Insight' : 'Consent2');
@@ -24,23 +25,26 @@ export default function AssessmentTaskScreen({ navigation }) {
 
   return (
     <ScreenLayout center={false}>
-      <BackButton label="Back to Mind" onPress={() => navigation.navigate('Main', { screen: 'MyHealth' })} />
-      <Text style={styles.progress}>STEP 2 OF 4</Text>
+      <BackButton
+        label={t('common.back.backToMind')}
+        onPress={() => navigation.navigate('Main', { screen: 'MyHealth' })}
+      />
+      <Text style={styles.progress}>{t('home.assessmentTask.progress')}</Text>
 
       <View style={styles.centerFlow}>
         {selected ? (
           <>
             <ConfirmCheck />
-            <Text style={styles.doneTitle}>Nicely done</Text>
-            <Text style={styles.doneSub}>Results are reviewed gently — never shown as a raw score.</Text>
-            <PrimaryButton label="Continue" onPress={handleContinue} />
+            <Text style={styles.doneTitle}>{t('home.assessmentTask.doneTitle')}</Text>
+            <Text style={styles.doneSub}>{t('home.assessmentTask.doneSub')}</Text>
+            <PrimaryButton label={t('home.assessmentTask.continue')} onPress={handleContinue} />
           </>
         ) : (
           <>
-            <Text style={styles.headline}>Which word did you see a moment ago?</Text>
-            <Text style={styles.sub}>No right or wrong pace — take your time.</Text>
+            <Text style={styles.headline}>{t('home.assessmentTask.headline')}</Text>
+            <Text style={styles.sub}>{t('home.assessmentTask.sub')}</Text>
             <View style={styles.wordGrid}>
-              {WORDS.map((word) => (
+              {words.map((word) => (
                 <Chip key={word} label={word} variant="grid" onPress={() => setSelected(word)} />
               ))}
             </View>

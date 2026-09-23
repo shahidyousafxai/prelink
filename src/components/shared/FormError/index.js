@@ -1,4 +1,4 @@
-import { Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet, I18nManager } from 'react-native';
 
 import { colors, fonts } from '../../../theme/theme';
 
@@ -12,5 +12,5 @@ export default function FormError({ message, align = 'center' }) {
 
 const styles = StyleSheet.create({
   text: { fontSize: 12, fontFamily: fonts.bodySemiBold, color: colors.clay, textAlign: 'center', marginBottom: 8 },
-  left: { textAlign: 'left', marginBottom: 0, marginTop: 6 },
+  left: { textAlign: I18nManager.isRTL ? 'right' : 'left', marginBottom: 0, marginTop: 6 },
 });

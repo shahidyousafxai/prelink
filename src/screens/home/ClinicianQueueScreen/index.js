@@ -1,4 +1,5 @@
 import { Text } from 'react-native';
+import { useTranslation } from 'react-i18next';
 
 import ScreenLayout from '../../../components/shared/ScreenLayout';
 import ScreenHeader from '../../../components/shared/ScreenHeader';
@@ -12,27 +13,38 @@ import { styles } from './styles';
 // granted on the patient side — this list reflects the shared consent
 // state, it isn't hardcoded.
 export default function ClinicianQueueScreen({ navigation }) {
+  const { t } = useTranslation();
   const { data: consent } = useConsentQuery();
 
   return (
     <ScreenLayout center={false}>
-      <BackButton label="Settings" onPress={() => navigation.navigate('Main', { screen: 'You' })} />
-      <ScreenHeader eyebrow="Clinician portal · gated access" headline="Your review queue" />
-      <Banner variant="governance">Consent-gated view. Every access is logged with timestamp and reason.</Banner>
+      <BackButton label={t('common.back.settings')} onPress={() => navigation.navigate('Main', { screen: 'You' })} />
+      <ScreenHeader eyebrow={t('home.clinicianQueue.eyebrow')} headline={t('home.clinicianQueue.headline')} />
+      <Banner variant="governance">{t('home.clinicianQueue.banner')}</Banner>
 
       {consent?.s4 && (
         <FlagRow
           name="Mona K."
-          sub="Just flagged"
-          flagLabel="Review"
+          sub={t('home.clinicianQueue.monaSub')}
+          flagLabel={t('home.clinicianQueue.monaFlag')}
           flagVariant="gold"
           onPress={() => navigation.navigate('ClinicianCase')}
         />
       )}
-      <FlagRow name="Samir H." sub="Checked in daily" flagLabel="Stable" flagVariant="pine" />
-      <FlagRow name="Layla A." sub="New — awaiting first sync" flagLabel="Stable" flagVariant="pine" />
+      <FlagRow
+        name="Samir H."
+        sub={t('home.clinicianQueue.samirSub')}
+        flagLabel={t('home.clinicianQueue.stableFlag')}
+        flagVariant="pine"
+      />
+      <FlagRow
+        name="Layla A."
+        sub={t('home.clinicianQueue.laylaSub')}
+        flagLabel={t('home.clinicianQueue.stableFlag')}
+        flagVariant="pine"
+      />
 
-      {!consent?.s4 && <Text style={styles.note}>No new escalations right now.</Text>}
+      {!consent?.s4 && <Text style={styles.note}>{t('home.clinicianQueue.noEscalations')}</Text>}
     </ScreenLayout>
   );
 }

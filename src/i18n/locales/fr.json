@@ -1,0 +1,358 @@
+{
+  "common": {
+    "back": {
+      "settings": "Réglages",
+      "today": "Aujourd'hui",
+      "consent": "Consentement",
+      "language": "Langue",
+      "queue": "File d'attente",
+      "backToMind": "Retour à Esprit"
+    },
+    "continue": "Continuer",
+    "notNow": "Pas maintenant",
+    "done": "Terminé",
+    "selected": "Sélectionné"
+  },
+  "tabs": {
+    "today": "Aujourd'hui",
+    "myHealth": "Ma santé",
+    "carePlan": "Plan de soins",
+    "you": "Vous"
+  },
+  "greeting": {
+    "morning": "Bonjour",
+    "afternoon": "Bon après-midi",
+    "evening": "Bonsoir"
+  },
+  "auth": {
+    "login": {
+      "eyebrow": "Bon retour",
+      "headline": "Connectez-vous à PreLink",
+      "sub": "Une manière plus sereine de prendre soin de votre bien-être.",
+      "emailLabel": "E-mail",
+      "emailPlaceholder": "vous@exemple.com",
+      "passwordLabel": "Mot de passe",
+      "passwordPlaceholder": "••••••••",
+      "submit": "Se connecter",
+      "forgotPassword": "Mot de passe oublié ?",
+      "noAccount": "Pas encore de compte ? Créez-en un"
+    },
+    "signup": {
+      "eyebrow": "Pour commencer",
+      "headline": "Créez votre compte",
+      "sub": "Cela prend environ une minute — vous pourrez tout ajuster plus tard dans les Réglages.",
+      "nameLabel": "Nom",
+      "namePlaceholder": "Votre nom",
+      "emailLabel": "E-mail",
+      "emailPlaceholder": "vous@exemple.com",
+      "passwordLabel": "Mot de passe",
+      "passwordPlaceholder": "••••••••",
+      "confirmPasswordLabel": "Confirmer le mot de passe",
+      "submit": "Créer le compte",
+      "haveAccount": "Vous avez déjà un compte ? Connectez-vous"
+    },
+    "forgotPassword": {
+      "eyebrow": "Aide au mot de passe",
+      "headline": "Réinitialisez votre mot de passe",
+      "sub": "Nous vous enverrons un lien de réinitialisation par e-mail.",
+      "success": "Si un compte existe pour cet e-mail, un lien de réinitialisation est en route.",
+      "emailLabel": "E-mail",
+      "emailPlaceholder": "vous@exemple.com",
+      "submit": "Envoyer le lien",
+      "backToLogin": "Retour à la connexion"
+    }
+  },
+  "onboarding": {
+    "language": {
+      "headline": "Bienvenue sur PreLink",
+      "sub": "Une manière plus sereine de prendre soin de votre bien-être. Choisissez la langue avec laquelle vous êtes le plus à l'aise.",
+      "continue": "Continuer"
+    },
+    "consent": {
+      "eyebrow": "Avant de commencer",
+      "badge": "Consentement 1 sur 4",
+      "note": "Les étapes 2 à 4 apparaîtront plus tard, seulement quand c'est pertinent — pas juste après celle-ci.",
+      "headline": "Soutien au bien-être uniquement",
+      "sub": "C'est le seul consentement nécessaire pour utiliser PreLink. Rien d'autre n'est inclus.",
+      "stage1Badge": "Cette étape",
+      "stage1Title": "Suivis quotidiens",
+      "stage1Description": "PreLink repère les tendances quotidiennes d'humeur, de mouvement et d'habitudes. Il ne diagnostique ni ne prédit aucune condition.",
+      "laterTitle": "Plus tard, si vous le souhaitez",
+      "laterDescription": "La détection de tendances, le partage avec un proche aidant et l'examen clinique sont des étapes distinctes et optionnelles.",
+      "agree": "Je comprends et j'accepte",
+      "continue": "Continuer"
+    },
+    "baseline": {
+      "eyebrow": "Dernière étape · Un peu plus sur vous",
+      "headline": "Trouvons votre point de départ",
+      "sub": "Cela aide PreLink à s'adapter à vous dès le premier jour — rien ici n'est une information médicale.",
+      "sleepLabel": "Comment est votre sommeil ces derniers temps ?",
+      "sleepOptions": ["Bon", "Correct", "Difficile"],
+      "careLabel": "Quelqu'un vous aide-t-il au quotidien ?",
+      "careOptions": ["Personne pour l'instant", "Un membre de la famille", "Déjà un professionnel de santé"],
+      "continue": "Continuer"
+    }
+  },
+  "home": {
+    "home": {
+      "welcomeBack": "Bon retour",
+      "reentrySub": "La vie continue. Nous avons gardé votre place.",
+      "weekdaySub": "{{weekday}} · votre place est gardée",
+      "moods": {
+        "Foggy": "Brumeux",
+        "Okay": "Correct",
+        "Good": "Bien",
+        "Light": "Léger"
+      },
+      "moodHero": {
+        "Foggy": {
+          "title": "Un seul geste, c'est tout pour aujourd'hui",
+          "body": "Journée tranquille notée. Voici la plus petite victoire possible — aucune pression pour plus."
+        },
+        "Okay": {
+          "title": "Une étape stable et facile",
+          "body": "Une option quotidienne simple, à votre rythme."
+        },
+        "Good": {
+          "title": "Envie d'un peu plus ?",
+          "body": "Belle énergie aujourd'hui. Voici une option un peu plus complète, toujours optionnelle."
+        },
+        "Light": {
+          "title": "Envie d'un peu plus ?",
+          "body": "Belle énergie aujourd'hui. Voici une option un peu plus complète, toujours optionnelle."
+        }
+      },
+      "reentryHero": {
+        "title": "L'étape du jour prend 20 secondes",
+        "body": "Pas de jours manqués, rien à rattraper. Juste aujourd'hui."
+      },
+      "heroEyebrow": "L'étape la plus simple du jour",
+      "heroButton": "Faire la version de 20 secondes",
+      "pillars": {
+        "heart": "Cœur",
+        "weight": "Poids",
+        "calm": "Calme",
+        "mind": "Esprit"
+      },
+      "pillarStates": {
+        "holdingSteady": "Stable",
+        "worthLook": "À surveiller"
+      },
+      "reentryPreviewLink": "Aperçu : retour après 3 semaines d'absence"
+    },
+    "pillar": {
+      "placeholderSub": "Tendances directionnelles uniquement — pas de scores, pas de chiffres à interpréter. Le contenu ci-dessous est un espace réservé, pas le texte final.",
+      "eyebrow": "Ma santé · {{name}}",
+      "ribbon": "PAS ENCORE DÉVELOPPÉ — MÊME MODÈLE QU'ESPRIT",
+      "todayOption": "Option du jour",
+      "todayOptionPlaceholder": "Option du jour (espace réservé)",
+      "workingForYou": "Ce qui fonctionne bien pour vous",
+      "trendLabelSteady": "Stable au cours des 6 dernières semaines",
+      "trendLabelWatch": "À surveiller ce mois-ci",
+      "mind": {
+        "name": "Esprit",
+        "sub": "Tendances directionnelles uniquement — pas de scores, pas de chiffres à interpréter.",
+        "taskTitle": "Rappel de mots, 5 minutes",
+        "taskBody": "Certaines personnes trouvent que c'est une belle façon de commencer l'après-midi. Entièrement optionnel — appuyez pour essayer.",
+        "activities": [
+          { "label": "Thé du matin + puzzle", "tag": "3 jours" },
+          { "label": "Appeler un membre de la famille", "tag": "cette semaine" }
+        ]
+      },
+      "heart": {
+        "name": "Cœur",
+        "taskTitle": "Suivi de la tension artérielle",
+        "taskBody": "Même schéma optionnel et non directif que la tâche de rappel de mots d'Esprit — contenu à venir."
+      },
+      "weight": {
+        "name": "Poids",
+        "taskTitle": "Journal de repas adapté culturellement",
+        "taskBody": "Même schéma optionnel et non directif que la tâche d'Esprit — contenu à venir."
+      },
+      "calm": {
+        "name": "Calme",
+        "taskTitle": "Respiration guidée, 3 minutes",
+        "taskBody": "Même schéma optionnel et non directif que la tâche d'Esprit — contenu à venir."
+      }
+    },
+    "carePlan": {
+      "eyebrow": "Plan de soins",
+      "headline": "Quelques idées optionnelles",
+      "sub": "Normaliser, puis proposer un choix, puis l'option la plus simple — rien ici n'est une instruction.",
+      "walkTitle": "Certaines personnes trouvent qu'une courte marche aide en milieu de journée.",
+      "walkBody": "Si vous le souhaitez, voici une option de 20 secondes à la place.",
+      "walkButton": "Essayer l'option de 20 secondes",
+      "connectTitle": "Rester en contact aide souvent aussi.",
+      "connectBody": "Un appel rapide avec la famille, quand cela vous convient — aucun rappel ne vous relancera."
+    },
+    "checkIn": {
+      "headline": "Comment vous sentez-vous aujourd'hui ?",
+      "sub": "Cela prend environ 15 secondes. Passez à tout moment.",
+      "options": ["Clair", "Un peu brumeux", "Très brumeux"],
+      "doneTitle": "Enregistré — merci",
+      "doneSub": "Retour à Aujourd'hui…"
+    },
+    "assessmentTask": {
+      "progress": "ÉTAPE 2 SUR 4",
+      "headline": "Quel mot avez-vous vu il y a un instant ?",
+      "sub": "Aucun rythme correct ou incorrect — prenez votre temps.",
+      "words": ["Jardin", "Lanterne", "Rivière", "Panier"],
+      "doneTitle": "Bien joué",
+      "doneSub": "Les résultats sont examinés avec bienveillance — jamais affichés comme un score brut.",
+      "continue": "Continuer"
+    },
+    "consent2": {
+      "eyebrow": "Avant de montrer une tendance",
+      "badge": "Consentement 2 sur 4",
+      "note": "Apparaît maintenant parce que c'est réellement pertinent, pas selon un calendrier fixe.",
+      "headline": "Détection de tendances",
+      "sub": "Cette étape permet à PreLink de vous montrer des tendances non diagnostiques à partir de ce que vous avez enregistré. Vous pouvez la désactiver à tout moment dans les Réglages.",
+      "stageBadge": "Cette étape",
+      "stageTitle": "Tendances directionnelles uniquement",
+      "stageDescription": "Pas de scores, pas de langage de risque, pas de seuils. Juste des observations douces, en langage simple.",
+      "agree": "Je comprends et j'accepte",
+      "submit": "Accepter et continuer"
+    },
+    "insight": {
+      "headline": "Une remarque bienveillante",
+      "body": "Nous avons remarqué un léger changement dans la façon dont vos journées se sont senties dernièrement. C'est courant, et souvent modifiable.",
+      "helpsLabel": "Voici ce qui aide le plus les gens à ce stade",
+      "helpsTitle": "Des routines simples et régulières",
+      "helpsBody": "Un court suivi quotidien et le fait de rester en contact avec la famille aident le plus souvent — aucun grand changement nécessaire.",
+      "escalate": "Parler à votre équipe soignante, si vous le souhaitez"
+    },
+    "consent4": {
+      "eyebrow": "Avant de vous mettre en contact",
+      "badge": "Consentement 4 sur 4",
+      "note": "Le dernier des 4 — demandé uniquement parce que vous avez appuyé sur « parler à votre équipe soignante ».",
+      "headline": "Escalade clinique",
+      "sub": "Cela partage votre tendance récente (jamais de scores bruts) avec un clinicien agréé de votre équipe soignante, uniquement après votre accord.",
+      "stageBadge": "Cette étape",
+      "stageTitle": "Transfert médical explicite",
+      "stageDescription": "Un clinicien — pas PreLink — prend le relais. Jamais de résultat automatisé du type « vous pourriez avoir X ».",
+      "agree": "Je comprends et j'accepte",
+      "submit": "Accepter et envoyer"
+    },
+    "escalationSent": {
+      "headline": "Votre équipe soignante a été informée",
+      "sub": "Un clinicien agréé examinera vos tendances récentes. Vous aurez des nouvelles via PreLink — rien d'urgent n'est sous-entendu."
+    },
+    "caregiverHome": {
+      "lockedTitle": "En attente d'acceptation de l'invitation",
+      "lockedSub": "Cette vue se débloque une fois qu'une invitation est envoyée et acceptée depuis Réglages → Inviter un proche aidant.",
+      "eyebrow": "Vue en tant que proche aidant",
+      "circleName": "Cercle de soins de Mona",
+      "summaryOnly": "Vue résumée uniquement",
+      "thisWeekLabel": "Cette semaine",
+      "thisWeekBody": "Mona reste stable dans tous les domaines.",
+      "engagementLabel": "Engagement",
+      "engagementBody": "S'est enregistrée la plupart des jours — rien n'est requis de votre part pour le moment.",
+      "sendEncouragement": "Envoyer un encouragement",
+      "encouragementSent": "Envoyé — Mona le verra la prochaine fois qu'elle ouvrira PreLink.",
+      "trustNote": "Les proches aidants ne voient que des résumés de stabilité — jamais de scores bruts, de réponses individuelles ou d'exports de données."
+    },
+    "clinicianGate": {
+      "eyebrow": "Portail clinicien",
+      "headline": "Connexion organisationnelle requise",
+      "sub": "L'accès est accrédité et soumis au consentement. Chaque entrée est enregistrée avec horodatage et motif.",
+      "enter": "Entrer dans le portail (démo)"
+    },
+    "clinicianQueue": {
+      "eyebrow": "Portail clinicien · accès contrôlé",
+      "headline": "Votre file d'examen",
+      "banner": "Vue soumise au consentement. Chaque accès est enregistré avec horodatage et motif.",
+      "monaSub": "Vient d'être signalée",
+      "monaFlag": "À examiner",
+      "samirSub": "S'enregistre quotidiennement",
+      "laylaSub": "Nouvelle — en attente de la première synchronisation",
+      "stableFlag": "Stable",
+      "noEscalations": "Aucune nouvelle escalade pour le moment."
+    },
+    "clinicianCase": {
+      "headline": "Mona K.",
+      "banner": "Indicateurs de gravité et tendance uniquement — jamais un diagnostic. Seule votre propre note peut introduire une terminologie médicale ou déclencher une référence.",
+      "trendLabel": "Tendance vers des journées plus brumeuses sur 2 semaines",
+      "sendReferral": "Envoyer une note de référence",
+      "referralSent": "Référence enregistrée. Mona sera notifiée via son canal d'équipe soignante."
+    },
+    "notifications": {
+      "ribbon": "PAS ENCORE DÉVELOPPÉ — MONTRÉ ICI POUR ILLUSTRATION",
+      "headline": "Invites contextuelles (exemples)",
+      "sub": "Pas un vrai écran — un aperçu des messages de notification décrits dans le document de RÈGLES de changement de comportement. Ils se déclenchent selon l'état, pas selon un calendrier fixe, et diminuent s'ils sont ignorés plutôt que de s'intensifier.",
+      "example1Time": "Aujourd'hui, 14 h 14",
+      "example1Copy": "« C'est un moment de faible énergie. Voici la victoire la plus facile possible. »",
+      "example2Time": "3 jours plus tard (ignoré une fois)",
+      "example2Copy": "« Aucune pression — disponible quand vous voulez. »",
+      "example2Note": "(plus discret, pas répété plus fort)",
+      "example3Time": "Après 3 semaines d'absence",
+      "example3Copy": "« Nous avons gardé votre place. L'étape du jour prend 20 secondes. »"
+    }
+  },
+  "settings": {
+    "settings": {
+      "headline": "Réglages",
+      "sectionConsent": "Consentement et partage",
+      "manageConsent": "Gérer le consentement et le partage",
+      "inviteCaregiver": "Inviter un proche aidant",
+      "about": "À propos de PreLink et de vos données",
+      "sectionAccount": "Compte",
+      "language": "Langue",
+      "sectionPreview": "Contrôles d'aperçu",
+      "previewCaregiver": "Aperçu : vue proche aidant",
+      "previewClinician": "Aperçu : portail clinicien",
+      "previewNotifications": "Aperçu : invites contextuelles",
+      "logout": "Se déconnecter",
+      "loggingOut": "Déconnexion...",
+      "deleteData": "Supprimer mes données",
+      "deleteWarning": "Cette action est irréversible. (Aperçu uniquement — aucune donnée n'est réellement supprimée ici.)"
+    },
+    "manageConsent": {
+      "headline": "Gérer le consentement",
+      "sub": "Chaque étape est indépendante et révocable — en désactiver une n'affecte jamais les autres.",
+      "stages": {
+        "s1": "Soutien au bien-être",
+        "s2": "Détection de tendances",
+        "s3": "Partage avec un proche aidant",
+        "s4": "Escalade clinique"
+      }
+    },
+    "inviteCaregiver": {
+      "eyebrow": "Étape 3 sur 4 · Soutien d'un proche aidant",
+      "headline": "Inviter un proche aidant",
+      "sub": "Il ne verra jamais que des résumés de stabilité — jamais de scores bruts, de réponses individuelles ou d'exports.",
+      "nameLabel": "Son nom",
+      "namePlaceholder": "Son nom",
+      "shareLabel": "Partager les mises à jour de niveau résumé avec lui",
+      "submit": "Envoyer l'invitation",
+      "success": "Invitation envoyée à {{name}}. Il ne verra qu'un résumé de stabilité, une fois acceptée.",
+      "done": "Terminé"
+    },
+    "about": {
+      "headline": "À propos de PreLink et de vos données",
+      "banner": "PreLink est un outil de bien-être et de soutien précoce. Ce n'est pas un outil de diagnostic ni un substitut à un avis médical.",
+      "sectionTitle": "Ce que nous montrons, et à qui",
+      "rows": {
+        "cognitiveSignals": "Signaux cognitifs",
+        "cognitiveSignalsValue": "Abstraits, qualitatifs uniquement",
+        "longitudinalTrends": "Tendances longitudinales",
+        "longitudinalTrendsValue": "Directionnelles, pas numériques",
+        "caregiverViews": "Vues des proches aidants",
+        "caregiverViewsValue": "États résumés uniquement",
+        "clinicianViews": "Vues des cliniciens",
+        "clinicianViewsValue": "Soumises au consentement"
+      },
+      "footnote": "Vous contrôlez ce qui est collecté, partagé et supprimé. Vos données sont protégées, et vous pouvez les supprimer à tout moment."
+    },
+    "language": {
+      "headline": "Langue",
+      "sub": "Choisissez la langue avec laquelle vous êtes le plus à l'aise."
+    }
+  },
+  "validations": {
+    "invalidEmail": "Saisissez une adresse e-mail valide",
+    "passwordMin": "Le mot de passe doit contenir au moins 6 caractères",
+    "nameMin": "Saisissez votre nom",
+    "passwordsDontMatch": "Les mots de passe ne correspondent pas",
+    "caregiverNameRequired": "Saisissez son nom"
+  }
+}

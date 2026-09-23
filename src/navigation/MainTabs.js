@@ -1,6 +1,7 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { View, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useTranslation } from 'react-i18next';
 
 import HomeScreen from '../screens/home/HomeScreen';
 import PillarScreen from '../screens/home/PillarScreen';
@@ -30,6 +31,8 @@ function TabIcon({ focused, name }) {
 // "You"). The prototype's tab icons are plain color swatches; these use
 // real Ionicons inside the same swatch shape.
 export default function MainTabs() {
+  const { t } = useTranslation();
+
   return (
     <Tab.Navigator
       screenOptions={{
@@ -43,13 +46,16 @@ export default function MainTabs() {
       <Tab.Screen
         name="Today"
         component={HomeScreen}
-        options={{ tabBarIcon: ({ focused }) => <TabIcon focused={focused} name="Today" /> }}
+        options={{
+          tabBarLabel: t('tabs.today'),
+          tabBarIcon: ({ focused }) => <TabIcon focused={focused} name="Today" />,
+        }}
       />
       <Tab.Screen
         name="MyHealth"
         component={PillarScreen}
         options={{
-          tabBarLabel: 'My Health',
+          tabBarLabel: t('tabs.myHealth'),
           tabBarIcon: ({ focused }) => <TabIcon focused={focused} name="MyHealth" />,
         }}
       />
@@ -57,14 +63,17 @@ export default function MainTabs() {
         name="CarePlan"
         component={CarePlanScreen}
         options={{
-          tabBarLabel: 'Care Plan',
+          tabBarLabel: t('tabs.carePlan'),
           tabBarIcon: ({ focused }) => <TabIcon focused={focused} name="CarePlan" />,
         }}
       />
       <Tab.Screen
         name="You"
         component={SettingsScreen}
-        options={{ tabBarIcon: ({ focused }) => <TabIcon focused={focused} name="You" /> }}
+        options={{
+          tabBarLabel: t('tabs.you'),
+          tabBarIcon: ({ focused }) => <TabIcon focused={focused} name="You" />,
+        }}
       />
     </Tab.Navigator>
   );

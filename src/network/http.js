@@ -15,6 +15,9 @@ export const queryKeys = {
   consent: {
     all: () => ['consent'],
   },
+  language: {
+    all: () => ['language'],
+  },
 };
 
 export function getErrorMessage(error) {

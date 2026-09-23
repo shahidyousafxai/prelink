@@ -1,5 +1,7 @@
+import { useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useTranslation } from 'react-i18next';
 
 import ScreenHeader from '../../../components/shared/ScreenHeader';
 import BackButton from '../../../components/shared/BackButton';
@@ -8,7 +10,7 @@ import ToggleRow from '../../../components/shared/ToggleRow';
 import PrimaryButton from '../../../components/shared/PrimaryButton';
 import FormError from '../../../components/shared/FormError';
 import ConfirmBanner from '../../../components/shared/ConfirmBanner';
-import { inviteCaregiverSchema } from '../../../validations/inviteCaregiver';
+import { getInviteCaregiverSchema } from '../../../validations/inviteCaregiver';
 import { useInviteCaregiverMutation } from '../../../network/caregiver/caregiverQueries';
 import { useSetConsentStage } from '../../../network/consent/consentQueries';
 
@@ -17,6 +19,7 @@ import { useSetConsentStage } from '../../../network/consent/consentQueries';
 // toggle happen together. Sending the invite is what unlocks the Caregiver
 // Home preview (Settings → Preview: Caregiver view).
 export default function InviteCaregiverView({ onBack }) {
+  const { t } = useTranslation();
   const invite = useInviteCaregiverMutation();
   const setConsentStage = useSetConsentStage();
   const {
@@ -25,7 +28,7 @@ export default function InviteCaregiverView({ onBack }) {
     watch,
     formState: { errors },
   } = useForm({
-    resolver: zodResolver(inviteCaregiverSchema),
+    resolver: zodResolver(useMemo(() => getInviteCaregiverSchema(t), [t])),
     defaultValues: { name: '', share: false },
   });
   const share = watch('share');
@@ -38,34 +41,32 @@ export default function InviteCaregiverView({ onBack }) {
   if (invite.isSuccess) {
     return (
       <>
-        <BackButton label="Settings" onPress={onBack} />
-        <ConfirmBanner>
-          Invite sent to {invite.data.name}. They'll see a stability summary only, once accepted.
-        </ConfirmBanner>
-        <PrimaryButton label="Done" onPress={onBack} />
+        <BackButton label={t('common.back.settings')} onPress={onBack} />
+        <ConfirmBanner>{t('settings.inviteCaregiver.success', { name: invite.data.name })}</ConfirmBanner>
+        <PrimaryButton label={t('settings.inviteCaregiver.done')} onPress={onBack} />
       </>
     );
   }
 
   return (
     <>
-      <BackButton label="Settings" onPress={onBack} />
+      <BackButton label={t('common.back.settings')} onPress={onBack} />
       <ScreenHeader
-        eyebrow="Stage 3 of 4 · Caregiver support"
-        headline="Invite a caregiver"
-        sub="They'll only ever see stability summaries — never raw scores, individual answers, or exports."
+        eyebrow={t('settings.inviteCaregiver.eyebrow')}
+        headline={t('settings.inviteCaregiver.headline')}
+        sub={t('settings.inviteCaregiver.sub')}
       />
       <TextField
         control={control}
         name="name"
-        label="Their name"
-        placeholder="Their name"
+        label={t('settings.inviteCaregiver.nameLabel')}
+        placeholder={t('settings.inviteCaregiver.namePlaceholder')}
         error={errors.name?.message}
       />
-      <ToggleRow control={control} name="share" label="Share summary-level updates with them" />
+      <ToggleRow control={control} name="share" label={t('settings.inviteCaregiver.shareLabel')} />
       <FormError message={invite.isError ? invite.error.message : null} />
       <PrimaryButton
-        label="Send invite"
+        label={t('settings.inviteCaregiver.submit')}
         onPress={handleSubmit(onSubmit)}
         disabled={!share}
         loading={invite.isPending}

@@ -1,5 +1,6 @@
 import { z } from 'zod';
 
-export const inviteCaregiverSchema = z.object({
-  name: z.string().min(1, 'Enter their name'),
-});
+export const getInviteCaregiverSchema = (t) =>
+  z.object({
+    name: z.string().min(1, t('validations.caregiverNameRequired')),
+  });

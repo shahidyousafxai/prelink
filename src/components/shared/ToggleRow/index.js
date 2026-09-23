@@ -1,4 +1,4 @@
-import { View, Text, Switch, StyleSheet } from 'react-native';
+import { View, Text, Switch, StyleSheet, I18nManager } from 'react-native';
 import { Controller } from 'react-hook-form';
 
 import { colors, fonts, radius } from '../../../theme/theme';
@@ -48,5 +48,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     marginBottom: 12,
   },
-  label: { fontSize: 13, fontFamily: fonts.bodySemiBold, color: colors.ink, flex: 1, marginRight: 12 },
+  label: {
+    fontSize: 13,
+    fontFamily: fonts.bodySemiBold,
+    color: colors.ink,
+    flex: 1,
+    ...(I18nManager.isRTL ? { marginLeft: 12 } : { marginRight: 12 }),
+  },
 });

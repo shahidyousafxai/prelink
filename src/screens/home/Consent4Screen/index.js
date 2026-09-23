@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form';
+import { useTranslation } from 'react-i18next';
 
 import ScreenLayout from '../../../components/shared/ScreenLayout';
 import ScreenHeader from '../../../components/shared/ScreenHeader';
@@ -14,6 +15,7 @@ import { useSetConsentStage } from '../../../network/consent/consentQueries';
 // have X' outputs" is enforced by keeping this a human handoff, not an AI
 // verdict.
 export default function Consent4Screen({ navigation }) {
+  const { t } = useTranslation();
   const { control, watch } = useForm({ defaultValues: { agree: false } });
   const agreed = watch('agree');
   const setConsentStage = useSetConsentStage();
@@ -26,23 +28,23 @@ export default function Consent4Screen({ navigation }) {
   return (
     <ScreenLayout center={false}>
       <ScreenHeader
-        eyebrow="Before we reach out"
-        badge="Consent 4 of 4"
-        note='The last of the 4 — only asked because you tapped "talk to your care team."'
-        headline="Clinical escalation"
-        sub="This shares your recent pattern (never raw scores) with a licensed clinician on your care team, only after you say so."
+        eyebrow={t('home.consent4.eyebrow')}
+        badge={t('home.consent4.badge')}
+        note={t('home.consent4.note')}
+        headline={t('home.consent4.headline')}
+        sub={t('home.consent4.sub')}
       />
 
       <ConsentBlock
-        badge="This stage"
-        title="Explicit medical handoff"
-        description='A clinician — not PreLink — takes it from here. No automated "you may have X" outputs, ever.'
+        badge={t('home.consent4.stageBadge')}
+        title={t('home.consent4.stageTitle')}
+        description={t('home.consent4.stageDescription')}
       />
 
-      <ToggleRow control={control} name="agree" label="I understand and agree" />
+      <ToggleRow control={control} name="agree" label={t('home.consent4.agree')} />
 
-      <PrimaryButton label="Agree & send" onPress={handleAgree} disabled={!agreed} />
-      <TextLink label="Not now" variant="muted" onPress={() => navigation.navigate('Insight')} />
+      <PrimaryButton label={t('home.consent4.submit')} onPress={handleAgree} disabled={!agreed} />
+      <TextLink label={t('common.notNow')} variant="muted" onPress={() => navigation.navigate('Insight')} />
     </ScreenLayout>
   );
 }
