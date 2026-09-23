@@ -1,6 +1,6 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import * as Localization from 'expo-localization';
+import { requireOptionalNativeModule } from 'expo-modules-core';
 
 import en from './locales/en.json';
 import fr from './locales/fr.json';
@@ -16,17 +16,21 @@ const resources = {
 };
 
 // Falls back to the device locale on first launch, before any saved
-// preference exists — matches only against our 4 supported codes. Guarded
-// because the native module is only present after a build that includes it
-// (e.g. right after adding the package, before the next EAS/dev-client
-// rebuild) — this must never crash app boot.
+// preference exists — matches only against our 4 supported codes.
+// `expo-localization` itself calls the *throwing* requireNativeModule at its
+// own top level, so even a guarded `require('expo-localization')` still
+// surfaces as a fatal error in dev when its native module isn't in the
+// running binary yet (e.g. right after adding the package, before the next
+// EAS/dev-client rebuild). Checking with the *optional* lookup first avoids
+// ever touching that package when it isn't there yet.
 function getDeviceLanguage() {
-  try {
-    const deviceCode = Localization.getLocales()[0]?.languageCode;
-    return LANGUAGES.some((lang) => lang.code === deviceCode) ? deviceCode : DEFAULT_LANGUAGE;
-  } catch {
+  if (!requireOptionalNativeModule('ExpoLocalization')) {
     return DEFAULT_LANGUAGE;
   }
+
+  const Localization = require('expo-localization');
+  const deviceCode = Localization.getLocales()[0]?.languageCode;
+  return LANGUAGES.some((lang) => lang.code === deviceCode) ? deviceCode : DEFAULT_LANGUAGE;
 }
 
 i18n.use(initReactI18next).init({
