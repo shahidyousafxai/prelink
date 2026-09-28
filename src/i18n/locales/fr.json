@@ -169,14 +169,12 @@
       }
     },
     "carePlan": {
-      "eyebrow": "Plan de soins",
       "headline": "Quelques idées optionnelles",
-      "sub": "Normaliser, puis proposer un choix, puis l'option la plus simple — rien ici n'est une instruction.",
+      "sub": "Quelques suggestions douces — rien d'obligatoire.",
       "walkTitle": "Certaines personnes trouvent qu'une courte marche aide en milieu de journée.",
-      "walkBody": "Si vous le souhaitez, voici une option de 20 secondes à la place.",
       "walkButton": "Essayer l'option de 20 secondes",
       "connectTitle": "Rester en contact aide souvent aussi.",
-      "connectBody": "Un appel rapide avec la famille, quand cela vous convient — aucun rappel ne vous relancera."
+      "connectBody": "Un appel rapide avec la famille, quand cela vous convient."
     },
     "checkIn": {
       "headline": "Comment vous sentez-vous aujourd'hui ?",

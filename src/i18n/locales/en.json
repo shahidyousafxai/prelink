@@ -169,14 +169,12 @@
       }
     },
     "carePlan": {
-      "eyebrow": "Care Plan",
       "headline": "A few optional ideas",
-      "sub": "Normalize, then offer a choice, then the lowest-effort option — nothing here is an instruction.",
+      "sub": "A few gentle suggestions — nothing you have to do.",
       "walkTitle": "Some people find a short walk helps midday.",
-      "walkBody": "If you'd like, here's a 20-second option instead.",
       "walkButton": "Try the 20-second option",
       "connectTitle": "Staying connected tends to help too.",
-      "connectBody": "A quick call with family, whenever feels right — no reminder will chase you about it."
+      "connectBody": "A quick call with family, whenever feels right."
     },
     "checkIn": {
       "headline": "How foggy does today feel?",
