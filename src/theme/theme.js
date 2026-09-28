@@ -56,7 +56,7 @@ export const shadows = {
 // up, so any screen shown underneath it needs this much extra bottom
 // padding (bar height + its own margin off the safe area) to keep the last
 // bit of content from being covered.
-export const floatingTabBarClearance = 88;
+export const floatingTabBarClearance = 78;
 
 // Font family keys match the useFonts() keys loaded in App.js.
 export const fonts = {
