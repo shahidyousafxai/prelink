@@ -1,14 +1,15 @@
-import { Pressable, Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet } from 'react-native';
 
 import { colors, fonts } from '../../theme/theme';
+import AnimatedPressable from '../shared/AnimatedPressable';
 
 // Matches the prototype's `.settings-row`.
 export default function SettingsRow({ label, value, onPress, last }) {
   return (
-    <Pressable style={[styles.row, last && styles.lastRow]} onPress={onPress}>
+    <AnimatedPressable style={[styles.row, last && styles.lastRow]} onPress={onPress} scaleTo={0.98}>
       <Text style={styles.label}>{label}</Text>
       <Text style={styles.value}>{value ? `${value} ›` : '›'}</Text>
-    </Pressable>
+    </AnimatedPressable>
   );
 }
 

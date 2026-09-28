@@ -1,7 +1,8 @@
-import { Pressable, Text, StyleSheet, I18nManager } from 'react-native';
+import { Text, StyleSheet, I18nManager } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 import { colors, fonts } from '../../../theme/theme';
+import AnimatedPressable from '../AnimatedPressable';
 
 // Matches the prototype's `.back-row` — a small "‹ Label" link, typically
 // wired to navigation.goBack() so users can revisit an earlier onboarding
@@ -9,10 +10,10 @@ import { colors, fonts } from '../../../theme/theme';
 // direction's "back" edge — right in RTL, left in LTR.
 export default function BackButton({ label = 'Back', onPress }) {
   return (
-    <Pressable style={styles.row} onPress={onPress} hitSlop={8}>
+    <AnimatedPressable style={styles.row} onPress={onPress} hitSlop={8} scaleTo={0.95}>
       <Ionicons name={I18nManager.isRTL ? 'chevron-forward' : 'chevron-back'} size={16} color={colors.inkSoft} />
       <Text style={styles.text}>{label}</Text>
-    </Pressable>
+    </AnimatedPressable>
   );
 }
 

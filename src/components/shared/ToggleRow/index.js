@@ -1,7 +1,7 @@
 import { View, Text, Switch, StyleSheet, I18nManager } from 'react-native';
 import { Controller } from 'react-hook-form';
 
-import { colors, fonts, radius } from '../../../theme/theme';
+import { colors, fonts, radius, shadows } from '../../../theme/theme';
 
 function Row({ label, value, onValueChange }) {
   return (
@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
     paddingVertical: 13,
     paddingHorizontal: 15,
     marginBottom: 12,
+    ...shadows.sm,
   },
   label: {
     fontSize: 13,

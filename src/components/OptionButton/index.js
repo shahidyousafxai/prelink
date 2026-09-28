@@ -1,13 +1,14 @@
-import { Pressable, Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet } from 'react-native';
 
-import { colors, fonts, radius } from '../../theme/theme';
+import { colors, fonts, radius, shadows } from '../../theme/theme';
+import AnimatedPressable from '../shared/AnimatedPressable';
 
 // Matches the prototype's `.big-opt` — a full-width selectable option row.
 export default function OptionButton({ label, onPress }) {
   return (
-    <Pressable style={styles.button} onPress={onPress}>
+    <AnimatedPressable style={styles.button} onPress={onPress} scaleTo={0.98}>
       <Text style={styles.label}>{label}</Text>
-    </Pressable>
+    </AnimatedPressable>
   );
 }
 
@@ -19,6 +20,7 @@ const styles = StyleSheet.create({
     borderRadius: radius.lg,
     paddingVertical: 15,
     paddingHorizontal: 16,
+    ...shadows.sm,
   },
   label: { fontSize: 14, fontFamily: fonts.bodySemiBold, color: colors.ink },
 });

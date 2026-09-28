@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet } from 'react-native';
 
-import { colors, fonts, radius } from '../../theme/theme';
+import { colors, fonts, radius, shadows } from '../../theme/theme';
 import Badge from '../shared/Badge';
 
 // Matches the prototype's `.consent-block` (optionally dimmed for the
@@ -25,8 +25,9 @@ const styles = StyleSheet.create({
     borderRadius: radius.md,
     padding: 14,
     marginBottom: 10,
+    ...shadows.sm,
   },
-  dimmed: { opacity: 0.5 },
+  dimmed: { opacity: 0.5, shadowOpacity: 0, elevation: 0 },
   titleRow: { flexDirection: 'row', alignItems: 'center', gap: 6, marginBottom: 4, flexWrap: 'wrap' },
   title: { fontSize: 13, fontFamily: fonts.bodyBold, color: colors.ink },
   description: { fontSize: 12.5, fontFamily: fonts.body, color: colors.inkSoft, lineHeight: 18 },

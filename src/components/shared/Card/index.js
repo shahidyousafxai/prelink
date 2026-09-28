@@ -1,13 +1,15 @@
-import { View, Pressable, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 
-import { colors, radius } from '../../../theme/theme';
+import { colors, radius, shadows } from '../../../theme/theme';
+import AnimatedPressable from '../AnimatedPressable';
 
-// Matches the prototype's `.card`. Renders as Pressable when `onPress` is
-// given, a plain View otherwise.
+// Matches the prototype's `.card`. Renders as an AnimatedPressable when
+// `onPress` is given, a plain View otherwise.
 export default function Card({ children, onPress, style }) {
-  const Component = onPress ? Pressable : View;
+  const Component = onPress ? AnimatedPressable : View;
+  const pressProps = onPress ? { onPress, scaleTo: 0.98 } : {};
   return (
-    <Component style={[styles.card, style]} onPress={onPress}>
+    <Component style={[styles.card, style]} {...pressProps}>
       {children}
     </Component>
   );
@@ -20,5 +22,6 @@ const styles = StyleSheet.create({
     borderColor: colors.line,
     borderRadius: radius.lg,
     padding: 16,
+    ...shadows.sm,
   },
 });

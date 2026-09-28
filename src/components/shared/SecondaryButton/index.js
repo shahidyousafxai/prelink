@@ -1,13 +1,14 @@
-import { Pressable, Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet } from 'react-native';
 
 import { colors, radius, fonts } from '../../../theme/theme';
+import AnimatedPressable from '../AnimatedPressable';
 
 // Matches the prototype's `.btn-secondary`.
 export default function SecondaryButton({ label, onPress, disabled }) {
   return (
-    <Pressable style={[styles.button, disabled && styles.disabled]} onPress={onPress} disabled={disabled}>
+    <AnimatedPressable style={[styles.button, disabled && styles.disabled]} onPress={onPress} disabled={disabled}>
       <Text style={[styles.label, disabled && styles.labelDisabled]}>{label}</Text>
-    </Pressable>
+    </AnimatedPressable>
   );
 }
 

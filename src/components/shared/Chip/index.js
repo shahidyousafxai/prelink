@@ -1,6 +1,7 @@
-import { Pressable, Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet } from 'react-native';
 
 import { colors, fonts, radius } from '../../../theme/theme';
+import AnimatedPressable from '../AnimatedPressable';
 
 // `variant="pill"` (default) matches the prototype's `.chip`/`.chip.sel`
 // (chip-grid). `variant="tile"` matches `.mood-chip`/`.mood-chip.sel` —
@@ -11,9 +12,10 @@ export default function Chip({ label, selected, onPress, variant = 'pill' }) {
   const isTile = variant === 'tile';
   const isGrid = variant === 'grid';
   return (
-    <Pressable
+    <AnimatedPressable
       style={[styles.chip, isTile && styles.tile, isGrid && styles.grid, selected && styles.selected]}
       onPress={onPress}
+      scaleTo={0.94}
     >
       <Text
         style={[
@@ -25,7 +27,7 @@ export default function Chip({ label, selected, onPress, variant = 'pill' }) {
       >
         {label}
       </Text>
-    </Pressable>
+    </AnimatedPressable>
   );
 }
 

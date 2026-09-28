@@ -1,7 +1,7 @@
 import { View, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-import { colors, radius } from '../../theme/theme';
+import { colors, radius, shadows } from '../../theme/theme';
 
 // Matches the prototype's `.mark` — a 48x48 pine rounded square with a
 // cream icon, shown at the top of every onboarding/auth screen.
@@ -23,5 +23,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignSelf: 'center',
     marginBottom: 16,
+    ...shadows.md,
   },
 });

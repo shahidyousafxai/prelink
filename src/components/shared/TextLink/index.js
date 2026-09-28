@@ -1,6 +1,7 @@
-import { Pressable, Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet } from 'react-native';
 
 import { colors, fonts } from '../../../theme/theme';
+import AnimatedPressable from '../AnimatedPressable';
 
 // `variant="accent"` (default) matches the prototype's pine link color used
 // for primary navigation (e.g. lang-btn.sel border, active states).
@@ -9,13 +10,13 @@ import { colors, fonts } from '../../../theme/theme';
 // `variant="danger"` matches `.danger-link` (e.g. "Delete my data").
 export default function TextLink({ label, onPress, variant = 'accent' }) {
   return (
-    <Pressable onPress={onPress} style={styles.wrap}>
+    <AnimatedPressable onPress={onPress} style={styles.wrap} scaleTo={0.95}>
       <Text
         style={[styles.label, variant === 'muted' && styles.muted, variant === 'danger' && styles.danger]}
       >
         {label}
       </Text>
-    </Pressable>
+    </AnimatedPressable>
   );
 }
 

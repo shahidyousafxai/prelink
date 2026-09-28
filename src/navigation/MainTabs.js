@@ -7,7 +7,7 @@ import HomeScreen from '../screens/home/HomeScreen';
 import PillarScreen from '../screens/home/PillarScreen';
 import CarePlanScreen from '../screens/home/CarePlanScreen';
 import SettingsScreen from '../screens/settings/SettingsScreen';
-import { colors, fonts, radius } from '../theme/theme';
+import { colors, fonts, radius, shadows } from '../theme/theme';
 
 const Tab = createBottomTabNavigator();
 
@@ -85,6 +85,8 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderTopColor: colors.line,
     paddingTop: 10,
+    ...shadows.md,
+    shadowOffset: { width: 0, height: -2 },
   },
   label: { fontSize: 11, fontFamily: fonts.bodySemiBold },
   dot: {
@@ -95,5 +97,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  dotActive: { backgroundColor: colors.pineSoft },
+  dotActive: { backgroundColor: colors.pineSoft, ...shadows.sm },
 });

@@ -1,19 +1,20 @@
-import { Pressable, Text, StyleSheet, ActivityIndicator } from 'react-native';
+import { Text, StyleSheet, ActivityIndicator } from 'react-native';
 
-import { colors, radius, fonts } from '../../../theme/theme';
+import { colors, radius, fonts, shadows } from '../../../theme/theme';
+import AnimatedPressable from '../AnimatedPressable';
 
 // Matches the prototype's `.btn-primary` / `.btn-primary.disabled`.
 export default function PrimaryButton({ label, onPress, disabled, loading }) {
   const isDisabled = disabled || loading;
 
   return (
-    <Pressable style={[styles.button, isDisabled && styles.disabled]} onPress={onPress} disabled={isDisabled}>
+    <AnimatedPressable style={[styles.button, isDisabled && styles.disabled]} onPress={onPress} disabled={isDisabled}>
       {loading ? (
         <ActivityIndicator color={colors.inkSoft} />
       ) : (
         <Text style={[styles.label, isDisabled && styles.labelDisabled]}>{label}</Text>
       )}
-    </Pressable>
+    </AnimatedPressable>
   );
 }
 
@@ -25,8 +26,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
+    ...shadows.md,
   },
-  disabled: { backgroundColor: colors.sandDeep },
+  disabled: { backgroundColor: colors.sandDeep, shadowOpacity: 0, elevation: 0 },
   label: { color: colors.white, fontSize: 14.5, fontFamily: fonts.bodyBold },
   labelDisabled: { color: colors.inkSoft },
 });

@@ -33,6 +33,25 @@ export const spacing = {
   xl: 28,
 };
 
+// Cross-platform elevation presets (iOS shadow* props + Android `elevation`)
+// for the flat cards/rows/buttons that had no depth at all.
+export const shadows = {
+  sm: {
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.06,
+    shadowRadius: 3,
+    elevation: 2,
+  },
+  md: {
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.08,
+    shadowRadius: 10,
+    elevation: 4,
+  },
+};
+
 // Font family keys match the useFonts() keys loaded in App.js.
 export const fonts = {
   headline: 'Literata_600SemiBold',
