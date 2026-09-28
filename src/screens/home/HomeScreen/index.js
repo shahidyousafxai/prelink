@@ -73,7 +73,6 @@ export default function HomeScreen({ navigation }) {
         end={{ x: 0.6, y: 1 }}
         style={styles.heroCard}
       >
-        <Text style={styles.heroEyebrow}>{t('home.home.heroEyebrow')}</Text>
         <Text style={styles.heroTitle}>{hero.title}</Text>
         <Text style={styles.heroBody}>{hero.body}</Text>
         <AnimatedPressable style={styles.heroButton} onPress={() => navigation.navigate('CheckIn')} scaleTo={0.96}>

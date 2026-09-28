@@ -121,7 +121,6 @@
         "title": "Today's step takes 20 seconds",
         "body": "No missed days, no catching up needed. Just today."
       },
-      "heroEyebrow": "Today's easiest step",
       "heroButton": "Do the 20-second version",
       "pillars": {
         "heart": "Heart",
@@ -137,7 +136,6 @@
     },
     "pillar": {
       "placeholderSub": "Directional patterns only — no scores, no numbers to interpret. Content below is a placeholder shape, not final copy.",
-      "eyebrow": "My Health · {{name}}",
       "ribbon": "NOT YET BUILT — SAME TEMPLATE AS MIND",
       "todayOption": "Today's option",
       "todayOptionPlaceholder": "Today's option (placeholder)",
@@ -148,7 +146,7 @@
         "name": "Mind",
         "sub": "Directional patterns only — no scores, no numbers to interpret.",
         "taskTitle": "5-minute word recall",
-        "taskBody": "Some people find this a nice way to start the afternoon. Entirely optional — tap to try it.",
+        "taskBody": "Entirely optional — tap to try it.",
         "activities": [
           { "label": "Morning tea + puzzle", "tag": "3 days" },
           { "label": "Calling a family member", "tag": "this week" }

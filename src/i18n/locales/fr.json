@@ -121,7 +121,6 @@
         "title": "L'étape du jour prend 20 secondes",
         "body": "Pas de jours manqués, rien à rattraper. Juste aujourd'hui."
       },
-      "heroEyebrow": "L'étape la plus simple du jour",
       "heroButton": "Faire la version de 20 secondes",
       "pillars": {
         "heart": "Cœur",
@@ -137,7 +136,6 @@
     },
     "pillar": {
       "placeholderSub": "Tendances directionnelles uniquement — pas de scores, pas de chiffres à interpréter. Le contenu ci-dessous est un espace réservé, pas le texte final.",
-      "eyebrow": "Ma santé · {{name}}",
       "ribbon": "PAS ENCORE DÉVELOPPÉ — MÊME MODÈLE QU'ESPRIT",
       "todayOption": "Option du jour",
       "todayOptionPlaceholder": "Option du jour (espace réservé)",
@@ -148,7 +146,7 @@
         "name": "Esprit",
         "sub": "Tendances directionnelles uniquement — pas de scores, pas de chiffres à interpréter.",
         "taskTitle": "Rappel de mots, 5 minutes",
-        "taskBody": "Certaines personnes trouvent que c'est une belle façon de commencer l'après-midi. Entièrement optionnel — appuyez pour essayer.",
+        "taskBody": "Entièrement optionnel — appuyez pour essayer.",
         "activities": [
           { "label": "Thé du matin + puzzle", "tag": "3 jours" },
           { "label": "Appeler un membre de la famille", "tag": "cette semaine" }

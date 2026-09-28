@@ -8,7 +8,6 @@ export const styles = StyleSheet.create({
   greetSub: { fontSize: 12.5, fontFamily: fonts.body, color: colors.inkSoft },
   moodRow: { flexDirection: 'row', gap: 8, marginBottom: 18 },
   heroCard: { borderRadius: 20, padding: 20, marginBottom: 16, ...shadows.md },
-  heroEyebrow: { fontSize: 11, fontFamily: fonts.bodySemiBold, color: '#BFE0D5', marginBottom: 4 },
   heroTitle: { fontSize: 18, fontFamily: fonts.headlineBold, color: colors.white, marginBottom: 6 },
   heroBody: { fontSize: 12.5, fontFamily: fonts.body, color: '#D9EAE4', lineHeight: 18, marginBottom: 14 },
   heroButton: {
