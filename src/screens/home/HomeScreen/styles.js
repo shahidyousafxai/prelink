@@ -1,23 +1,26 @@
 import { StyleSheet } from 'react-native';
 
-import { colors, fonts } from '../../../theme/theme';
+import { colors, fonts, shadows } from '../../../theme/theme';
 
 export const styles = StyleSheet.create({
-  headerRow: { marginBottom: 14 },
-  greet: { fontSize: 20, fontFamily: fonts.headline, color: colors.ink, marginBottom: 2 },
+  headerRow: { marginBottom: 16 },
+  greet: { fontSize: 23, fontFamily: fonts.headlineBold, color: colors.ink, marginBottom: 3 },
   greetSub: { fontSize: 12.5, fontFamily: fonts.body, color: colors.inkSoft },
-  moodRow: { flexDirection: 'row', gap: 7, marginBottom: 16 },
-  heroCard: { borderRadius: 18, padding: 18, marginBottom: 14 },
+  moodRow: { flexDirection: 'row', gap: 8, marginBottom: 18 },
+  heroCard: { borderRadius: 20, padding: 20, marginBottom: 16, ...shadows.md },
   heroEyebrow: { fontSize: 11, fontFamily: fonts.bodySemiBold, color: '#BFE0D5', marginBottom: 4 },
-  heroTitle: { fontSize: 17, fontFamily: fonts.headline, color: colors.white, marginBottom: 6 },
-  heroBody: { fontSize: 12.5, fontFamily: fonts.body, color: '#D9EAE4', lineHeight: 18, marginBottom: 12 },
+  heroTitle: { fontSize: 18, fontFamily: fonts.headlineBold, color: colors.white, marginBottom: 6 },
+  heroBody: { fontSize: 12.5, fontFamily: fonts.body, color: '#D9EAE4', lineHeight: 18, marginBottom: 14 },
   heroButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
     backgroundColor: colors.white,
     borderRadius: 12,
-    paddingVertical: 10,
-    paddingHorizontal: 15,
+    paddingVertical: 11,
+    paddingHorizontal: 16,
     alignSelf: 'flex-start',
   },
   heroButtonText: { fontSize: 13, fontFamily: fonts.bodyBold, color: colors.pine },
-  pillars: { flexDirection: 'row', flexWrap: 'wrap', gap: 9, marginBottom: 8 },
+  pillars: { flexDirection: 'row', flexWrap: 'wrap', gap: 10, marginBottom: 10 },
 });
