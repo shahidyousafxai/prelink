@@ -10,12 +10,12 @@ import Chip from '../shared/Chip';
 // decouples the stored form value (a stable, untranslated key) from the
 // translated `options` labels shown to the user, so a language switch never
 // changes an already-selected answer's underlying value.
-export default function ChipGroup({ control, name, label, options, valueKeys }) {
+export default function ChipGroup({ control, name, label, icon, options, valueKeys }) {
   const keys = valueKeys ?? options;
 
   return (
     <View style={styles.wrap}>
-      {label && <FieldLabel>{label}</FieldLabel>}
+      {label && <FieldLabel icon={icon}>{label}</FieldLabel>}
       <Controller
         control={control}
         name={name}

@@ -1,14 +1,10 @@
-import { View } from 'react-native';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-import ScreenLayout from '../../../components/shared/ScreenLayout';
+import OnboardingWizardLayout from '../../../components/OnboardingWizardLayout';
 import ScreenHeader from '../../../components/shared/ScreenHeader';
 import ChipGroup from '../../../components/ChipGroup';
-import PrimaryButton from '../../../components/shared/PrimaryButton';
-import BackButton from '../../../components/shared/BackButton';
 import { useCompleteOnboardingMutation } from '../../../network/authentication/authQueries';
-import { styles } from './styles';
 
 // Form values stay pinned to the fixed English option strings (used as
 // react-hook-form field values, not display text) so switching language
@@ -28,8 +24,17 @@ export default function BaselineScreen({ navigation }) {
   const careLabels = t('onboarding.baseline.careOptions', { returnObjects: true });
 
   return (
-    <ScreenLayout center={false}>
-      <BackButton label={t('common.back.consent')} onPress={() => navigation.goBack()} />
+    <OnboardingWizardLayout
+      step={3}
+      totalSteps={3}
+      backLabel={t('common.back.consent')}
+      onBack={() => navigation.goBack()}
+      primaryLabel={t('onboarding.baseline.continue')}
+      // Completing onboarding flips auth state; RootNavigator swaps to Home
+      // automatically, so no manual navigation call is needed here.
+      onPrimaryPress={() => completeOnboarding.mutate()}
+      primaryLoading={completeOnboarding.isPending}
+    >
       <ScreenHeader
         eyebrow={t('onboarding.baseline.eyebrow')}
         headline={t('onboarding.baseline.headline')}
@@ -40,6 +45,7 @@ export default function BaselineScreen({ navigation }) {
         control={control}
         name="sleep"
         label={t('onboarding.baseline.sleepLabel')}
+        icon="moon-outline"
         valueKeys={SLEEP_KEYS}
         options={sleepLabels}
       />
@@ -47,19 +53,10 @@ export default function BaselineScreen({ navigation }) {
         control={control}
         name="care"
         label={t('onboarding.baseline.careLabel')}
+        icon="people-outline"
         valueKeys={CARE_KEYS}
         options={careLabels}
       />
-
-      <View style={styles.spacer} />
-
-      {/* Completing onboarding flips auth state; RootNavigator swaps to
-          Home automatically, so no manual navigation call is needed here. */}
-      <PrimaryButton
-        label={t('onboarding.baseline.continue')}
-        onPress={() => completeOnboarding.mutate()}
-        loading={completeOnboarding.isPending}
-      />
-    </ScreenLayout>
+    </OnboardingWizardLayout>
   );
 }

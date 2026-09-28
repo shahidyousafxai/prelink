@@ -1,11 +1,9 @@
 import { View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
-import ScreenLayout from '../../../components/shared/ScreenLayout';
+import OnboardingWizardLayout from '../../../components/OnboardingWizardLayout';
 import ScreenHeader from '../../../components/shared/ScreenHeader';
-import AuthMark from '../../../components/AuthMark';
 import LanguageOption from '../../../components/LanguageOption';
-import PrimaryButton from '../../../components/shared/PrimaryButton';
 import { LANGUAGES } from '../../../i18n/languages';
 import { useLanguageQuery, useSetLanguageMutation } from '../../../network/language/languageQueries';
 import { styles } from './styles';
@@ -16,8 +14,12 @@ export default function LanguageScreen({ navigation }) {
   const setLanguage = useSetLanguageMutation();
 
   return (
-    <ScreenLayout center={false}>
-      <AuthMark />
+    <OnboardingWizardLayout
+      step={1}
+      totalSteps={3}
+      primaryLabel={t('onboarding.language.continue')}
+      onPrimaryPress={() => navigation.navigate('OnboardingConsent')}
+    >
       <ScreenHeader headline={t('onboarding.language.headline')} sub={t('onboarding.language.sub')} />
 
       <View style={styles.grid}>
@@ -33,10 +35,6 @@ export default function LanguageScreen({ navigation }) {
           />
         ))}
       </View>
-
-      <View style={styles.spacer} />
-
-      <PrimaryButton label={t('onboarding.language.continue')} onPress={() => navigation.navigate('OnboardingConsent')} />
-    </ScreenLayout>
+    </OnboardingWizardLayout>
   );
 }

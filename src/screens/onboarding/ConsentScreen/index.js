@@ -1,26 +1,31 @@
-import { View } from 'react-native';
 import { useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 
-import ScreenLayout from '../../../components/shared/ScreenLayout';
+import OnboardingWizardLayout from '../../../components/OnboardingWizardLayout';
 import ScreenHeader from '../../../components/shared/ScreenHeader';
 import ConsentBlock from '../../../components/ConsentBlock';
 import ToggleRow from '../../../components/shared/ToggleRow';
-import PrimaryButton from '../../../components/shared/PrimaryButton';
-import BackButton from '../../../components/shared/BackButton';
-import { styles } from './styles';
 
 // Stage 1 of 4 — the only consent required to use PreLink at all. The other
 // three stages (pattern awareness, caregiver sharing, clinical escalation)
-// are shown later, contextually, not as part of onboarding.
+// are shown later, contextually, not as part of onboarding. The "Consent 1
+// of 4" badge below is that separate, app-wide consent system — unrelated
+// to this wizard's own step 2-of-3 progress bar.
 export default function ConsentScreen({ navigation }) {
   const { t } = useTranslation();
   const { control, watch } = useForm({ defaultValues: { agree: false } });
   const agreed = watch('agree');
 
   return (
-    <ScreenLayout center={false}>
-      <BackButton label={t('common.back.language')} onPress={() => navigation.goBack()} />
+    <OnboardingWizardLayout
+      step={2}
+      totalSteps={3}
+      backLabel={t('common.back.language')}
+      onBack={() => navigation.goBack()}
+      primaryLabel={t('onboarding.consent.continue')}
+      onPrimaryPress={() => navigation.navigate('OnboardingBaseline')}
+      primaryDisabled={!agreed}
+    >
       <ScreenHeader
         eyebrow={t('onboarding.consent.eyebrow')}
         badge={t('onboarding.consent.badge')}
@@ -40,15 +45,7 @@ export default function ConsentScreen({ navigation }) {
         dimmed
       />
 
-      <View style={styles.spacer} />
-
       <ToggleRow control={control} name="agree" label={t('onboarding.consent.agree')} />
-
-      <PrimaryButton
-        label={t('onboarding.consent.continue')}
-        onPress={() => navigation.navigate('OnboardingBaseline')}
-        disabled={!agreed}
-      />
-    </ScreenLayout>
+    </OnboardingWizardLayout>
   );
 }
