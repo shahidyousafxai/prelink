@@ -12,79 +12,31 @@ import FormError from '../../../components/shared/FormError';
 import { useLogoutMutation } from '../../../network/authentication/authQueries';
 import { useLanguageQuery } from '../../../network/language/languageQueries';
 import { getLanguageMeta } from '../../../i18n/languages';
-import ManageConsentView from './ManageConsentView';
-import InviteCaregiverView from './InviteCaregiverView';
-import AboutView from './AboutView';
-import LanguageView from './LanguageView';
 import { styles } from './styles';
 
-const VIEWS = {
-  LIST: 'list',
-  MANAGE_CONSENT: 'manageConsent',
-  INVITE_CAREGIVER: 'inviteCaregiver',
-  ABOUT: 'about',
-  LANGUAGE: 'language',
-};
-
-// The "You" tab in MainTabs. It's a tab root (no push stack), so sub-screens
-// (Manage Consent / Invite a Caregiver / About / Language) are switched via
-// local view-state rather than real navigation routes — the same
-// single-page approach the prototype itself uses for these.
+// The "You" tab's list screen (SettingsStack's root route). Manage Consent /
+// Invite a Caregiver / About / Language are separate routes in that same
+// stack now, reached via navigation.navigate below.
 export default function SettingsScreen({ navigation }) {
   const { t } = useTranslation();
-  const [view, setView] = useState(VIEWS.LIST);
   const [showDeleteWarning, setShowDeleteWarning] = useState(false);
   const logout = useLogoutMutation();
   const { language } = useLanguageQuery();
-
-  const goToList = () => setView(VIEWS.LIST);
-
-  if (view === VIEWS.MANAGE_CONSENT) {
-    return (
-      <ScreenLayout center={false}>
-        <ManageConsentView onBack={goToList} />
-      </ScreenLayout>
-    );
-  }
-
-  if (view === VIEWS.INVITE_CAREGIVER) {
-    return (
-      <ScreenLayout center={false}>
-        <InviteCaregiverView onBack={goToList} />
-      </ScreenLayout>
-    );
-  }
-
-  if (view === VIEWS.ABOUT) {
-    return (
-      <ScreenLayout center={false}>
-        <AboutView onBack={goToList} />
-      </ScreenLayout>
-    );
-  }
-
-  if (view === VIEWS.LANGUAGE) {
-    return (
-      <ScreenLayout center={false}>
-        <LanguageView selected={language} onSelect={goToList} onBack={goToList} />
-      </ScreenLayout>
-    );
-  }
 
   return (
     <ScreenLayout center={false}>
       <ScreenHeader headline={t('settings.settings.headline')} />
 
       <SectionTitle>{t('settings.settings.sectionConsent')}</SectionTitle>
-      <SettingsRow label={t('settings.settings.manageConsent')} onPress={() => setView(VIEWS.MANAGE_CONSENT)} />
-      <SettingsRow label={t('settings.settings.inviteCaregiver')} onPress={() => setView(VIEWS.INVITE_CAREGIVER)} />
-      <SettingsRow label={t('settings.settings.about')} onPress={() => setView(VIEWS.ABOUT)} last />
+      <SettingsRow label={t('settings.settings.manageConsent')} onPress={() => navigation.navigate('ManageConsent')} />
+      <SettingsRow label={t('settings.settings.inviteCaregiver')} onPress={() => navigation.navigate('InviteCaregiver')} />
+      <SettingsRow label={t('settings.settings.about')} onPress={() => navigation.navigate('About')} last />
 
       <SectionTitle>{t('settings.settings.sectionAccount')}</SectionTitle>
       <SettingsRow
         label={t('settings.settings.language')}
         value={getLanguageMeta(language).label}
-        onPress={() => setView(VIEWS.LANGUAGE)}
+        onPress={() => navigation.navigate('Language')}
         last
       />
 

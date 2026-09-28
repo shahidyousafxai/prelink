@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslation } from 'react-i18next';
 
+import ScreenLayout from '../../../components/shared/ScreenLayout';
 import ScreenHeader from '../../../components/shared/ScreenHeader';
 import BackButton from '../../../components/shared/BackButton';
 import TextField from '../../../components/shared/TextField';
@@ -18,8 +19,9 @@ import { useSetConsentStage } from '../../../network/consent/consentQueries';
 // screen — sharing only becomes possible once both the invite and the
 // toggle happen together. Sending the invite is what unlocks the Caregiver
 // Home preview (Settings → Preview: Caregiver view).
-export default function InviteCaregiverView({ onBack }) {
+export default function InviteCaregiverView({ navigation }) {
   const { t } = useTranslation();
+  const onBack = () => navigation.goBack();
   const invite = useInviteCaregiverMutation();
   const setConsentStage = useSetConsentStage();
   const {
@@ -40,16 +42,16 @@ export default function InviteCaregiverView({ onBack }) {
 
   if (invite.isSuccess) {
     return (
-      <>
+      <ScreenLayout center={false}>
         <BackButton label={t('common.back.settings')} onPress={onBack} />
         <ConfirmBanner>{t('settings.inviteCaregiver.success', { name: invite.data.name })}</ConfirmBanner>
         <PrimaryButton label={t('settings.inviteCaregiver.done')} onPress={onBack} />
-      </>
+      </ScreenLayout>
     );
   }
 
   return (
-    <>
+    <ScreenLayout center={false}>
       <BackButton label={t('common.back.settings')} onPress={onBack} />
       <ScreenHeader
         eyebrow={t('settings.inviteCaregiver.eyebrow')}
@@ -71,6 +73,6 @@ export default function InviteCaregiverView({ onBack }) {
         disabled={!share}
         loading={invite.isPending}
       />
-    </>
+    </ScreenLayout>
   );
 }

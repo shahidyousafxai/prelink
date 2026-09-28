@@ -27,7 +27,7 @@ export default function RootNavigator() {
   const { needsOnboarding } = useOnboardingStatusQuery();
 
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <Stack.Navigator screenOptions={{ headerShown: false, animation: 'slide_from_right' }}>
       {isAuthenticated && needsOnboarding ? (
         // Shown once, right after Sign Up, before the user ever reaches Home.
         <>

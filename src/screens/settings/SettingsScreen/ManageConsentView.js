@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 
+import ScreenLayout from '../../../components/shared/ScreenLayout';
 import ScreenHeader from '../../../components/shared/ScreenHeader';
 import BackButton from '../../../components/shared/BackButton';
 import ToggleRow from '../../../components/shared/ToggleRow';
@@ -12,14 +13,14 @@ const STAGE_KEYS = ['s1', 's2', 's3', 's4'];
 // independently — this is the actual proof that consent isn't a one-time
 // checkbox. Reads the same shared consent state as the rest of the app,
 // not a private copy.
-export default function ManageConsentView({ onBack }) {
+export default function ManageConsentView({ navigation }) {
   const { t } = useTranslation();
   const { data: consent } = useConsentQuery();
   const setConsentStage = useSetConsentStage();
 
   return (
-    <>
-      <BackButton label={t('common.back.settings')} onPress={onBack} />
+    <ScreenLayout center={false}>
+      <BackButton label={t('common.back.settings')} onPress={() => navigation.goBack()} />
       <ScreenHeader headline={t('settings.manageConsent.headline')} sub={t('settings.manageConsent.sub')} />
       {STAGE_KEYS.map((key) => (
         <ToggleRow
@@ -29,6 +30,6 @@ export default function ManageConsentView({ onBack }) {
           onValueChange={(value) => setConsentStage(key, value)}
         />
       ))}
-    </>
+    </ScreenLayout>
   );
 }

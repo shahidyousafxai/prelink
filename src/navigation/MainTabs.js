@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import HomeScreen from '../screens/home/HomeScreen';
 import PillarScreen from '../screens/home/PillarScreen';
 import CarePlanScreen from '../screens/home/CarePlanScreen';
-import SettingsScreen from '../screens/settings/SettingsScreen';
+import SettingsStack from './SettingsStack';
 import { colors, fonts, radius, shadows } from '../theme/theme';
 
 const Tab = createBottomTabNavigator();
@@ -41,6 +41,10 @@ export default function MainTabs() {
         tabBarInactiveTintColor: colors.inkSoft,
         tabBarStyle: styles.tabBar,
         tabBarLabelStyle: styles.label,
+        // Bottom-tabs has no "slide" transition (that's a stack-only
+        // concept) — 'shift' is the closest built-in equivalent, sliding the
+        // outgoing/incoming scene content horizontally like a swipe.
+        animation: 'shift',
       }}
     >
       <Tab.Screen
@@ -69,7 +73,7 @@ export default function MainTabs() {
       />
       <Tab.Screen
         name="You"
-        component={SettingsScreen}
+        component={SettingsStack}
         options={{
           tabBarLabel: t('tabs.you'),
           tabBarIcon: ({ focused }) => <TabIcon focused={focused} name="You" />,

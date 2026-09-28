@@ -12,12 +12,16 @@ import { getLanguageMeta } from '../i18n/languages';
 // EAS/dev-client rebuild that actually embeds it). Checking with the
 // *optional* lookup first avoids ever touching that package when it isn't
 // there yet.
+//
+// Deliberately NOT short-circuited on `rtl === I18nManager.isRTL`: that flag
+// is cached at this session's launch and never updates afterward, since
+// forceRTL() only affects the *next* native launch. Comparing against it
+// mid-session is stale and, once you switch away from an RTL language
+// without an intervening real restart, permanently skips the call needed to
+// switch back — forceRTL/allowRTL are cheap and idempotent, so just always
+// call them.
 export async function applyRTL(code) {
   const { rtl } = getLanguageMeta(code);
-
-  if (rtl === I18nManager.isRTL) {
-    return;
-  }
 
   I18nManager.allowRTL(rtl);
   I18nManager.forceRTL(rtl);
