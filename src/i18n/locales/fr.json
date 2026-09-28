@@ -69,21 +69,16 @@
       "continue": "Continuer"
     },
     "consent": {
-      "eyebrow": "Avant de commencer",
       "badge": "Consentement 1 sur 4",
-      "note": "Les étapes 2 à 4 apparaîtront plus tard, seulement quand c'est pertinent — pas juste après celle-ci.",
       "headline": "Soutien au bien-être uniquement",
       "sub": "C'est le seul consentement nécessaire pour utiliser PreLink. Rien d'autre n'est inclus.",
       "stage1Badge": "Cette étape",
       "stage1Title": "Suivis quotidiens",
       "stage1Description": "PreLink repère les tendances quotidiennes d'humeur, de mouvement et d'habitudes. Il ne diagnostique ni ne prédit aucune condition.",
-      "laterTitle": "Plus tard, si vous le souhaitez",
-      "laterDescription": "La détection de tendances, le partage avec un proche aidant et l'examen clinique sont des étapes distinctes et optionnelles.",
       "agree": "Je comprends et j'accepte",
       "continue": "Continuer"
     },
     "baseline": {
-      "eyebrow": "Dernière étape · Un peu plus sur vous",
       "headline": "Trouvons votre point de départ",
       "sub": "Cela aide PreLink à s'adapter à vous dès le premier jour — rien ici n'est une information médicale.",
       "sleepLabel": "Comment est votre sommeil ces derniers temps ?",

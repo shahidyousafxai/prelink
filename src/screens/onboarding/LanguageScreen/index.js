@@ -29,6 +29,7 @@ export default function LanguageScreen({ navigation }) {
             native={lang.native}
             label={lang.label}
             rtl={lang.rtl}
+            accent={lang.accent}
             selected={language === lang.code}
             selectedText={t('common.selected')}
             onPress={() => setLanguage.mutate(lang.code)}

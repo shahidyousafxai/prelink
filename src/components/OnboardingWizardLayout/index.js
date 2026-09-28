@@ -5,15 +5,13 @@ import { colors, radius } from '../../theme/theme';
 import BackButton from '../shared/BackButton';
 import PrimaryButton from '../shared/PrimaryButton';
 
-// The 3-step onboarding wizard (Language -> Consent -> Baseline) gets its
-// own chrome, deliberately distinct from the auth screens' dark hero: a
-// light sand background, a slim segmented progress bar (this wizard's own
-// step count — unrelated to the app's separate 4-stage consent system,
-// which Consent's own ScreenHeader badge still shows independently), and
-// the continue button pinned to the bottom instead of scrolling away with
-// the content. Each screen still renders its own ScreenHeader as the first
-// child, since Language/Consent/Baseline each need a different header shape
-// (plain headline vs eyebrow+badge+note).
+// The 3-step onboarding wizard (Language -> Consent -> Baseline): a light
+// sand background, a slim segmented progress bar (this wizard's own step
+// count — unrelated to the app's separate 4-stage consent system, which
+// Consent's own ScreenHeader badge still shows independently), and the
+// continue button pinned to the bottom instead of scrolling away with the
+// content. Each screen renders its own ScreenHeader as the first scroll
+// child, since Language/Consent/Baseline each need a different header shape.
 export default function OnboardingWizardLayout({
   step,
   totalSteps,
@@ -60,7 +58,7 @@ const styles = StyleSheet.create({
   progressRow: { flexDirection: 'row', gap: 6 },
   segment: { flex: 1, height: 4, borderRadius: radius.sm - 8, backgroundColor: colors.line },
   segmentFilled: { backgroundColor: colors.pine },
-  scroll: { flexGrow: 1, paddingHorizontal: 24, paddingTop: 12 },
+  scroll: { flexGrow: 1, paddingHorizontal: 24, paddingTop: 16, paddingBottom: 8 },
   footer: {
     paddingHorizontal: 24,
     paddingTop: 12,

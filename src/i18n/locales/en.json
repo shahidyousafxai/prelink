@@ -69,21 +69,16 @@
       "continue": "Continue"
     },
     "consent": {
-      "eyebrow": "Before we begin",
       "badge": "Consent 1 of 4",
-      "note": "Stages 2–4 show up later, only when relevant — not right after this.",
       "headline": "Wellness support only",
       "sub": "This is the only consent needed to use PreLink at all. Nothing else is bundled in.",
       "stage1Badge": "This stage",
       "stage1Title": "Daily check-ins",
       "stage1Description": "PreLink notices everyday patterns in mood, movement, and habits. It does not diagnose or predict any condition.",
-      "laterTitle": "Later, if you choose",
-      "laterDescription": "Pattern awareness, caregiver sharing, and clinician review are separate, optional stages.",
       "agree": "I understand and agree",
       "continue": "Continue"
     },
     "baseline": {
-      "eyebrow": "Last onboarding step · A little about you",
       "headline": "Getting your starting point",
       "sub": "This helps PreLink meet you where you are from day one — nothing here is medical information.",
       "sleepLabel": "How's sleep been lately?",
