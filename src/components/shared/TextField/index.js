@@ -9,8 +9,10 @@ import FormError from '../FormError';
 
 // Matches the invite screen's `.text-input`. Passing `secureTextEntry`
 // marks this as a password field and adds an eye toggle to show/hide the
-// value, instead of a permanently masked input.
-export default function TextField({ control, name, label, error, secureTextEntry, ...inputProps }) {
+// value, instead of a permanently masked input. `icon` optionally renders a
+// leading Ionicons glyph (e.g. "mail-outline") for better field affordance —
+// unused by most screens, opt-in only.
+export default function TextField({ control, name, label, error, secureTextEntry, icon, ...inputProps }) {
   const [isVisible, setIsVisible] = useState(false);
   const isPassword = !!secureTextEntry;
 
@@ -22,8 +24,18 @@ export default function TextField({ control, name, label, error, secureTextEntry
         name={name}
         render={({ field: { onChange, onBlur, value } }) => (
           <View style={styles.inputWrap}>
+            {icon && (
+              <View style={styles.leadingIcon}>
+                <Ionicons name={icon} size={17} color={colors.inkSoft} />
+              </View>
+            )}
             <TextInput
-              style={[styles.input, isPassword && styles.inputWithIcon, error && styles.inputError]}
+              style={[
+                styles.input,
+                icon && styles.inputWithLeadingIcon,
+                isPassword && styles.inputWithIcon,
+                error && styles.inputError,
+              ]}
               placeholderTextColor={colors.inkSoft}
               onBlur={onBlur}
               onChangeText={onChange}
@@ -59,6 +71,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
   },
   inputWithIcon: I18nManager.isRTL ? { paddingLeft: 40 } : { paddingRight: 40 },
+  inputWithLeadingIcon: I18nManager.isRTL ? { paddingRight: 38 } : { paddingLeft: 38 },
   inputError: { borderColor: colors.clay },
   icon: I18nManager.isRTL ? { position: 'absolute', left: 12 } : { position: 'absolute', right: 12 },
+  leadingIcon: I18nManager.isRTL ? { position: 'absolute', right: 13, zIndex: 1 } : { position: 'absolute', left: 13, zIndex: 1 },
 });

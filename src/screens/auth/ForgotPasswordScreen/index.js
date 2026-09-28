@@ -3,9 +3,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslation } from 'react-i18next';
 
-import ScreenLayout from '../../../components/shared/ScreenLayout';
-import ScreenHeader from '../../../components/shared/ScreenHeader';
-import AuthMark from '../../../components/AuthMark';
+import AuthHeroLayout from '../../../components/AuthHeroLayout';
 import TextField from '../../../components/shared/TextField';
 import PrimaryButton from '../../../components/shared/PrimaryButton';
 import TextLink from '../../../components/shared/TextLink';
@@ -29,14 +27,11 @@ export default function ForgotPasswordScreen({ navigation }) {
   const onSubmit = (values) => forgotPassword.mutate(values);
 
   return (
-    <ScreenLayout>
-      <AuthMark />
-      <ScreenHeader
-        eyebrow={t('auth.forgotPassword.eyebrow')}
-        headline={t('auth.forgotPassword.headline')}
-        sub={t('auth.forgotPassword.sub')}
-      />
-
+    <AuthHeroLayout
+      eyebrow={t('auth.forgotPassword.eyebrow')}
+      headline={t('auth.forgotPassword.headline')}
+      sub={t('auth.forgotPassword.sub')}
+    >
       {forgotPassword.isSuccess ? (
         <ConfirmBanner>{t('auth.forgotPassword.success')}</ConfirmBanner>
       ) : (
@@ -46,6 +41,7 @@ export default function ForgotPasswordScreen({ navigation }) {
             name="email"
             label={t('auth.forgotPassword.emailLabel')}
             placeholder={t('auth.forgotPassword.emailPlaceholder')}
+            icon="mail-outline"
             autoCapitalize="none"
             keyboardType="email-address"
             error={errors.email?.message}
@@ -60,6 +56,6 @@ export default function ForgotPasswordScreen({ navigation }) {
       )}
 
       <TextLink label={t('auth.forgotPassword.backToLogin')} onPress={() => navigation.navigate('Login')} />
-    </ScreenLayout>
+    </AuthHeroLayout>
   );
 }

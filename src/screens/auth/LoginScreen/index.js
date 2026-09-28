@@ -3,9 +3,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslation } from 'react-i18next';
 
-import ScreenLayout from '../../../components/shared/ScreenLayout';
-import ScreenHeader from '../../../components/shared/ScreenHeader';
-import AuthMark from '../../../components/AuthMark';
+import AuthHeroLayout from '../../../components/AuthHeroLayout';
 import TextField from '../../../components/shared/TextField';
 import PrimaryButton from '../../../components/shared/PrimaryButton';
 import TextLink from '../../../components/shared/TextLink';
@@ -36,15 +34,13 @@ export default function LoginScreen({ navigation }) {
   };
 
   return (
-    <ScreenLayout>
-      <AuthMark />
-      <ScreenHeader eyebrow={t('auth.login.eyebrow')} headline={t('auth.login.headline')} sub={t('auth.login.sub')} />
-
+    <AuthHeroLayout eyebrow={t('auth.login.eyebrow')} headline={t('auth.login.headline')} sub={t('auth.login.sub')}>
       <TextField
         control={control}
         name="email"
         label={t('auth.login.emailLabel')}
         placeholder={t('auth.login.emailPlaceholder')}
+        icon="mail-outline"
         autoCapitalize="none"
         keyboardType="email-address"
         error={errors.email?.message}
@@ -54,6 +50,7 @@ export default function LoginScreen({ navigation }) {
         name="password"
         label={t('auth.login.passwordLabel')}
         placeholder={t('auth.login.passwordPlaceholder')}
+        icon="lock-closed-outline"
         secureTextEntry
         error={errors.password?.message}
       />
@@ -64,6 +61,6 @@ export default function LoginScreen({ navigation }) {
 
       <TextLink label={t('auth.login.forgotPassword')} onPress={() => navigation.navigate('ForgotPassword')} />
       <TextLink label={t('auth.login.noAccount')} onPress={() => navigation.navigate('Signup')} />
-    </ScreenLayout>
+    </AuthHeroLayout>
   );
 }

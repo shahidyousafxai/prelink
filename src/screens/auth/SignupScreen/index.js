@@ -3,9 +3,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslation } from 'react-i18next';
 
-import ScreenLayout from '../../../components/shared/ScreenLayout';
-import ScreenHeader from '../../../components/shared/ScreenHeader';
-import AuthMark from '../../../components/AuthMark';
+import AuthHeroLayout from '../../../components/AuthHeroLayout';
 import TextField from '../../../components/shared/TextField';
 import PrimaryButton from '../../../components/shared/PrimaryButton';
 import TextLink from '../../../components/shared/TextLink';
@@ -36,19 +34,17 @@ export default function SignupScreen({ navigation }) {
   };
 
   return (
-    <ScreenLayout>
-      <AuthMark />
-      <ScreenHeader
-        eyebrow={t('auth.signup.eyebrow')}
-        headline={t('auth.signup.headline')}
-        sub={t('auth.signup.sub')}
-      />
-
+    <AuthHeroLayout
+      eyebrow={t('auth.signup.eyebrow')}
+      headline={t('auth.signup.headline')}
+      sub={t('auth.signup.sub')}
+    >
       <TextField
         control={control}
         name="name"
         label={t('auth.signup.nameLabel')}
         placeholder={t('auth.signup.namePlaceholder')}
+        icon="person-outline"
         error={errors.name?.message}
       />
       <TextField
@@ -56,6 +52,7 @@ export default function SignupScreen({ navigation }) {
         name="email"
         label={t('auth.signup.emailLabel')}
         placeholder={t('auth.signup.emailPlaceholder')}
+        icon="mail-outline"
         autoCapitalize="none"
         keyboardType="email-address"
         error={errors.email?.message}
@@ -65,6 +62,7 @@ export default function SignupScreen({ navigation }) {
         name="password"
         label={t('auth.signup.passwordLabel')}
         placeholder={t('auth.signup.passwordPlaceholder')}
+        icon="lock-closed-outline"
         secureTextEntry
         error={errors.password?.message}
       />
@@ -73,6 +71,7 @@ export default function SignupScreen({ navigation }) {
         name="confirmPassword"
         label={t('auth.signup.confirmPasswordLabel')}
         placeholder={t('auth.signup.passwordPlaceholder')}
+        icon="lock-closed-outline"
         secureTextEntry
         error={errors.confirmPassword?.message}
       />
@@ -82,6 +81,6 @@ export default function SignupScreen({ navigation }) {
       <PrimaryButton label={t('auth.signup.submit')} onPress={handleSubmit(onSubmit)} loading={signup.isPending} />
 
       <TextLink label={t('auth.signup.haveAccount')} onPress={() => navigation.navigate('Login')} />
-    </ScreenLayout>
+    </AuthHeroLayout>
   );
 }
