@@ -3,14 +3,10 @@ import { Animated, KeyboardAvoidingView, Platform, ScrollView, Text, View, Style
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
+import { StatusBar } from 'expo-status-bar';
 
 import { colors, fonts, radius, shadows } from '../../theme/theme';
 
-// Shared shell for the 3 auth screens (Login/Signup/Forgot Password): a
-// gradient hero panel (same pine tones as Home's hero card) with the logo
-// mark, headline and sub-copy, and the form rendered as a white "sheet"
-// overlapping its rounded bottom edge, with a one-time fade + slide-up
-// entrance for that sheet.
 export default function AuthHeroLayout({ eyebrow, headline, sub, children }) {
   const insets = useSafeAreaInsets();
 
@@ -25,6 +21,7 @@ export default function AuthHeroLayout({ eyebrow, headline, sub, children }) {
 
   return (
     <View style={styles.flex}>
+      <StatusBar style="light" />
       <LinearGradient
         colors={[colors.pine, '#132C25']}
         start={{ x: 0, y: 0 }}
