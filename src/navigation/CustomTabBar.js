@@ -3,7 +3,7 @@ import { View, Text, Animated, StyleSheet } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 
-import { colors, fonts, radius, shadows } from '../theme/theme';
+import { colors, fonts, shadows } from '../theme/theme';
 import AnimatedPressable from '../components/shared/AnimatedPressable';
 
 const TAB_ICONS = {
@@ -13,7 +13,12 @@ const TAB_ICONS = {
   You: 'person-outline',
 };
 
-const BAR_PADDING = 6;
+const BAR_PADDING = 5;
+// Large enough to always resolve to a true stadium/pill shape (half the
+// bar's actual height) no matter the final measured height, instead of a
+// fixed value that could end up smaller than that and read as a rounded
+// rectangle rather than a pill.
+const PILL_RADIUS = 999;
 
 // Replaces the default bottom-tabs bar (which only lets you style the icon
 // and label slots separately) with a floating rounded card, inset from the
@@ -38,46 +43,53 @@ export default function CustomTabBar({ state, descriptors, navigation }) {
   }, [state.index, tabWidth]);
 
   return (
-    <View
-      style={[styles.wrap, { bottom: insets.bottom }]}
-      onLayout={(e) => setBarWidth(e.nativeEvent.layout.width)}
-    >
-      {tabWidth > 0 && (
-        <Animated.View style={[styles.indicator, { width: tabWidth, transform: [{ translateX }] }]} />
-      )}
-      {state.routes.map((route, index) => {
-        const { options } = descriptors[route.key];
-        const label = options.tabBarLabel ?? route.name;
-        const isFocused = state.index === index;
+    <View style={[styles.shadowWrap, { bottom: insets.bottom }]}>
+      <View style={styles.wrap} onLayout={(e) => setBarWidth(e.nativeEvent.layout.width)}>
+        {tabWidth > 0 && (
+          <Animated.View style={[styles.indicator, { width: tabWidth, transform: [{ translateX }] }]} />
+        )}
+        {state.routes.map((route, index) => {
+          const { options } = descriptors[route.key];
+          const label = options.tabBarLabel ?? route.name;
+          const isFocused = state.index === index;
 
-        const onPress = () => {
-          const event = navigation.emit({ type: 'tabPress', target: route.key, canPreventDefault: true });
-          if (!isFocused && !event.defaultPrevented) {
-            navigation.navigate(route.name);
-          }
-        };
+          const onPress = () => {
+            const event = navigation.emit({ type: 'tabPress', target: route.key, canPreventDefault: true });
+            if (!isFocused && !event.defaultPrevented) {
+              navigation.navigate(route.name);
+            }
+          };
 
-        return (
-          <AnimatedPressable key={route.key} onPress={onPress} style={styles.tab} scaleTo={0.93}>
-            <Ionicons name={TAB_ICONS[route.name]} size={20} color={isFocused ? colors.pine : colors.inkSoft} />
-            <Text style={[styles.label, isFocused && styles.labelActive]}>{label}</Text>
-          </AnimatedPressable>
-        );
-      })}
+          return (
+            <AnimatedPressable key={route.key} onPress={onPress} style={styles.tab} scaleTo={0.93}>
+              <Ionicons name={TAB_ICONS[route.name]} size={18} color={isFocused ? colors.pine : colors.inkSoft} />
+              <Text style={[styles.label, isFocused && styles.labelActive]}>{label}</Text>
+            </AnimatedPressable>
+          );
+        })}
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  wrap: {
+  // Separate from `wrap` because a view can't both cast a shadow and clip
+  // its children on iOS — overflow:hidden (needed to keep the sliding
+  // indicator and tabs inside the pill shape) silently clips the shadow
+  // away too if it's on the same view.
+  shadowWrap: {
     position: 'absolute',
     left: 20,
     right: 20,
-    flexDirection: 'row',
+    borderRadius: PILL_RADIUS,
     backgroundColor: colors.white,
-    borderRadius: radius.pill,
-    padding: BAR_PADDING,
     ...shadows.md,
+  },
+  wrap: {
+    flexDirection: 'row',
+    borderRadius: PILL_RADIUS,
+    padding: BAR_PADDING,
+    overflow: 'hidden',
   },
   indicator: {
     position: 'absolute',
@@ -85,16 +97,16 @@ const styles = StyleSheet.create({
     bottom: BAR_PADDING,
     left: BAR_PADDING,
     backgroundColor: colors.pineSoft,
-    borderRadius: radius.pill - 4,
+    borderRadius: PILL_RADIUS,
   },
   tab: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    gap: 3,
-    paddingVertical: 9,
-    borderRadius: radius.pill - 4,
+    gap: 2,
+    paddingVertical: 7,
+    borderRadius: PILL_RADIUS,
   },
-  label: { fontSize: 10.5, fontFamily: fonts.bodySemiBold, color: colors.inkSoft },
+  label: { fontSize: 9.5, fontFamily: fonts.bodySemiBold, color: colors.inkSoft },
   labelActive: { color: colors.pine },
 });
