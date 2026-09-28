@@ -46,7 +46,10 @@ export default function CustomTabBar({ state, descriptors, navigation }) {
     <View style={[styles.shadowWrap, { bottom: insets.bottom }]}>
       <View style={styles.wrap} onLayout={(e) => setBarWidth(e.nativeEvent.layout.width)}>
         {tabWidth > 0 && (
-          <Animated.View style={[styles.indicator, { width: tabWidth, transform: [{ translateX }] }]} />
+          <Animated.View
+            pointerEvents="none"
+            style={[styles.indicator, { width: tabWidth, transform: [{ translateX }] }]}
+          />
         )}
         {state.routes.map((route, index) => {
           const { options } = descriptors[route.key];
