@@ -15,7 +15,7 @@ export default function LanguageView({ navigation }) {
   const setLanguage = useSetLanguageMutation();
 
   return (
-    <ScreenLayout center={false}>
+    <ScreenLayout center={false} tabBarInset>
       <BackButton label={t('common.back.settings')} onPress={() => navigation.goBack()} />
       <ScreenHeader headline={t('settings.language.headline')} sub={t('settings.language.sub')} />
       <View style={styles.languageGrid}>

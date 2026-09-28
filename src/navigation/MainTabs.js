@@ -1,105 +1,36 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { View, StyleSheet } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
 
 import HomeScreen from '../screens/home/HomeScreen';
 import PillarScreen from '../screens/home/PillarScreen';
 import CarePlanScreen from '../screens/home/CarePlanScreen';
 import SettingsStack from './SettingsStack';
-import { colors, fonts, radius, shadows } from '../theme/theme';
+import CustomTabBar from './CustomTabBar';
 
 const Tab = createBottomTabNavigator();
 
-const TAB_ICONS = {
-  Today: 'today-outline',
-  MyHealth: 'heart-outline',
-  CarePlan: 'clipboard-outline',
-  You: 'person-outline',
-};
-
-function TabIcon({ focused, name }) {
-  return (
-    <View style={[styles.dot, focused && styles.dotActive]}>
-      <Ionicons name={TAB_ICONS[name]} size={14} color={focused ? colors.pine : colors.inkSoft} />
-    </View>
-  );
-}
-
 // Matches the prototype's `.app-tabs` bottom bar — shown on Home, Pillar
 // Detail, Care Plan, and Settings ("Today" / "My Health" / "Care Plan" /
-// "You"). The prototype's tab icons are plain color swatches; these use
-// real Ionicons inside the same swatch shape.
+// "You"). Rendered via CustomTabBar (a floating rounded bar) instead of the
+// default bottom-tabs styling.
 export default function MainTabs() {
   const { t } = useTranslation();
 
   return (
     <Tab.Navigator
+      tabBar={(props) => <CustomTabBar {...props} />}
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: colors.pine,
-        tabBarInactiveTintColor: colors.inkSoft,
-        tabBarStyle: styles.tabBar,
-        tabBarLabelStyle: styles.label,
         // Bottom-tabs has no "slide" transition (that's a stack-only
         // concept) — 'shift' is the closest built-in equivalent, sliding the
         // outgoing/incoming scene content horizontally like a swipe.
         animation: 'shift',
       }}
     >
-      <Tab.Screen
-        name="Today"
-        component={HomeScreen}
-        options={{
-          tabBarLabel: t('tabs.today'),
-          tabBarIcon: ({ focused }) => <TabIcon focused={focused} name="Today" />,
-        }}
-      />
-      <Tab.Screen
-        name="MyHealth"
-        component={PillarScreen}
-        options={{
-          tabBarLabel: t('tabs.myHealth'),
-          tabBarIcon: ({ focused }) => <TabIcon focused={focused} name="MyHealth" />,
-        }}
-      />
-      <Tab.Screen
-        name="CarePlan"
-        component={CarePlanScreen}
-        options={{
-          tabBarLabel: t('tabs.carePlan'),
-          tabBarIcon: ({ focused }) => <TabIcon focused={focused} name="CarePlan" />,
-        }}
-      />
-      <Tab.Screen
-        name="You"
-        component={SettingsStack}
-        options={{
-          tabBarLabel: t('tabs.you'),
-          tabBarIcon: ({ focused }) => <TabIcon focused={focused} name="You" />,
-        }}
-      />
+      <Tab.Screen name="Today" component={HomeScreen} options={{ tabBarLabel: t('tabs.today') }} />
+      <Tab.Screen name="MyHealth" component={PillarScreen} options={{ tabBarLabel: t('tabs.myHealth') }} />
+      <Tab.Screen name="CarePlan" component={CarePlanScreen} options={{ tabBarLabel: t('tabs.carePlan') }} />
+      <Tab.Screen name="You" component={SettingsStack} options={{ tabBarLabel: t('tabs.you') }} />
     </Tab.Navigator>
   );
 }
-
-const styles = StyleSheet.create({
-  tabBar: {
-    backgroundColor: colors.white,
-    borderTopWidth: 1,
-    borderTopColor: colors.line,
-    paddingTop: 10,
-    ...shadows.md,
-    shadowOffset: { width: 0, height: -2 },
-  },
-  label: { fontSize: 11, fontFamily: fonts.bodySemiBold },
-  dot: {
-    width: 22,
-    height: 22,
-    borderRadius: radius.sm - 5,
-    backgroundColor: colors.sandDeep,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  dotActive: { backgroundColor: colors.pineSoft, ...shadows.sm },
-});

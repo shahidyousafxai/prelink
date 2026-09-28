@@ -19,7 +19,7 @@ export default function AboutView({ navigation }) {
   }));
 
   return (
-    <ScreenLayout center={false}>
+    <ScreenLayout center={false} tabBarInset>
       <BackButton label={t('common.back.settings')} onPress={() => navigation.goBack()} />
       <ScreenHeader headline={t('settings.about.headline')} />
       <Banner>{t('settings.about.banner')}</Banner>

@@ -52,6 +52,12 @@ export const shadows = {
   },
 };
 
+// The floating tab bar sits on top of screen content rather than pushing it
+// up, so any screen shown underneath it needs this much extra bottom
+// padding (bar height + its own margin off the safe area) to keep the last
+// bit of content from being covered.
+export const floatingTabBarClearance = 88;
+
 // Font family keys match the useFonts() keys loaded in App.js.
 export const fonts = {
   headline: 'Literata_600SemiBold',

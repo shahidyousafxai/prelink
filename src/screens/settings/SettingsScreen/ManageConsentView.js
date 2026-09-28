@@ -19,7 +19,7 @@ export default function ManageConsentView({ navigation }) {
   const setConsentStage = useSetConsentStage();
 
   return (
-    <ScreenLayout center={false}>
+    <ScreenLayout center={false} tabBarInset>
       <BackButton label={t('common.back.settings')} onPress={() => navigation.goBack()} />
       <ScreenHeader headline={t('settings.manageConsent.headline')} sub={t('settings.manageConsent.sub')} />
       {STAGE_KEYS.map((key) => (

@@ -55,7 +55,7 @@ export default function PillarScreen({ navigation, route }) {
   const activities = isMind ? t('home.pillar.mind.activities', { returnObjects: true }) : null;
 
   return (
-    <ScreenLayout center={false}>
+    <ScreenLayout center={false} tabBarInset>
       <BackButton label={t('common.back.today')} onPress={() => navigation.navigate('Today')} />
       {meta.future && <FutureRibbon label={t('home.pillar.ribbon')} />}
       <ScreenHeader eyebrow={t('home.pillar.eyebrow', { name })} headline={name} sub={sub} />

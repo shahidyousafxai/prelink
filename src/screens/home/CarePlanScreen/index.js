@@ -13,7 +13,7 @@ export default function CarePlanScreen({ navigation }) {
   const { t } = useTranslation();
 
   return (
-    <ScreenLayout center={false}>
+    <ScreenLayout center={false} tabBarInset>
       <ScreenHeader
         eyebrow={t('home.carePlan.eyebrow')}
         headline={t('home.carePlan.headline')}

@@ -33,7 +33,7 @@ export default function HomeScreen({ navigation }) {
     : { title: t(`home.home.moodHero.${mood}.title`), body: t(`home.home.moodHero.${mood}.body`) };
 
   return (
-    <ScreenLayout center={false}>
+    <ScreenLayout center={false} tabBarInset>
       <View style={styles.headerRow}>
         <Text style={styles.greet}>{reentryPreview ? t('home.home.welcomeBack') : getGreeting(t)}</Text>
         <Text style={styles.greetSub}>

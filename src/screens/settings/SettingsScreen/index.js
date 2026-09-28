@@ -24,7 +24,7 @@ export default function SettingsScreen({ navigation }) {
   const { language } = useLanguageQuery();
 
   return (
-    <ScreenLayout center={false}>
+    <ScreenLayout center={false} tabBarInset>
       <ScreenHeader headline={t('settings.settings.headline')} />
 
       <SectionTitle>{t('settings.settings.sectionConsent')}</SectionTitle>

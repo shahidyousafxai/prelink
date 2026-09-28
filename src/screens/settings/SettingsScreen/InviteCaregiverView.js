@@ -42,7 +42,7 @@ export default function InviteCaregiverView({ navigation }) {
 
   if (invite.isSuccess) {
     return (
-      <ScreenLayout center={false}>
+      <ScreenLayout center={false} tabBarInset>
         <BackButton label={t('common.back.settings')} onPress={onBack} />
         <ConfirmBanner>{t('settings.inviteCaregiver.success', { name: invite.data.name })}</ConfirmBanner>
         <PrimaryButton label={t('settings.inviteCaregiver.done')} onPress={onBack} />
@@ -51,7 +51,7 @@ export default function InviteCaregiverView({ navigation }) {
   }
 
   return (
-    <ScreenLayout center={false}>
+    <ScreenLayout center={false} tabBarInset>
       <BackButton label={t('common.back.settings')} onPress={onBack} />
       <ScreenHeader
         eyebrow={t('settings.inviteCaregiver.eyebrow')}
