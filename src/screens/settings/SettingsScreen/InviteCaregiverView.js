@@ -1,6 +1,8 @@
 import { useMemo } from 'react';
+import { View } from 'react-native';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { Ionicons } from '@expo/vector-icons';
 import { useTranslation } from 'react-i18next';
 
 import ScreenLayout from '../../../components/shared/ScreenLayout';
@@ -14,6 +16,8 @@ import ConfirmBanner from '../../../components/shared/ConfirmBanner';
 import { getInviteCaregiverSchema } from '../../../validations/inviteCaregiver';
 import { useInviteCaregiverMutation } from '../../../network/caregiver/caregiverQueries';
 import { useSetConsentStage } from '../../../network/consent/consentQueries';
+import { colors } from '../../../theme/theme';
+import { styles } from './styles';
 
 // This screen is simultaneously the invite flow and the Stage 3 consent
 // screen — sharing only becomes possible once both the invite and the
@@ -44,6 +48,9 @@ export default function InviteCaregiverView({ navigation }) {
     return (
       <ScreenLayout center={false} tabBarInset>
         <BackButton label={t('common.back.settings')} onPress={onBack} />
+        <View style={styles.inviteAvatar}>
+          <Ionicons name="checkmark" size={22} color={colors.white} />
+        </View>
         <ConfirmBanner>{t('settings.inviteCaregiver.success', { name: invite.data.name })}</ConfirmBanner>
         <PrimaryButton label={t('settings.inviteCaregiver.done')} onPress={onBack} />
       </ScreenLayout>
@@ -53,6 +60,9 @@ export default function InviteCaregiverView({ navigation }) {
   return (
     <ScreenLayout center={false} tabBarInset>
       <BackButton label={t('common.back.settings')} onPress={onBack} />
+      <View style={[styles.inviteAvatar, { backgroundColor: colors.clay }]}>
+        <Ionicons name="people-outline" size={22} color={colors.white} />
+      </View>
       <ScreenHeader
         eyebrow={t('settings.inviteCaregiver.eyebrow')}
         headline={t('settings.inviteCaregiver.headline')}
@@ -63,6 +73,7 @@ export default function InviteCaregiverView({ navigation }) {
         name="name"
         label={t('settings.inviteCaregiver.nameLabel')}
         placeholder={t('settings.inviteCaregiver.namePlaceholder')}
+        icon="person-outline"
         error={errors.name?.message}
       />
       <ToggleRow control={control} name="share" label={t('settings.inviteCaregiver.shareLabel')} />

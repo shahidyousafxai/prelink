@@ -7,15 +7,23 @@ import BackButton from '../../../components/shared/BackButton';
 import Banner from '../../../components/shared/Banner';
 import SectionTitle from '../../../components/shared/SectionTitle';
 import DataTable from '../../../components/shared/DataTable';
+import { colors } from '../../../theme/theme';
 import { styles } from './styles';
 
-const ROW_KEYS = ['cognitiveSignals', 'longitudinalTrends', 'caregiverViews', 'clinicianViews'];
+const ROWS_META = [
+  { key: 'cognitiveSignals', icon: 'bulb-outline', accent: colors.pine },
+  { key: 'longitudinalTrends', icon: 'trending-up-outline', accent: colors.gold },
+  { key: 'caregiverViews', icon: 'people-outline', accent: colors.clay },
+  { key: 'clinicianViews', icon: 'medkit-outline', accent: colors.ink },
+];
 
 export default function AboutView({ navigation }) {
   const { t } = useTranslation();
-  const rows = ROW_KEYS.map((key) => ({
+  const rows = ROWS_META.map(({ key, icon, accent }) => ({
     key: t(`settings.about.rows.${key}`),
     value: t(`settings.about.rows.${key}Value`),
+    icon,
+    accent,
   }));
 
   return (
