@@ -8,7 +8,18 @@ import {
   saveAuthToken,
   setNeedsOnboarding,
 } from '../../utils/storage';
-import { forgotPasswordFn, loginFn, resetPasswordFn, signupFn } from './authFns';
+import { completeOnboardingFn, forgotPasswordFn, loginFn, resetPasswordFn, signupFn } from './authFns';
+
+// Shared by login and signup. The backend's onboardingComplete flag decides
+// whether the user lands on Home or restarts onboarding at Language; it's
+// also cached locally so reopening the app routes the same way.
+async function startSession(queryClient, { token, user }) {
+  const needsOnboarding = !user.onboardingComplete;
+  await saveAuthToken(token);
+  await setNeedsOnboarding(needsOnboarding);
+  queryClient.setQueryData(queryKeys.auth.session(), token);
+  queryClient.setQueryData(queryKeys.auth.onboarding(), needsOnboarding);
+}
 
 // The token never changes on its own between sign-in/sign-out, so it never
 // needs a background refetch — the mutations below update the cache
@@ -24,8 +35,8 @@ export function useSessionQuery() {
 }
 
 // Whether a signed-in user still needs to go through onboarding
-// (Language -> Consent -> Baseline). Only a fresh Sign Up sets this; a
-// returning Login always skips it.
+// (Language -> Consent -> Baseline). Set from the backend on login/signup
+// (see startSession) and read from storage on launch.
 export function useOnboardingStatusQuery() {
   const { data: needsOnboarding, isLoading } = useQuery({
     queryKey: queryKeys.auth.onboarding(),
@@ -41,12 +52,7 @@ export function useLoginMutation() {
 
   return useMutation({
     mutationFn: loginFn,
-    onSuccess: async (data) => {
-      await saveAuthToken(data.token);
-      await setNeedsOnboarding(false);
-      queryClient.setQueryData(queryKeys.auth.session(), data.token);
-      queryClient.setQueryData(queryKeys.auth.onboarding(), false);
-    },
+    onSuccess: (data) => startSession(queryClient, data),
   });
 }
 
@@ -55,12 +61,7 @@ export function useSignupMutation() {
 
   return useMutation({
     mutationFn: signupFn,
-    onSuccess: async (data) => {
-      await saveAuthToken(data.token);
-      await setNeedsOnboarding(true);
-      queryClient.setQueryData(queryKeys.auth.session(), data.token);
-      queryClient.setQueryData(queryKeys.auth.onboarding(), true);
-    },
+    onSuccess: (data) => startSession(queryClient, data),
   });
 }
 
@@ -76,13 +77,16 @@ export function useLogoutMutation() {
   });
 }
 
-// Called when the Baseline screen finishes the onboarding flow.
+// Called when the Baseline screen finishes the onboarding flow. The local
+// flag only flips after the backend confirms, so a failed request keeps the
+// user on Baseline instead of letting the two get out of sync.
 export function useCompleteOnboardingMutation() {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: () => setNeedsOnboarding(false),
-    onSuccess: () => {
+    mutationFn: completeOnboardingFn,
+    onSuccess: async () => {
+      await setNeedsOnboarding(false);
       queryClient.setQueryData(queryKeys.auth.onboarding(), false);
     },
   });

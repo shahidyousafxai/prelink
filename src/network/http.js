@@ -20,12 +20,17 @@ export const queryKeys = {
   },
 };
 
+// The backend returns { message, details: [{ field, message }] } for validation
+// errors — the first field message is more useful than the generic one.
 export function getErrorMessage(error) {
-  return error?.response?.data?.message || error?.message || 'Something went wrong. Please try again.';
+  const data = error?.response?.data;
+  return data?.details?.[0]?.message || data?.message || error?.message || 'Something went wrong. Please try again.';
 }
 
+// Set EXPO_PUBLIC_API_URL in .env.local (see .env.example). A physical device
+// needs your machine's LAN IP — `localhost` only works on the iOS simulator.
 const http = axios.create({
-  baseURL: 'https://jsonplaceholder.typicode.com',
+  baseURL: process.env.EXPO_PUBLIC_API_URL || 'http://localhost:5000/api',
   timeout: 10000,
 });
 

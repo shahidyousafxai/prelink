@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import OnboardingWizardLayout from '../../../components/OnboardingWizardLayout';
 import ScreenHeader from '../../../components/shared/ScreenHeader';
 import AnimatedPressable from '../../../components/shared/AnimatedPressable';
+import FormError from '../../../components/shared/FormError';
 import { useCompleteOnboardingMutation } from '../../../network/authentication/authQueries';
 import { colors, fonts, radius, shadows } from '../../../theme/theme';
 
@@ -104,6 +105,8 @@ export default function BaselineScreen({ navigation }) {
           />
         )}
       />
+
+      <FormError message={completeOnboarding.isError ? completeOnboarding.error.message : null} />
     </OnboardingWizardLayout>
   );
 }

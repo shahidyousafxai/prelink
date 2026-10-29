@@ -1,33 +1,23 @@
-// Mocked until real auth endpoints exist — swap each body for the matching
-// http helper call (e.g. `post(AUTH.LOGIN, credentials)` from `../http`)
-// once a backend is available. Endpoint paths already live in
-// `network/constant.js`.
+import { post } from '../http';
+import { AUTH, ONBOARDING } from '../constant';
+
+// Login/signup resolve to { token, user }; forgot/reset resolve to { message }.
 export function loginFn(credentials) {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (credentials.email && credentials.password) {
-        resolve({ token: 'demo-token' });
-      } else {
-        reject(new Error('Invalid credentials'));
-      }
-    }, 500);
-  });
+  return post(AUTH.LOGIN, credentials);
 }
 
 export function signupFn(credentials) {
-  return new Promise((resolve) => {
-    setTimeout(() => resolve({ token: 'demo-token' }), 500);
-  });
+  return post(AUTH.SIGNUP, credentials);
 }
 
 export function forgotPasswordFn(payload) {
-  return new Promise((resolve) => {
-    setTimeout(() => resolve({ message: 'Reset link sent' }), 500);
-  });
+  return post(AUTH.FORGOT_PASSWORD, payload);
 }
 
 export function resetPasswordFn(payload) {
-  return new Promise((resolve) => {
-    setTimeout(() => resolve({ message: 'Password has been reset. Please log in.' }), 500);
-  });
+  return post(AUTH.RESET_PASSWORD, payload);
+}
+
+export function completeOnboardingFn() {
+  return post(ONBOARDING.COMPLETE);
 }
