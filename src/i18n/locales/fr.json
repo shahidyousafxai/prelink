@@ -54,11 +54,27 @@
     "forgotPassword": {
       "eyebrow": "Aide au mot de passe",
       "headline": "Réinitialisez votre mot de passe",
-      "sub": "Nous vous enverrons un lien de réinitialisation par e-mail.",
-      "success": "Si un compte existe pour cet e-mail, un lien de réinitialisation est en route.",
+      "sub": "Nous vous enverrons un code de réinitialisation par e-mail.",
+      "success": "Si un compte existe pour cet e-mail, un code de réinitialisation est en route.",
       "emailLabel": "E-mail",
       "emailPlaceholder": "vous@exemple.com",
-      "submit": "Envoyer le lien",
+      "submit": "Envoyer le code",
+      "backToLogin": "Retour à la connexion",
+      "haveCode": "J'ai un code de réinitialisation"
+    },
+    "resetPassword": {
+      "eyebrow": "Aide au mot de passe",
+      "headline": "Choisissez un nouveau mot de passe",
+      "sub": "Saisissez le code à 6 chiffres reçu par e-mail et choisissez un nouveau mot de passe.",
+      "emailLabel": "E-mail",
+      "emailPlaceholder": "vous@exemple.com",
+      "codeLabel": "Code de réinitialisation",
+      "codePlaceholder": "Code à 6 chiffres",
+      "passwordLabel": "Nouveau mot de passe",
+      "passwordPlaceholder": "••••••••",
+      "confirmPasswordLabel": "Confirmer le nouveau mot de passe",
+      "submit": "Réinitialiser le mot de passe",
+      "success": "Votre mot de passe a été réinitialisé. Vous pouvez maintenant vous connecter.",
       "backToLogin": "Retour à la connexion"
     }
   },
@@ -371,6 +387,7 @@
     "passwordMin": "Le mot de passe doit contenir au moins 6 caractères",
     "nameMin": "Saisissez votre nom",
     "passwordsDontMatch": "Les mots de passe ne correspondent pas",
-    "caregiverNameRequired": "Saisissez son nom"
+    "caregiverNameRequired": "Saisissez son nom",
+    "resetCodeInvalid": "Saisissez le code à 6 chiffres"
   }
 }

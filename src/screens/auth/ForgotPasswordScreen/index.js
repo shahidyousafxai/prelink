@@ -18,6 +18,7 @@ export default function ForgotPasswordScreen({ navigation }) {
   const {
     control,
     handleSubmit,
+    getValues,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(useMemo(() => getForgotPasswordSchema(t), [t])),
@@ -55,6 +56,11 @@ export default function ForgotPasswordScreen({ navigation }) {
         </>
       )}
 
+      {/* Always shown, so users who already have a code don't need to request another. */}
+      <TextLink
+        label={t('auth.forgotPassword.haveCode')}
+        onPress={() => navigation.navigate('ResetPassword', { email: getValues('email').trim() })}
+      />
       <TextLink label={t('auth.forgotPassword.backToLogin')} onPress={() => navigation.navigate('Login')} />
     </AuthHeroLayout>
   );

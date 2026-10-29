@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useOnboardingStatusQuery, useSessionQuery } from '../network/authentication/authQueries';
 import ForgotPasswordScreen from '../screens/auth/ForgotPasswordScreen';
 import LoginScreen from '../screens/auth/LoginScreen';
+import ResetPasswordScreen from '../screens/auth/ResetPasswordScreen';
 import SignupScreen from '../screens/auth/SignupScreen';
 import AssessmentTaskScreen from '../screens/home/AssessmentTaskScreen';
 import BreathingExerciseScreen from '../screens/home/BreathingExerciseScreen';
@@ -81,6 +82,7 @@ export default function RootNavigator() {
           <Stack.Screen name="Login" component={LoginScreen} />
           <Stack.Screen name="Signup" component={SignupScreen} />
           <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} />
+          <Stack.Screen name="ResetPassword" component={ResetPasswordScreen} />
         </>
       )}
     </Stack.Navigator>

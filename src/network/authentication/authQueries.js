@@ -8,7 +8,7 @@ import {
   saveAuthToken,
   setNeedsOnboarding,
 } from '../../utils/storage';
-import { forgotPasswordFn, loginFn, signupFn } from './authFns';
+import { forgotPasswordFn, loginFn, resetPasswordFn, signupFn } from './authFns';
 
 // The token never changes on its own between sign-in/sign-out, so it never
 // needs a background refetch — the mutations below update the cache
@@ -91,5 +91,13 @@ export function useCompleteOnboardingMutation() {
 export function useForgotPasswordMutation() {
   return useMutation({
     mutationFn: forgotPasswordFn,
+  });
+}
+
+// A successful reset invalidates every existing session server-side, so the
+// user is sent back to Login rather than signed in here.
+export function useResetPasswordMutation() {
+  return useMutation({
+    mutationFn: resetPasswordFn,
   });
 }

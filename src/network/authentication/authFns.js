@@ -25,3 +25,9 @@ export function forgotPasswordFn(payload) {
     setTimeout(() => resolve({ message: 'Reset link sent' }), 500);
   });
 }
+
+export function resetPasswordFn(payload) {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve({ message: 'Password has been reset. Please log in.' }), 500);
+  });
+}
