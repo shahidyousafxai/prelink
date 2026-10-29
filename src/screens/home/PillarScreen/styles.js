@@ -11,8 +11,8 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     marginBottom: 12,
   },
-  card: { marginBottom: 14 },
-  taskCard: { flexDirection: 'row', alignItems: 'center' },
+  sectionSpacing: { marginTop: 16 },
+  taskCard: { flexDirection: 'row', alignItems: 'center', marginBottom: 14 },
   taskAvatar: {
     width: 40,
     height: 40,

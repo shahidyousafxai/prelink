@@ -129,44 +129,52 @@
         "mind": "Esprit"
       },
       "pillarStates": {
-        "holdingSteady": "Stable",
-        "worthLook": "À surveiller"
+        "heart": "Pas encore disponible",
+        "weight": "Pas encore disponible",
+        "calm": "Essayer une pause respiration",
+        "mind": "Pas assez d'informations"
       },
       "reentryPreviewLink": "Aperçu : retour après 3 semaines d'absence"
     },
     "pillar": {
-      "placeholderSub": "Tendances directionnelles uniquement — pas de scores, pas de chiffres à interpréter. Le contenu ci-dessous est un espace réservé, pas le texte final.",
-      "ribbon": "PAS ENCORE DÉVELOPPÉ — MÊME MODÈLE QU'ESPRIT",
       "todayOption": "Option du jour",
-      "todayOptionPlaceholder": "Option du jour (espace réservé)",
       "workingForYou": "Ce qui fonctionne bien pour vous",
-      "trendLabelSteady": "Stable au cours des 6 dernières semaines",
-      "trendLabelWatch": "À surveiller ce mois-ci",
       "mind": {
         "name": "Esprit",
-        "sub": "Tendances directionnelles uniquement — pas de scores, pas de chiffres à interpréter.",
+        "lockRibbon": "Interprétation en attente d'approbation clinique",
+        "sub": "L'activité ci-dessous fonctionne dès aujourd'hui. Le jugement de tendance n'apparaît pas encore — aucun responsable clinique n'a validé ce à quoi ressemble un changement significatif.",
+        "neutralMessage": "Pas assez d'informations disponibles. Aucune interprétation clinique n'est encore affichée ici.",
         "taskTitle": "Rappel de mots, 5 minutes",
         "taskBody": "Entièrement optionnel — appuyez pour essayer.",
         "activities": [
           { "label": "Thé du matin + puzzle", "tag": "3 jours" },
           { "label": "Appeler un membre de la famille", "tag": "cette semaine" }
         ]
-      },
-      "heart": {
-        "name": "Cœur",
-        "taskTitle": "Suivi de la tension artérielle",
-        "taskBody": "Même schéma optionnel et non directif que la tâche de rappel de mots d'Esprit — contenu à venir."
-      },
-      "weight": {
-        "name": "Poids",
-        "taskTitle": "Journal de repas adapté culturellement",
-        "taskBody": "Même schéma optionnel et non directif que la tâche d'Esprit — contenu à venir."
-      },
-      "calm": {
-        "name": "Calme",
-        "taskTitle": "Respiration guidée, 3 minutes",
-        "taskBody": "Même schéma optionnel et non directif que la tâche d'Esprit — contenu à venir."
       }
+    },
+    "heart": {
+      "headline": "Cœur n'est pas encore disponible",
+      "sub": "Cette zone est volontairement différée. Avant de pouvoir suivre quoi que ce soit de réel — comme la tension artérielle — nous devons d'abord définir la source des données, la validation de l'appareil et la prise en charge clinique. Rien n'est caché ici ; ce n'est simplement pas encore développé."
+    },
+    "weight": {
+      "headline": "Poids n'est pas encore disponible",
+      "sub": "Cette zone est volontairement différée jusqu'à ce que les unités, la source et un protocole validé soient définis — aucun objectif de perte de poids ni alerte automatique sans cela en place."
+    },
+    "calm": {
+      "headline": "Calme",
+      "sub": "Un auto-contrôle rapide et une pause respiration optionnelle. Ni un diagnostic d'humeur, ni un score de risque d'aucune sorte.",
+      "stressLabel": "Comment vous sentez-vous en ce moment ?",
+      "stressOptions": ["Calme", "Un peu tendu", "Dépassé"],
+      "breatheTitle": "Pause respiration de 60 à 90 secondes",
+      "breatheBody": "Entièrement optionnel — appuyez pour essayer, arrêtez quand vous voulez."
+    },
+    "breathing": {
+      "headline": "Respirons un instant",
+      "sub": "Suivez le cercle. Arrêtez quand vous voulez — il n'y a aucun objectif à atteindre.",
+      "in": "Inspirez",
+      "out": "Expirez",
+      "seconds": "{{count}} secondes",
+      "stop": "Arrêter"
     },
     "carePlan": {
       "headline": "Quelques idées optionnelles",
@@ -205,28 +213,45 @@
       "submit": "Accepter et continuer"
     },
     "insight": {
-      "headline": "Une remarque bienveillante",
-      "body": "Nous avons remarqué un léger changement dans la façon dont vos journées se sont senties dernièrement. C'est courant, et souvent modifiable.",
-      "helpsLabel": "Voici ce qui aide le plus les gens à ce stade",
-      "helpsTitle": "Des routines simples et régulières",
-      "helpsBody": "Un court suivi quotidien et le fait de rester en contact avec la famille aident le plus souvent — aucun grand changement nécessaire.",
-      "escalate": "Parler à votre équipe soignante, si vous le souhaitez"
+      "lockRibbon": "Interprétation en attente d'approbation clinique",
+      "headline": "Vos suivis récents",
+      "neutralMessage": "Aucune interprétation clinique n'est encore disponible. Ce n'est pas un jugement que quelque chose ne va pas — cela signifie que le processus de révision n'est pas encore activé.",
+      "sub": "Quoi que cet écran finisse par dire, vous pouvez toujours contacter un professionnel — l'option ci-dessous fonctionne dans tous les cas.",
+      "prepareSummary": "Préparer un résumé à discuter avec un clinicien"
     },
     "consent4": {
-      "eyebrow": "Avant de vous mettre en contact",
+      "eyebrow": "Avant de préparer quoi que ce soit",
       "badge": "Consentement 4 sur 4",
-      "note": "Le dernier des 4 — demandé uniquement parce que vous avez appuyé sur « parler à votre équipe soignante ».",
-      "headline": "Escalade clinique",
-      "sub": "Cela partage votre tendance récente (jamais de scores bruts) avec un clinicien agréé de votre équipe soignante, uniquement après votre accord.",
+      "note": "Le dernier des 4 — demandé uniquement parce que vous avez appuyé sur le bouton ci-dessus.",
+      "headline": "Préparer un résumé",
+      "sub": "Ce projet pilote n'a pas encore de clinicien ou de clinique connecté. Ceci prépare un résumé en langage simple (jamais de scores bruts) que vous pouvez consulter, télécharger ou partager vous-même.",
       "stageBadge": "Cette étape",
-      "stageTitle": "Transfert médical explicite",
-      "stageDescription": "Un clinicien — pas PreLink — prend le relais. Jamais de résultat automatisé du type « vous pourriez avoir X ».",
+      "stageTitle": "Préparation du résumé uniquement",
+      "stageDescription": "Personne n'est automatiquement notifié. Il n'y a pas encore de file d'attente surveillée de l'autre côté — PreLink n'est pas un service d'urgence ou surveillé en continu.",
       "agree": "Je comprends et j'accepte",
-      "submit": "Accepter et envoyer"
+      "submit": "Accepter et continuer"
     },
-    "escalationSent": {
-      "headline": "Votre équipe soignante a été informée",
-      "sub": "Un clinicien agréé examinera vos tendances récentes. Vous aurez des nouvelles via PreLink — rien d'urgent n'est sous-entendu."
+    "summaryPreview": {
+      "eyebrow": "Avant l'enregistrement",
+      "headline": "Voici exactement ce qui est inclus",
+      "sub": "Vérifiez ceci avant de continuer. Rien n'est envoyé en dehors de PreLink pour l'instant.",
+      "rows": {
+        "checkins": "Suivis d'humeur récents",
+        "checkinsValue": "14 derniers jours",
+        "mindPattern": "Tendance d'activité Esprit",
+        "mindPatternValue": "Directionnel uniquement, pas de score",
+        "rawAnswers": "Réponses brutes aux tâches",
+        "rawAnswersValue": "Non inclus",
+        "recipient": "Destinataire",
+        "recipientValue": "Aucun pour l'instant — aucun partenaire connecté"
+      },
+      "save": "Enregistrer ce résumé",
+      "back": "Retour"
+    },
+    "summaryPrepared": {
+      "headline": "Résumé préparé",
+      "status": "Statut : Enregistré — aucun partenaire connecté pour l'instant",
+      "sub": "Ce projet pilote n'a pas encore de clinique sous contrat, donc rien n'a été envoyé. Une fois qu'un partenaire de soins sera connecté, c'est exactement ici que ce transfert aurait lieu — et on vous demanderait de le confirmer, pas à nous."
     },
     "caregiverHome": {
       "lockedTitle": "En attente d'acceptation de l'invitation",
@@ -234,8 +259,9 @@
       "eyebrow": "Vue en tant que proche aidant",
       "circleName": "Cercle de soins de Mona",
       "summaryOnly": "Vue résumée uniquement",
+      "statusLockRibbon": "Statut en attente d'approbation clinique",
       "thisWeekLabel": "Cette semaine",
-      "thisWeekBody": "Mona reste stable dans tous les domaines.",
+      "thisWeekNeutral": "Aucune mise à jour partagée disponible pour l'instant.",
       "engagementLabel": "Engagement",
       "engagementBody": "S'est enregistrée la plupart des jours — rien n'est requis de votre part pour le moment.",
       "sendEncouragement": "Envoyer un encouragement",
@@ -245,12 +271,13 @@
     "clinicianGate": {
       "eyebrow": "Portail clinicien",
       "headline": "Connexion organisationnelle requise",
-      "sub": "L'accès est accrédité et soumis au consentement. Chaque entrée est enregistrée avec horodatage et motif.",
+      "sub": "L'accès est accrédité, nécessite une authentification à deux facteurs, et est soumis au consentement. Chaque entrée est enregistrée avec horodatage et motif.",
       "enter": "Entrer dans le portail (démo)"
     },
     "clinicianQueue": {
       "eyebrow": "Portail clinicien · accès contrôlé",
       "headline": "Votre file d'examen",
+      "demoRibbon": "Démo uniquement — aucune clinique sous contrat",
       "banner": "Vue soumise au consentement. Chaque accès est enregistré avec horodatage et motif.",
       "monaSub": "Vient d'être signalée",
       "monaFlag": "À examiner",

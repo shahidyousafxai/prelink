@@ -1,42 +1,38 @@
-import { View, Text } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
+import { Text } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
 import ScreenLayout from '../../../components/shared/ScreenLayout';
-import SectionLabel from '../../../components/shared/SectionLabel';
+import LockRibbon from '../../../components/LockRibbon';
+import NeutralCard from '../../../components/NeutralCard';
 import SecondaryButton from '../../../components/shared/SecondaryButton';
 import TextLink from '../../../components/shared/TextLink';
 import { useConsentQuery } from '../../../network/consent/consentQueries';
 import { styles } from './styles';
 
-// The highest-regulatory-risk screen in the app: no score, no chart, no
-// disease name, ever. Escalation is user-initiated and optional — the app
-// never pushes it.
+// Client requirement (Scene 7): "Hold automated change messages until the
+// clinical lead approves a written interpretation protocol... Replace the
+// proposed reassurance 'This is common, and often modifiable' unless
+// supported." The auto-generated gentle note is gone — this is an honest
+// "no interpretation available" state, plus a neutral route to a real
+// person that works regardless of what this screen ever says (the client's
+// own instruction: "provide a neutral route to seek professional help
+// regardless of the badge").
 export default function InsightScreen({ navigation }) {
   const { t } = useTranslation();
   const { data: consent } = useConsentQuery();
 
-  const handleEscalate = () => {
-    navigation.navigate(consent?.s4 ? 'EscalationSent' : 'Consent4');
+  const handlePrepareSummary = () => {
+    navigation.navigate(consent?.s4 ? 'SummaryPreview' : 'Consent4');
   };
 
   return (
     <ScreenLayout center={false}>
-      <View style={styles.icon}>
-        <Ionicons name="contrast-outline" size={20} color="#7A5A1E" />
-      </View>
+      <LockRibbon label={t('home.insight.lockRibbon')} />
       <Text style={styles.headline}>{t('home.insight.headline')}</Text>
-      <View style={styles.body}>
-        <Text style={styles.bodyText}>{t('home.insight.body')}</Text>
-      </View>
+      <NeutralCard>{t('home.insight.neutralMessage')}</NeutralCard>
+      <Text style={styles.sub}>{t('home.insight.sub')}</Text>
 
-      <SectionLabel>{t('home.insight.helpsLabel')}</SectionLabel>
-      <View style={styles.helpsCard}>
-        <Text style={styles.helpsTitle}>{t('home.insight.helpsTitle')}</Text>
-        <Text style={styles.helpsBody}>{t('home.insight.helpsBody')}</Text>
-      </View>
-
-      <SecondaryButton label={t('home.insight.escalate')} onPress={handleEscalate} />
+      <SecondaryButton label={t('home.insight.prepareSummary')} onPress={handlePrepareSummary} />
       <TextLink
         label={t('common.notNow')}
         variant="muted"

@@ -129,44 +129,52 @@
         "mind": "Mind"
       },
       "pillarStates": {
-        "holdingSteady": "Holding steady",
-        "worthLook": "Worth a look"
+        "heart": "Not available yet",
+        "weight": "Not available yet",
+        "calm": "Try a breathing break",
+        "mind": "Not enough information"
       },
       "reentryPreviewLink": "Preview: returning after 3 weeks away"
     },
     "pillar": {
-      "placeholderSub": "Directional patterns only — no scores, no numbers to interpret. Content below is a placeholder shape, not final copy.",
-      "ribbon": "NOT YET BUILT — SAME TEMPLATE AS MIND",
       "todayOption": "Today's option",
-      "todayOptionPlaceholder": "Today's option (placeholder)",
       "workingForYou": "What's been working for you",
-      "trendLabelSteady": "Holding steady over the last 6 weeks",
-      "trendLabelWatch": "Worth a look this month",
       "mind": {
         "name": "Mind",
-        "sub": "Directional patterns only — no scores, no numbers to interpret.",
+        "lockRibbon": "Interpretation pending clinical approval",
+        "sub": "The activity below works today. The trend judgment doesn't show yet — no clinical lead has approved what a meaningful change looks like.",
+        "neutralMessage": "Not enough information available. No clinical interpretation is shown here yet.",
         "taskTitle": "5-minute word recall",
         "taskBody": "Entirely optional — tap to try it.",
         "activities": [
           { "label": "Morning tea + puzzle", "tag": "3 days" },
           { "label": "Calling a family member", "tag": "this week" }
         ]
-      },
-      "heart": {
-        "name": "Heart",
-        "taskTitle": "Blood pressure check-in",
-        "taskBody": "Same optional, non-directive pattern as Mind's word-recall task — content TBD."
-      },
-      "weight": {
-        "name": "Weight",
-        "taskTitle": "Culturally-adapted meal log",
-        "taskBody": "Same optional, non-directive pattern as Mind's task — content TBD."
-      },
-      "calm": {
-        "name": "Calm",
-        "taskTitle": "Guided breathing, 3 minutes",
-        "taskBody": "Same optional, non-directive pattern as Mind's task — content TBD."
       }
+    },
+    "heart": {
+      "headline": "Heart isn't available yet",
+      "sub": "This area is intentionally deferred. Before it can track anything real — like blood pressure readings — we need to define the data source, device validation, and clinical handling first. Nothing is hidden here; it simply isn't built."
+    },
+    "weight": {
+      "headline": "Weight isn't available yet",
+      "sub": "This area is intentionally deferred until units, source, and a reviewed protocol are defined — no weight-loss targets or automatic alerts without that in place first."
+    },
+    "calm": {
+      "headline": "Calm",
+      "sub": "A quick self-check and an optional breathing break. Not a mood diagnosis or risk score of any kind.",
+      "stressLabel": "How are things feeling right now?",
+      "stressOptions": ["Calm", "A little tense", "Overwhelmed"],
+      "breatheTitle": "60–90 second breathing break",
+      "breatheBody": "Entirely optional — tap to try it, stop anytime."
+    },
+    "breathing": {
+      "headline": "Let's breathe for a moment",
+      "sub": "Follow the circle. Stop anytime — there's no target to hit.",
+      "in": "Breathe in",
+      "out": "Breathe out",
+      "seconds": "{{count}} seconds",
+      "stop": "Stop"
     },
     "carePlan": {
       "headline": "A few optional ideas",
@@ -205,28 +213,45 @@
       "submit": "Agree & continue"
     },
     "insight": {
-      "headline": "A gentle note",
-      "body": "We noticed a small change in how your days have been feeling lately. This is common, and often modifiable.",
-      "helpsLabel": "Here's what helps people most at this stage",
-      "helpsTitle": "Small, steady routines",
-      "helpsBody": "A short daily check-in and staying connected with family tend to help the most — no major changes needed.",
-      "escalate": "Talk to your care team, if you'd like"
+      "lockRibbon": "Interpretation pending clinical approval",
+      "headline": "Your recent check-ins",
+      "neutralMessage": "No clinical interpretation is available yet. This isn't a judgment that something is wrong — it means the review process isn't switched on yet.",
+      "sub": "Whatever this screen eventually says, you can always reach out to a professional — the option below works regardless.",
+      "prepareSummary": "Prepare a summary to discuss with a clinician"
     },
     "consent4": {
-      "eyebrow": "Before we reach out",
+      "eyebrow": "Before we prepare anything",
       "badge": "Consent 4 of 4",
-      "note": "The last of the 4 — only asked because you tapped \"talk to your care team.\"",
-      "headline": "Clinical escalation",
-      "sub": "This shares your recent pattern (never raw scores) with a licensed clinician on your care team, only after you say so.",
+      "note": "The last of the 4 — only asked because you tapped the button above.",
+      "headline": "Prepare a summary",
+      "sub": "This pilot doesn't yet have a connected clinician or clinic. This prepares a plain-language summary (never raw scores) that you can review, download, or share yourself.",
       "stageBadge": "This stage",
-      "stageTitle": "Explicit medical handoff",
-      "stageDescription": "A clinician — not PreLink — takes it from here. No automated \"you may have X\" outputs, ever.",
+      "stageTitle": "Summary preparation only",
+      "stageDescription": "Nobody is automatically notified. There is no monitored queue on the other end yet — PreLink is not an emergency or continuously monitored service.",
       "agree": "I understand and agree",
-      "submit": "Agree & send"
+      "submit": "Agree & continue"
     },
-    "escalationSent": {
-      "headline": "Your care team has been notified",
-      "sub": "A licensed clinician will review your recent patterns. You'll hear back through PreLink — nothing urgent is implied."
+    "summaryPreview": {
+      "eyebrow": "Before this is saved",
+      "headline": "Here's exactly what's included",
+      "sub": "Review this before continuing. Nothing is sent anywhere outside PreLink yet.",
+      "rows": {
+        "checkins": "Recent mood check-ins",
+        "checkinsValue": "Last 14 days",
+        "mindPattern": "Mind activity pattern",
+        "mindPatternValue": "Directional only, no score",
+        "rawAnswers": "Raw task answers",
+        "rawAnswersValue": "Not included",
+        "recipient": "Recipient",
+        "recipientValue": "None yet — no partner connected"
+      },
+      "save": "Save this summary",
+      "back": "Back"
+    },
+    "summaryPrepared": {
+      "headline": "Summary prepared",
+      "status": "Status: Saved — no connected partner yet",
+      "sub": "This pilot doesn't have a contracted clinic yet, so nothing was sent. Once a care partner is connected, this is exactly where that hand-off would happen — and you'd be asked to confirm it, not us."
     },
     "caregiverHome": {
       "lockedTitle": "Waiting on invite acceptance",
@@ -234,8 +259,9 @@
       "eyebrow": "Viewing as caregiver",
       "circleName": "Mona's care circle",
       "summaryOnly": "Summary view only",
+      "statusLockRibbon": "Status pending clinical approval",
       "thisWeekLabel": "This week",
-      "thisWeekBody": "Mona is holding steady across all areas.",
+      "thisWeekNeutral": "No shared update available yet.",
       "engagementLabel": "Engagement",
       "engagementBody": "Checked in most days — nothing needed from you right now.",
       "sendEncouragement": "Send encouragement",
@@ -245,12 +271,13 @@
     "clinicianGate": {
       "eyebrow": "Clinician portal",
       "headline": "Organizational sign-in required",
-      "sub": "Access is credentialed and consent-gated. Every entry is logged with timestamp and reason.",
+      "sub": "Access is credentialed, requires two-factor sign-in, and is consent-gated. Every entry is logged with timestamp and reason.",
       "enter": "Enter portal (demo)"
     },
     "clinicianQueue": {
       "eyebrow": "Clinician portal · gated access",
       "headline": "Your review queue",
+      "demoRibbon": "Demo only — no contracted clinic yet",
       "banner": "Consent-gated view. Every access is logged with timestamp and reason.",
       "monaSub": "Just flagged",
       "monaFlag": "Review",

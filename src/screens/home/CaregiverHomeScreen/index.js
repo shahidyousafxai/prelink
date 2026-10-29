@@ -7,6 +7,7 @@ import ScreenLayout from '../../../components/shared/ScreenLayout';
 import BackButton from '../../../components/shared/BackButton';
 import Avatar from '../../../components/shared/Avatar';
 import Card from '../../../components/shared/Card';
+import LockRibbon from '../../../components/LockRibbon';
 import PrimaryButton from '../../../components/shared/PrimaryButton';
 import ConfirmBanner from '../../../components/shared/ConfirmBanner';
 import { useConsentQuery } from '../../../network/consent/consentQueries';
@@ -51,9 +52,16 @@ export default function CaregiverHomeScreen({ navigation }) {
         </View>
       </View>
 
+      <LockRibbon label={t('home.caregiverHome.statusLockRibbon')} />
+
+      {/* Client requirement (Scene 9): "Keep clinical status sharing
+          disabled until its underlying interpretation is approved; a
+          neutral 'No shared update available' can distinguish missing
+          information." Same gating as Mind/Insight, using the client's own
+          suggested wording. */}
       <Card style={styles.card}>
         <Text style={styles.cardLabel}>{t('home.caregiverHome.thisWeekLabel')}</Text>
-        <Text style={styles.cardBody}>{t('home.caregiverHome.thisWeekBody')}</Text>
+        <Text style={styles.cardBodyNeutral}>{t('home.caregiverHome.thisWeekNeutral')}</Text>
       </Card>
       <Card style={styles.card}>
         <Text style={styles.cardLabel}>{t('home.caregiverHome.engagementLabel')}</Text>

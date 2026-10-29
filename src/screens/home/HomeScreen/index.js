@@ -21,11 +21,14 @@ const MOODS = [
   { key: 'Light', icon: 'sparkles-outline' },
 ];
 
+// `screen` is the RootNavigator/MyHealthStack route this tile opens — Heart
+// and Weight are full-screen "not available yet" routes (no tab bar),
+// Mind/Calm are tabs within MyHealthStack (tab bar stays visible).
 const PILLARS = [
-  { key: 'heart', icon: 'heart-outline', accent: colors.clay },
-  { key: 'weight', icon: 'barbell-outline', accent: colors.gold },
-  { key: 'calm', icon: 'leaf-outline', accent: colors.ink },
-  { key: 'mind', icon: 'bulb-outline', accent: colors.pine },
+  { key: 'heart', icon: 'heart-outline', accent: colors.clay, stateVariant: 'neutral', screen: 'Heart' },
+  { key: 'weight', icon: 'barbell-outline', accent: colors.gold, stateVariant: 'neutral', screen: 'Weight' },
+  { key: 'calm', icon: 'leaf-outline', accent: colors.ink, stateVariant: 'default', screen: 'Calm' },
+  { key: 'mind', icon: 'bulb-outline', accent: colors.pine, stateVariant: 'locked', screen: 'Mind' },
 ];
 
 // Matches the prototype's Home (Today) screen. The mood row and the
@@ -82,15 +85,21 @@ export default function HomeScreen({ navigation }) {
       </LinearGradient>
 
       <View style={styles.pillars}>
-        {PILLARS.map(({ key, icon, accent }) => (
+        {PILLARS.map(({ key, icon, accent, stateVariant, screen }) => (
           <PillarChip
             key={key}
             name={t(`home.home.pillars.${key}`)}
-            state={t(`home.home.pillarStates.${key === 'calm' ? 'worthLook' : 'holdingSteady'}`)}
+            state={t(`home.home.pillarStates.${key}`)}
             icon={icon}
             accent={accent}
-            watch={key === 'calm'}
-            onPress={() => navigation.navigate('MyHealth', { pillar: key })}
+            stateVariant={stateVariant}
+            onPress={() => {
+              if (screen === 'Mind' || screen === 'Calm') {
+                navigation.navigate('MyHealth', { screen });
+              } else {
+                navigation.navigate(screen);
+              }
+            }}
           />
         ))}
       </View>

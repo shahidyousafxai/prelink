@@ -9,11 +9,11 @@ import PrimaryButton from '../../../components/shared/PrimaryButton';
 import TextLink from '../../../components/shared/TextLink';
 import { useSetConsentStage } from '../../../network/consent/consentQueries';
 
-// Stage 4 of 4 — the final and most consequential gate, only asked because
-// the user tapped "talk to your care team" on Insight. Granting it is what
-// causes the case to appear in the Clinician Queue. "No automated 'you may
-// have X' outputs" is enforced by keeping this a human handoff, not an AI
-// verdict.
+// Stage 4 of 4 — the final gate, only asked because the user tapped
+// "prepare a summary" on Insight. Client reframe (Scene 8): no contracted
+// care team exists yet, so this is no longer live clinical escalation —
+// it's an explicit summary-preparation step, leading to a preview before
+// anything is saved, never a false hand-off claim.
 export default function Consent4Screen({ navigation }) {
   const { t } = useTranslation();
   const { control, watch } = useForm({ defaultValues: { agree: false } });
@@ -22,7 +22,7 @@ export default function Consent4Screen({ navigation }) {
 
   const handleAgree = () => {
     setConsentStage('s4', true);
-    navigation.navigate('EscalationSent');
+    navigation.navigate('SummaryPreview');
   };
 
   return (

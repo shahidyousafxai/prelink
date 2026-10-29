@@ -15,6 +15,13 @@ export const colors = {
   claySoft: '#F1DFD6',
   line: '#DCD7C8',
   white: '#FFFDF8',
+  // Neutral "pending clinical approval" tones — distinct from the warm
+  // palette above on purpose, so a locked/unavailable state never looks
+  // like a themed, intentional part of the design the way an error or
+  // warning state would.
+  lockBg: '#E4E6EA',
+  lockText: '#3F4652',
+  neutralBg: '#F1F0EC',
 };
 
 export const radius = {

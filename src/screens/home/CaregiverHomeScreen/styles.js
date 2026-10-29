@@ -15,6 +15,7 @@ export const styles = StyleSheet.create({
   card: { marginBottom: 10 },
   cardLabel: { fontSize: 11.5, fontFamily: fonts.bodyBold, color: colors.inkSoft, marginBottom: 5 },
   cardBody: { fontSize: 13, fontFamily: fonts.body, color: colors.ink },
+  cardBodyNeutral: { fontSize: 13, fontFamily: fonts.body, color: colors.inkSoft, fontStyle: 'italic' },
   trustNote: {
     fontSize: 10.5,
     fontFamily: fonts.body,

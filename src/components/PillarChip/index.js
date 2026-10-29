@@ -5,23 +5,30 @@ import { colors, fonts, radius, shadows } from '../../theme/theme';
 import AnimatedPressable from '../shared/AnimatedPressable';
 
 // Matches the prototype's `.pillar-chip` — one tile in Home's 2x2 pillar
-// grid. `dim` matches `.pillar-chip.dim` for pillars without a detail
-// screen yet (Heart/Weight/Calm) — present, but not tappable. The icon
-// avatar (colored per pillar) gives each card its own identity instead of
-// 4 identical plain text boxes.
-export default function PillarChip({ name, state, icon, accent, watch, dim, onPress }) {
+// grid. The icon avatar (colored per pillar) gives each card its own
+// identity instead of 4 identical plain text boxes. `stateVariant` matches
+// the prototype's `.state` modifiers: 'default' (pine — Calm's real,
+// working state), 'neutral' (italic, muted — Heart/Weight's honest
+// "not available yet"), 'locked' (a distinct grey — Mind's interpretation
+// gated behind clinical approval). Heart/Weight stay tappable despite being
+// unavailable, matching the prototype's own `.unavailable` (not `.dim`)
+// treatment — they open an honest explanation screen, not nothing.
+export default function PillarChip({ name, state, icon, accent, stateVariant = 'default', onPress }) {
   return (
-    <AnimatedPressable
-      style={[styles.chip, dim && styles.dim]}
-      onPress={dim ? undefined : onPress}
-      disabled={dim}
-      scaleTo={0.96}
-    >
+    <AnimatedPressable style={styles.chip} onPress={onPress} scaleTo={0.96}>
       <View style={[styles.avatar, { backgroundColor: accent }]}>
         <Ionicons name={icon} size={18} color={colors.white} />
       </View>
       <Text style={styles.name}>{name}</Text>
-      <Text style={[styles.state, watch && styles.watch]}>{state}</Text>
+      <Text
+        style={[
+          styles.state,
+          stateVariant === 'neutral' && styles.stateNeutral,
+          stateVariant === 'locked' && styles.stateLocked,
+        ]}
+      >
+        {state}
+      </Text>
     </AnimatedPressable>
   );
 }
@@ -37,7 +44,6 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     ...shadows.sm,
   },
-  dim: { opacity: 0.55 },
   avatar: {
     width: 34,
     height: 34,
@@ -48,5 +54,6 @@ const styles = StyleSheet.create({
   },
   name: { fontSize: 12.5, fontFamily: fonts.bodyBold, color: colors.ink, marginBottom: 3 },
   state: { fontSize: 11, fontFamily: fonts.bodySemiBold, color: colors.pine },
-  watch: { color: colors.clay },
+  stateNeutral: { color: colors.inkSoft, fontStyle: 'italic', fontFamily: fonts.body },
+  stateLocked: { color: '#5A6270' },
 });

@@ -5,6 +5,7 @@ import ForgotPasswordScreen from '../screens/auth/ForgotPasswordScreen';
 import LoginScreen from '../screens/auth/LoginScreen';
 import SignupScreen from '../screens/auth/SignupScreen';
 import AssessmentTaskScreen from '../screens/home/AssessmentTaskScreen';
+import BreathingExerciseScreen from '../screens/home/BreathingExerciseScreen';
 import CaregiverHomeScreen from '../screens/home/CaregiverHomeScreen';
 import CheckInScreen from '../screens/home/CheckInScreen';
 import ClinicianCaseScreen from '../screens/home/ClinicianCaseScreen';
@@ -12,9 +13,12 @@ import ClinicianGateScreen from '../screens/home/ClinicianGateScreen';
 import ClinicianQueueScreen from '../screens/home/ClinicianQueueScreen';
 import Consent2Screen from '../screens/home/Consent2Screen';
 import Consent4Screen from '../screens/home/Consent4Screen';
-import EscalationSentScreen from '../screens/home/EscalationSentScreen';
+import HeartScreen from '../screens/home/HeartScreen';
 import InsightScreen from '../screens/home/InsightScreen';
 import NotificationsScreen from '../screens/home/NotificationsScreen';
+import SummaryPreparedScreen from '../screens/home/SummaryPreparedScreen';
+import SummaryPreviewScreen from '../screens/home/SummaryPreviewScreen';
+import WeightScreen from '../screens/home/WeightScreen';
 import BaselineScreen from '../screens/onboarding/BaselineScreen';
 import ConsentScreen from '../screens/onboarding/ConsentScreen';
 import LanguageScreen from '../screens/onboarding/LanguageScreen';
@@ -47,7 +51,20 @@ export default function RootNavigator() {
           <Stack.Screen name="Consent2" component={Consent2Screen} />
           <Stack.Screen name="Insight" component={InsightScreen} />
           <Stack.Screen name="Consent4" component={Consent4Screen} />
-          <Stack.Screen name="EscalationSent" component={EscalationSentScreen} />
+          {/* Client reframe: this used to be live clinical escalation to a
+              contracted clinician. There's no contracted care team yet, so
+              it's now an explicit summary-preparation flow — preview exactly
+              what's included before saving, then an honest "saved, no
+              connected partner yet" status, never a false hand-off claim. */}
+          <Stack.Screen name="SummaryPreview" component={SummaryPreviewScreen} />
+          <Stack.Screen name="SummaryPrepared" component={SummaryPreparedScreen} />
+          {/* Heart/Weight: honest "not available yet" screens (no with-tabs
+              in the prototype, so full-screen like these others) — not a
+              dressed-up copy of Mind's template. Calm/Mind live inside
+              MyHealthStack instead, since they keep the tab bar visible. */}
+          <Stack.Screen name="Heart" component={HeartScreen} />
+          <Stack.Screen name="Weight" component={WeightScreen} />
+          <Stack.Screen name="BreathingExercise" component={BreathingExerciseScreen} />
           {/* Role previews — this app has no real separate caregiver/clinician
               login, so these mirror the prototype's own "Preview controls"
               role switcher instead of pretending to be real auth. Reached

@@ -6,6 +6,7 @@ import ScreenHeader from '../../../components/shared/ScreenHeader';
 import BackButton from '../../../components/shared/BackButton';
 import Banner from '../../../components/shared/Banner';
 import FlagRow from '../../../components/FlagRow';
+import LockRibbon from '../../../components/LockRibbon';
 import { useConsentQuery } from '../../../network/consent/consentQueries';
 import { styles } from './styles';
 
@@ -20,6 +21,9 @@ export default function ClinicianQueueScreen({ navigation }) {
     <ScreenLayout center={false}>
       <BackButton label={t('common.back.settings')} onPress={() => navigation.navigate('Main', { screen: 'You' })} />
       <ScreenHeader eyebrow={t('home.clinicianQueue.eyebrow')} headline={t('home.clinicianQueue.headline')} />
+      {/* Client requirement (Scene 10): "No contracted pilot clinic... this
+          is a recommended operating model, not a confirmed arrangement." */}
+      <LockRibbon label={t('home.clinicianQueue.demoRibbon')} />
       <Banner variant="governance">{t('home.clinicianQueue.banner')}</Banner>
 
       {consent?.s4 && (
