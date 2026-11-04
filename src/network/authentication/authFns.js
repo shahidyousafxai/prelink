@@ -18,6 +18,10 @@ export function resetPasswordFn(payload) {
   return post(AUTH.RESET_PASSWORD, payload);
 }
 
+export function logoutFn() {
+  return post(AUTH.LOGOUT);
+}
+
 export function completeOnboardingFn() {
   return post(ONBOARDING.COMPLETE);
 }

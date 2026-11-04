@@ -8,7 +8,14 @@ import {
   saveAuthToken,
   setNeedsOnboarding,
 } from '../../utils/storage';
-import { completeOnboardingFn, forgotPasswordFn, loginFn, resetPasswordFn, signupFn } from './authFns';
+import {
+  completeOnboardingFn,
+  forgotPasswordFn,
+  loginFn,
+  logoutFn,
+  resetPasswordFn,
+  signupFn,
+} from './authFns';
 
 // Shared by login and signup. The backend's onboardingComplete flag decides
 // whether the user lands on Home or restarts onboarding at Language; it's
@@ -68,9 +75,17 @@ export function useSignupMutation() {
 export function useLogoutMutation() {
   const queryClient = useQueryClient();
 
+  // The local session is cleared even if the request fails (e.g. offline),
+  // so the user can always log out of this device.
   return useMutation({
-    mutationFn: clearAuthToken,
-    onSuccess: () => {
+    mutationFn: async () => {
+      try {
+        await logoutFn();
+      } finally {
+        await clearAuthToken();
+      }
+    },
+    onSettled: () => {
       queryClient.setQueryData(queryKeys.auth.session(), null);
       queryClient.setQueryData(queryKeys.auth.onboarding(), null);
     },
